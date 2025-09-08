@@ -57,7 +57,7 @@ Sommaire :
   --caption-weight: 400;
   --caption-bold-weight: 500;
 
-  --baseline: 1ch;
+  --baseline: 24px;
   --gutter: 3mm;
 
   --padding: 24px;
@@ -180,10 +180,35 @@ hr {
   justify-content: flex-start;
   font-family: var(--labeur);
   color: var(--text-color);
+  padding: 0px;
+  margin: 0px;
 }
 
+#header h1 {
+  --labeur-size: 36px;
+  font-size: var(--labeur-size);
+  --labeur-line-height: 120%;
+  line-height: var(--labeur-line-height);
+  --labeur-weight: 600;
+  font-weight: var(--labeur-weight);
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: var(--baseline);
+}
 
-#header .meta{
+#header h2 {
+  --labeur-size: 22px;
+  font-size: var(--labeur-size);
+  --labeur-line-height: 120%;
+  line-height: var(--labeur-line-height);
+  --labeur-weight: 600;
+  font-weight: var(--labeur-weight);
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: var(--baseline);
+}
+
+#header .meta {
   --labeur-size: 14px;
   font-size: var(--labeur-size);
   --labeur-line-height: 140%;
@@ -192,24 +217,27 @@ hr {
   font-weight: var(--labeur-weight);
 }
 
-#header .meta ul{
+#header .meta ul {
   list-style: none;
   padding: 0px;
   margin: 0px;
 }
 
-#header .meta li.meta-year{
-  padding-bottom: var(--baseline);
+#header .meta li.meta-author,
+#header .meta li.meta-year {
+  --labeur-weight: 600;
+  font-weight: var(--labeur-weight);
 }
 
+#header .meta li.meta-year {
+  padding-bottom: calc( var(--baseline) / 2 );
+}
 
 #header {
   position: fixed;
   top: calc(var(--gap) * 3);
   width: calc(var(--grid-unit) * 3 + var(--gap) * 2);
   z-index: 200;
-
-
 }
 
 @media screen and (min-width: 1900px) {
@@ -220,7 +248,6 @@ hr {
     width: calc(var(--grid-unit) * 2 + var(--gap) * 1);
   }
 }
-
 
 /* ------------------------------------------------------------------------ Nav */
 
@@ -348,7 +375,6 @@ main {
   main {
     padding-top: var(--baseline);
     grid-column: 5/12;
-    
   }
 }
 
@@ -370,7 +396,6 @@ main p,
 main ul,
 main blockquote,
 main ol {
-  
 }
 main h1:first-child,
 main h2:first-child,
