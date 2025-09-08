@@ -63,11 +63,8 @@
 
 </header>
 
-
-    <main id="main">
-
     <nav id="index">
-      <button>☰</button>
+      
       <ul class="nav-ul">
         {% for p in collections.screenPages %}
         <li id="nav-{{ p.fileSlug | cleanTitle | slug }}" class="nav-{{ p.data.template | default("default") }}">
@@ -76,6 +73,11 @@
         {% endfor %}
       </ul>
     </nav>
+
+
+    <main id="main">
+
+
 
       {% for p in collections.screenPages %}
          {% set templateName =
