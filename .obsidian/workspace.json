@@ -23,16 +23,32 @@
             "id": "b8a1000c879ae006",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
+              "type": "markdown",
               "state": {
-                "file": "_11ty/_data/token.yml"
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "token"
+              "title": "README"
+            }
+          },
+          {
+            "id": "62c30339cefdfcaf",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://ebabx.codeberg.page/desencombrement/print.html",
+                "title": "Désencombrement",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "Désencombrement"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -291,10 +307,11 @@
       }
     ]
   },
-  "active": "b8a1000c879ae006",
+  "active": "62c30339cefdfcaf",
   "lastOpenFiles": [
-    "_11ty/_data/config.yml",
+    "README.md",
     "_11ty/_data/token.yml",
+    "_11ty/_data/config.yml",
     "_site/csspageweaver/plugins/a_garder.zip",
     "_site/index.html",
     "_site/print.html",
@@ -313,7 +330,6 @@
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff2",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
@@ -328,7 +344,6 @@
     "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
     "_site/csspageweaver/plugins/baseline/README.md",
     "_site/csspageweaver/README.md",
-    "README.md",
     "node_modules/@11ty/eleventy-utils/README.md",
     "./docs/terminology.md",
     "docs/terminology.md",
