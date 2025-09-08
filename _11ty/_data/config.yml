@@ -3,7 +3,7 @@
 # === npm run deploy (l'icône 🚀) ===
 
 # === ADRESSE DU DEPOT===
-repository_url: "https://codeberg.org/ebabx/desencombrement.git"
+repository_url: "git@codeberg.org:ebabx/desencombrement.git"
 # === ADRESSE DU SITE===
 site_url: "https://ebabx.codeberg.page/desencombrement"
 

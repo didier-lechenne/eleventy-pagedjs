@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "f2e65d1b7a35fc92",
+        "id": "0ab00d8a4834968e",
         "type": "tabs",
         "children": [
           {
-            "id": "8bf3a0b819f3d419",
+            "id": "700a2a79c84d6e2a",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "_11ty/_data/config.yml"
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "config"
+              "title": "Nouvel onglet"
             }
           }
         ]
@@ -239,10 +237,33 @@
       "cmdr:Shell commands: Execute: npm run deploy": false
     }
   },
-  "active": "8bf3a0b819f3d419",
+  "active": "700a2a79c84d6e2a",
   "lastOpenFiles": [
-    "_site/assets/css/print/layout.css",
-    "_site/csspageweaver/lib/paged.esm.js",
+    "_11ty/_data/config.yml",
+    "_site/index.html",
+    "_site/print.html",
+    "_site/csspageweaver/plugins/previewPage/.gitignore",
+    "_site/csspageweaver/plugins/tableOfContent/.gitignore",
+    "_site/csspageweaver/plugins/spread/.gitignore",
+    "_site/csspageweaver/plugins/fullPage/.gitignore",
+    "_site/csspageweaver/plugins/reloadInPlace/.gitignore",
+    "_site/csspageweaver/plugins/inlineNotes/.gitignore",
+    "_site/csspageweaver/plugins/imposition/.gitignore",
+    "_site/csspageweaver/plugins/footnotesFix/.gitignore",
+    "_site/csspageweaver/plugins/pageMove/README.md",
+    "_site/csspageweaver/plugins/tableOfContent/README.md",
+    "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
+    "_site/csspageweaver/plugins/fullPage/README.md",
+    "_site/csspageweaver/plugins/marker/README.md",
+    "_site/csspageweaver/plugins/layout/README.md",
+    "_site/csspageweaver/plugins/inlineNotes/README.md",
+    "_site/csspageweaver/plugins/footnotesFix/README.md",
+    "_site/csspageweaver/plugins/fullContent/README.md",
+    "_site/csspageweaver/plugins/editor/README.md",
+    "_site/csspageweaver/plugins/editor/README-DEV-TURNDOWN.md",
+    "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
+    "_site/csspageweaver/plugins/baseline/README.md",
+    "_site/csspageweaver/README.md",
     "_site/images/velo4.jpg",
     "_site/images/intro_heritage.png",
     "_site/images/maxresdefault.webp",
@@ -253,29 +274,6 @@
     "_site/images/reparer1.png",
     "_site/images/siege.jpg",
     "_site/images/french-book-TomeIII_dithered.png",
-    "_site/images",
-    "node_modules/iconv-lite/lib/streams.js",
-    "node_modules/iconv-lite/lib/index.js",
-    "node_modules/iconv-lite/lib/index.d.ts",
-    "node_modules/iconv-lite/lib/bom-handling.js",
-    "node_modules/iconv-lite/lib",
-    "node_modules/@dabh/diagnostics/adapters/process.env.js",
-    "node_modules/@dabh/diagnostics/adapters/localstorage.js",
-    "node_modules/@dabh/diagnostics/adapters/index.js",
-    "_site/csspageweaver/plugins/tableOfContent/README.md",
-    "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
-    "_site/csspageweaver/plugins/pageMove/README.md",
-    "_site/csspageweaver/plugins/marker/README.md",
-    "_site/csspageweaver/plugins/layout/README.md",
-    "_site/csspageweaver/plugins/inlineNotes/README.md",
-    "_site/csspageweaver/plugins/fullPage/README.md",
-    "_site/csspageweaver/plugins/fullContent/README.md",
-    "_site/csspageweaver/plugins/footnotesFix/README.md",
-    "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
-    "_site/csspageweaver/plugins/editor/README.md",
-    "_site/csspageweaver/plugins/editor/README-DEV-TURNDOWN.md",
-    "_site/csspageweaver/plugins/baseline/README.md",
-    "_site/csspageweaver/README.md",
     "node_modules/cloneable-readable/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
     "node_modules/chokidar/README.md",
     "node_modules/duplexer/README.md",
