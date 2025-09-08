@@ -54,6 +54,18 @@
               "icon": "lucide-file",
               "title": "screen"
             }
+          },
+          {
+            "id": "c68886f671285e7a",
+            "type": "leaf",
+            "state": {
+              "type": "vscode-editor",
+              "state": {
+                "file": "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css"
+              },
+              "icon": "lucide-file",
+              "title": "index"
+            }
           }
         ],
         "currentTab": 3
@@ -317,6 +329,13 @@
   },
   "active": "6e2b6736a8e03856",
   "lastOpenFiles": [
+    "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css",
+    "_11ty/assets/themes/valentine/css/screen.css",
+    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-mediumitalic.woff2",
+    "_site/assets/css/print/fonts/WorkSans/index.css",
+    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-light.woff2",
+    "_site/images/velo3.jpg",
+    "_site/images/tomeIII-candle_dithered.png",
     "_site/images/velo.jpg",
     "_site/images/velo4.jpg",
     "_site/images/velo2.jpg",
@@ -325,9 +344,6 @@
     "_site/images/nobody-at-table-edited_dithered.png",
     "_site/images/intro_objet.png",
     "_site/images/reparer1.png",
-    "_site/images/mongolian-child-archer-Nasanbat_Nasaa_dithered.png",
-    "_site/images/lowtech2.png",
-    "_site/images/lowtech_distilateur.png",
     "_site/csspageweaver/plugins/tableOfContent/config.json",
     "_site/csspageweaver/README.md",
     "_site/csspageweaver/plugins/tableOfContent/.gitignore",
@@ -335,10 +351,6 @@
     "_site/csspageweaver/plugins/spread/config.json",
     "_site/csspageweaver/plugins/spread/spread-ui.js",
     "_site/csspageweaver/plugins/reloadInPlace/config.json",
-    "_site/csspageweaver/plugins/spread/spread-hook.js",
-    "_site/csspageweaver/plugins/spread/.gitignore",
-    "_site/csspageweaver/plugins/reloadInPlace/reloadInPlace.js",
-    "_site/csspageweaver/plugins/previewPage/stylesheet.css",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
     "_site/csspageweaver/plugins/layout/README.md",

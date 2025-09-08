@@ -44,13 +44,13 @@ Sommaire :
   --labeur-size: 18px;
   --labeur-line-height: 160%;
   --labeur-weight: 600; 
-  --labeur-bold-weight: 700;
+  --labeur-bold-weight: 600;
 
   --footnote: var(--labeur), sans-serif;
   --footnote-size: 10pt;
   --footnote-line-height: 140%;
-  --footnote-weight: 400;
-  --footnote-bold-weight: 500;
+  --footnote-weight: 300;
+  --footnote-bold-weight: 400;
 
   --caption: var(--labeur), sans-serif;
   --caption-size: 10pt;
@@ -68,7 +68,7 @@ Sommaire :
   --basesize: 1.15rem;
   --color: rgba(0, 0, 0, 0.85);
   /* espacements homogÃ¨nes */
-  --spacer: var(--gutter);
+  --spacer: 2rem;
   /* largeur des notes de cÃ´tÃ© */
   --sn-width: 15rem;
   /* couleur dâ€™accentuation */
