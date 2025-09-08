@@ -1,3 +1,3 @@
-# desencombrement
+# Désencombrement
 
-Mémoire Valentine Saint Martin
+Mémoire de Valentine Saint Martin
