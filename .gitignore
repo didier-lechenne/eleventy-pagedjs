@@ -1,4 +1,5 @@
-token.yml
+# Fichiers de configuration sensibles
+_11ty/_data/token.yml
 
 # Fichiers zip
 *.zip

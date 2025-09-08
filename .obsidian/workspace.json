@@ -252,8 +252,49 @@
       "cmdr:Shell commands: Execute: npm run deploy": false
     }
   },
+  "floating": {
+    "id": "9047355fb17b5172",
+    "type": "floating",
+    "children": [
+      {
+        "id": "9d10a7a200098bac",
+        "type": "window",
+        "children": [
+          {
+            "id": "5a2d6471081ff0f0",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "e286824f9df357b4",
+                "type": "leaf",
+                "state": {
+                  "type": "webviewer",
+                  "state": {
+                    "url": "https://github.com/Vinzent03/obsidian-git",
+                    "title": "GitHub - Vinzent03/obsidian-git: Integrate Git version control with automatic commit-and-sync and other advanced features in Obsidian.md",
+                    "mode": "webview"
+                  },
+                  "icon": "globe-2",
+                  "title": "GitHub - Vinzent03/obsidian-git: Integrate Git version control with automatic commit-and-sync and other advanced features in Obsidian.md"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 768,
+        "y": 320,
+        "width": 1024,
+        "height": 800,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
   "active": "b8a1000c879ae006",
   "lastOpenFiles": [
+    "_11ty/_data/config.yml",
+    "_11ty/_data/token.yml",
     "_site/csspageweaver/plugins/a_garder.zip",
     "_site/index.html",
     "_site/print.html",
@@ -268,13 +309,11 @@
     "_site/images/1430077789-398f32bbf5de586eb7325d2e44215f75aad64154121b379aaf2d4e06a8c90b46-d.avif",
     "_site/images/archery-outdoors-women-dithered.png",
     "deploy.js",
-    "_11ty/_data/token.yml",
     "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-bold.woff2",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff2",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
