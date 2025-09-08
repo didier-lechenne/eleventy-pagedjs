@@ -11,17 +11,28 @@
             "id": "7c478a8819eff148",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "vscode-editor",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "_11ty/_data/config.yml"
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "config"
+            }
+          },
+          {
+            "id": "b8a1000c879ae006",
+            "type": "leaf",
+            "state": {
+              "type": "vscode-editor",
+              "state": {
+                "file": "_11ty/_data/token.yml"
+              },
+              "icon": "lucide-file",
+              "title": "token"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -241,8 +252,14 @@
       "cmdr:Shell commands: Execute: npm run deploy": false
     }
   },
-  "active": "7c478a8819eff148",
+  "active": "b8a1000c879ae006",
   "lastOpenFiles": [
+    "_site/assets/css/print/fonts/BBBBaskervvol/index.css",
+    "_site/assets/css/print/fonts/GTMaru/GTMaru-Light.woff",
+    "deploy.js",
+    "_11ty/_data/token.yml",
+    "_11ty/_data/config.yml",
+    "README.md",
     "node_modules/.package-lock.json",
     "node_modules/@11ty/eleventy-utils/README.md",
     "node_modules/iso-639-1/test/test.js",
@@ -254,11 +271,6 @@
     "examples/README.md",
     "examples",
     "./examples",
-    ".obsidian/graph.json",
-    "_11ty/_data/config.yml",
-    "_site/assets/css/print/fonts/GTMaru/GTMaru-LightOblique.woff2",
-    "_site/assets/css/print/fonts/BBBBaskervvol/BBBBaskervvol-Fondue.woff2",
-    "_site/assets/css/print/fonts/BBBBaskervvol/BBBBaskervvol-Fondue.woff",
     "_site/csspageweaver/plugins/fullPage/README.md",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/README.md",
@@ -287,7 +299,6 @@
     "node_modules/chokidar/README.md",
     "node_modules/duplexer/README.md",
     "node_modules/rxjs/CHANGELOG.md",
-    "node_modules/@11ty/eleventy-img/node_modules/@img/sharp-win32-x64/README.md",
-    "node_modules/@img/sharp-win32-x64/README.md"
+    "node_modules/@11ty/eleventy-img/node_modules/@img/sharp-win32-x64/README.md"
   ]
 }
