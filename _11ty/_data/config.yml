@@ -3,9 +3,9 @@
 # === npm run deploy (l'icône 🚀) ===
 
 # === ADRESSE DU DEPOT===
-repository_url: "https://codeberg.org/didierlechenne/desencombrement.git"
+repository_url: "https://codeberg.org/ebabx/desencombrement.git"
 # === ADRESSE DU SITE===
-site_url: "https://didierlechenne.codeberg.page/desencombrement"
+site_url: "https://ebabx.codeberg.page/desencombrement"
 
 # === C'EST LA PARTIE CENTRALE DU DOCUMENT, CE SONT LES CHAPITRES/SECTIONS .md ===
 # === THIS IS THE CENTRAL PART OF THE DOCUMENT, THESE ARE THE CHAPTERS/SECTIONS .md ===
