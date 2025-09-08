@@ -25,19 +25,7 @@
             "state": {
               "type": "vscode-editor",
               "state": {
-                "file": "_11ty/assets/themes/valentine/css/print/base.css"
-              },
-              "icon": "lucide-file",
-              "title": "base"
-            }
-          },
-          {
-            "id": "930bb07fdb052a4b",
-            "type": "leaf",
-            "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "_11ty/assets/themes/valentine/css/screen.css"
+                "file": "_11ty/_layouts/screen.njk"
               },
               "icon": "lucide-file",
               "title": "screen"
@@ -68,7 +56,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -327,10 +315,13 @@
       }
     ]
   },
-  "active": "930bb07fdb052a4b",
+  "active": "02fffa100618095f",
   "lastOpenFiles": [
-    "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css",
+    "_11ty/assets/themes/valentine/css/print/base.css",
+    "valentine/templates/screen.md",
+    "_11ty/_data/config.yml",
     "_11ty/assets/themes/valentine/css/screen.css",
+    "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css",
     "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-mediumitalic.woff2",
     "_site/assets/css/print/fonts/WorkSans/index.css",
     "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-light.woff2",
@@ -349,8 +340,6 @@
     "_site/csspageweaver/plugins/tableOfContent/.gitignore",
     "_site/csspageweaver/plugins/spread/spread.html",
     "_site/csspageweaver/plugins/spread/config.json",
-    "_site/csspageweaver/plugins/spread/spread-ui.js",
-    "_site/csspageweaver/plugins/reloadInPlace/config.json",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
     "_site/csspageweaver/plugins/layout/README.md",
@@ -373,7 +362,6 @@
     "node_modules/cloneable-readable/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
     "node_modules/chokidar/README.md",
     "node_modules/duplexer/README.md",
-    "node_modules/rxjs/CHANGELOG.md",
-    "node_modules/@11ty/eleventy-img/node_modules/@img/sharp-win32-x64/README.md"
+    "node_modules/rxjs/CHANGELOG.md"
   ]
 }
