@@ -1,0 +1,6 @@
+{
+	"name": "pageMove",
+	"description": "Plugin de déplacement de pages avec --page-move-after et --page-move-before",
+
+	"hook": "hook-pageMove.js"
+}

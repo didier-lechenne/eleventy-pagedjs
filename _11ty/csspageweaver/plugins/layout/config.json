@@ -1,0 +1,18 @@
+{
+	"name": "layout",
+	"description": "Plugin de mise en page modulaire avec grille interactive, manipulation d'images et génération de shortcodes.",
+	
+	"ui": {
+		"title": "layout",
+		"description": "Grille modulaire interactive pour positionnement précis d'éléments",
+		"template": "template.html",
+		"toggle": true
+	
+	},
+	"parameters": {
+		"sample": null
+	},
+
+	"hook": "layout.js",
+	"stylesheet": "layout.css"
+}

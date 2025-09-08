@@ -1,0 +1,378 @@
+@media screen {
+  .layout .ui-layout {
+    display: block;
+  }
+
+  .ui-layout {
+    display: none;
+  }
+
+  /* === ÉLÉMENTS DATA-GRID === */
+
+  /* Sélecteur unifié pour tous les éléments data-grid */
+  .modularGrid [data-grid] {
+    position: relative;
+  }
+
+  /* État redimensionnable - bordure fine */
+  .modularGrid [data-grid].resizable {
+    outline: 1px solid var(--cssPageWeaver-color-accent) !important;
+    outline-offset: -1px;
+  }
+
+  /* Couleurs par type d'élément */
+  .modularGrid [data-grid="content"].resizable {
+    outline-color: #ff6600 !important;
+  }
+
+  .modularGrid [data-grid="image"].resizable {
+    outline-color: #00cc66 !important;
+  }
+
+  .modularGrid [data-grid="insert"].resizable {
+    outline-color: #9966cc !important;
+  }
+
+  .element-info {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+
+  #label_rd1::after {
+    content: attr(data-name);
+    margin-left: 0em;
+    font-weight: bold;
+    color: var(--cssPageWeaver-color-accent);
+  }
+
+  #position::after {
+    content: "Type: " attr(data-shortcode);
+    font-size: 0.9em;
+    color: var(--cssPageWeaver-color-accent);
+  }
+
+  /* === BOUTON DE DÉPLACEMENT === */
+
+  .move-button {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: calc(100% - 25px - 25px);
+    height: calc(100% - 25px - 25px);
+    background: transparent;
+    border: 0px solid var(--accentColor, #0066cc);
+    cursor: move;
+    z-index: 100000;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Masquer par défaut */
+  .move-button {
+    display: none;
+  }
+
+  /* Afficher en mode layout sur éléments resizable */
+  body.layout .modularGrid [data-grid].resizable .move-button {
+    display: flex;
+  }
+
+  /* Couleurs du bouton selon le type */
+  .modularGrid [data-grid="content"].resizable .move-button {
+    border-color: #ff6600;
+  }
+
+  .modularGrid [data-grid="content"].resizable .move-button::before {
+    color: #ff6600;
+  }
+
+  .modularGrid [data-grid="image"].resizable .move-button {
+    border-color: #00cc66;
+  }
+
+  .modularGrid [data-grid="image"].resizable .move-button::before {
+    color: #00cc66;
+  }
+
+  .modularGrid [data-grid="insert"].resizable .move-button {
+    border-color: #9966cc;
+  }
+
+  .modularGrid [data-grid="insert"].resizable .move-button::before {
+    color: #9966cc;
+  }
+
+  /* === ÉTATS DE REDIMENSIONNEMENT === */
+
+  /* Pendant le redimensionnement */
+  body.grid-resizing {
+    user-select: none;
+    cursor: inherit !important;
+  }
+
+  body.grid-resizing * {
+    pointer-events: none !important;
+  }
+
+  body.grid-resizing [data-grid],
+  body.grid-resizing [data-grid] * {
+    pointer-events: auto !important;
+  }
+
+  /* Élément en cours de redimensionnement */
+  .modularGrid [data-grid].resizing {
+    outline-color: #ff6600 !important;
+    outline-width: 2px !important;
+    z-index: 1000;
+  }
+
+  .modularGrid [data-grid].resizing .move-button {
+    background: transparent;
+    border-color: white;
+  }
+
+  .modularGrid [data-grid].resizing .move-button::before {
+    color: white;
+  }
+
+  /* === ÉTATS DE SÉLECTION === */
+
+  .layout [data-grid="insert"].selected {
+    outline: 1px dashed var(--accentColor);
+  }
+
+  .layout [data-grid="content"].selected,
+  .layout [data-grid="image"].selected {
+    background-color: hsla(16, 100%, 50%, 0.15);
+  }
+
+  .layout [data-grid="insert"].selected,
+  .layout [data-grid="content"].selected,
+  .layout [data-grid="image"].selected,
+  .layout [data-grid="insert"]:hover,
+  .layout [data-grid="content"]:hover,
+  .layout [data-grid="image"]:hover {
+    background-color: hsla(16, 100%, 50%, 0.15);
+  }
+
+  /* === INTERFACE UTILISATEUR === */
+
+  /* Styles pour les contrôles (inchangés) */
+  [type="checkbox"],
+  [type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 1.5rem;
+    user-select: none;
+  }
+
+  .box input[type="radio"] + label:hover::after {
+    background-color: var(--cssPageWeaver-color-accent-hover);
+    fill: var(--cssPageWeaver-color-accent-hover);
+  }
+
+  .box input[type="radio"] + label:hover::before {
+    background-color: var(--cssPageWeaver-color-accent-hover);
+  }
+
+  .box input[type="radio"] + label:before {
+    margin-right: 0ch !important;
+  }
+
+  .box input[type="radio"] + label {
+    margin-bottom: 0ch !important;
+  }
+
+  /* === AFFICHAGE DE L'INDICATEUR AU SURVOL === */
+
+  body.layout .modularGrid [data-grid].resizable:hover::after {
+    opacity: 1;
+  }
+
+  @page modularGrid {
+  }
+
+  [data-template="modularGrid"],
+  .modularGrid {
+    page: modularGrid;
+
+    page-break-before: always;
+    page-break-after: always;
+
+    --g-column-count: var(--grid-col, 12);
+    --g-column-gutter: var(--grid-col-gutter, 0mm);
+    --g-row-count: var(--grid-row, 10);
+    --g-row-gutter: var(--grid-row-gutter, 0mm);
+
+    display: grid;
+    grid-template-columns: repeat(var(--g-column-count), 1fr);
+    grid-template-rows: repeat(var(--g-row-count), 1fr);
+    column-gap: var(--g-column-gutter);
+    row-gap: var(--g-row-gutter);
+    height: calc(
+      var(--pagedjs-height) - var(--pagedjs-margin-top) -
+        var(--pagedjs-margin-bottom) - var(--pagedjs-bleed-top) -
+        var(--pagedjs-bleed-bottom)
+    );
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .modularGrid .pagedjs_full-page_content {
+    left: calc((var(--pagedjs-margin-left) + 6mm) * -1) !important;
+    width: calc(var(--pagedjs-pagebox-width) + 6mm + 6mm) !important;
+  }
+
+  /* === ÉLÉMENTS DATA-GRID GÉNÉRIQUES === */
+
+  .modularGrid [data-grid] {
+    grid-column: var(--print-col, auto) / span var(--print-width, 3);
+    grid-row: var(--print-row, auto) / span var(--print-height, 3);
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    max-width: unset;
+  }
+
+  /* === ÉLÉMENTS DE CONTENU === */
+
+  .modularGrid [data-grid="content"] h1,
+  .modularGrid [data-grid="content"] h2,
+  .modularGrid [data-grid="content"] h3,
+  .modularGrid [data-grid="content"] h4,
+  .modularGrid [data-grid="content"] div,
+  .modularGrid [data-grid="content"] p,
+  .modularGrid [data-grid="content"] blockquote,
+  .modularGrid .insert h1,
+  .modularGrid .insert h2,
+  .modularGrid .insert h3,
+  .modularGrid .insert h4,
+  .modularGrid .insert div,
+  .modularGrid .insert p,
+  .modularGrid .insert blockquote {
+    align-self: var(--align-self, start);
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  [data-template="modularGrid"] [data-grid="content"] p,
+  [data-template="modularGrid"] .insert p,
+  .modularGrid [data-grid="content"] p,
+  .modularGrid .insert p {
+    margin-top: 0em;
+    margin-bottom: 0em;
+  }
+
+  [data-template="modularGrid"] [data-grid="content"] p:last-child,
+  [data-template="modularGrid"] .insert p:last-child,
+  .modularGrid [data-grid="content"] p:last-child,
+  .modularGrid .insert p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* === ÉLÉMENTS MARKDOWN === */
+
+  .modularGrid [data-grid="markdown"] > * {
+    align-self: var(--align-self, start);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* === ÉLÉMENTS D'IMAGES === */
+
+  [data-template="modularGrid"] [data-grid="image"],
+  [data-template="modularGrid"] figure,
+  .modularGrid [data-grid="image"],
+  .modularGrid figure {
+    grid-column: var(--print-col, auto) / span var(--print-width, 3);
+    grid-row: var(--print-row, auto) / span var(--print-height, 1);
+    align-self: var(--align-self, start);
+    overflow: hidden;
+    position: relative;
+    margin-top: 0 !important;
+    margin-block-start: 0 !important;
+    margin-bottom: 0 !important;
+    margin-block-end: 0 !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    max-width: unset;
+  }
+
+  [data-template="modularGrid"] figcaption,
+  .modularGrid figcaption {
+    grid-column: var(--print-col, auto) / span var(--print-width, 12);
+    grid-row: calc(var(--print-row) + var(--print-height)) / span 1;
+    position: relative;
+    width: 100%;
+  }
+
+  .hideMarker .modularGrid [data-grid="image"],
+  .hideMarker .modularGrid figure {
+    background-color: unset;
+  }
+
+  [data-template="modularGrid"] [data-grid="image"] img,
+  [data-template="modularGrid"] figure img,
+  .modularGrid [data-grid="image"] img,
+  .modularGrid figure img {
+    height: auto;
+    position: absolute;
+    border-style: none;
+    break-inside: avoid;
+    max-width: unset;
+
+    left: calc(var(--img-x, 0) * 1%);
+    top: calc(var(--img-y, 0) * 1%);
+    width: calc(var(--img-w, 100) * 1%);
+
+    align-self: var(--align-self, start);
+  }
+
+  /* === CLASSES SPÉCIFIQUES === */
+
+  /* Figure mobile (legacy) */
+  .modularGrid .figmove {
+    position: absolute;
+    z-index: 10;
+  }
+
+  /* Full page */
+  .modularGrid .full-page {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+
+  /* Video */
+  .modularGrid [data-grid="content"].video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Image notes */
+  .modularGrid .imagenote {
+    grid-column: auto;
+    grid-row: auto;
+    width: auto;
+    height: auto;
+  }
+}

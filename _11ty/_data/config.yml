@@ -1,0 +1,60 @@
+# === CONFIG FOR CODEBERG ===
+# === UTILE POUR DEPLOYER LE SITE AVEC LES SERVICES DE CODEBERG ===
+# === npm run deploy (l'icône 🚀) ===
+
+# === ADRESSE DU DEPOT===
+repository_url: "https://codeberg.org/didierlechenne/desencombrement.git"
+# === ADRESSE DU SITE===
+site_url: "https://didierlechenne.codeberg.page/desencombrement"
+
+# === C'EST LA PARTIE CENTRALE DU DOCUMENT, CE SONT LES CHAPITRES/SECTIONS .md ===
+# === THIS IS THE CENTRAL PART OF THE DOCUMENT, THESE ARE THE CHAPTERS/SECTIONS .md ===
+publicFolder: "valentine"
+lang: "fr"
+
+# === C'EST ICI QU'ON TRAVAILLE L'APPARENCE VISUELLE ET LA MISE EN PAGE (CSS)  ===
+# === THIS IS WHERE WE WORK ON VISUAL APPEARANCE AND LAYOUT (CSS) ===
+theme: "valentine"
+
+# === DOCUMENT INFORMATION ===
+title: "Désencombrement"
+subtitle: "Index d’une société à venir, allégée de ses objets"
+
+# === AUTHORS (MULTIPLE): "name firstname, name firstname" ===
+author: "VALENTINE SAINT-MARTIN"
+year: "2025-2026"
+
+# === A PERSONNALISER / CUSTOMIZABLE ===
+meta_1: "Mémoire de Diplôme National Supérieur d’Expression Plastique"
+meta_2: "option Design "
+meta_3: "sous la direction de Jean Charles Zebo "
+meta_4: "ebabx – école supérieure des beaux-arts de Bordeaux"
+
+# === BOOK PAGE DIMENSIONS (mm) ===
+width: 165
+height: 240
+
+# === GENERAL MARGINS (mm) ===
+margin_top: 10
+margin_right: 10
+margin_bottom: 10
+margin_left: 10
+
+# === LEFT PAGE MARGINS (mm) ===
+page_left_margin_top: 10
+page_left_margin_bottom: 10
+page_left_margin_left: 25
+page_left_margin_right: 10
+
+# === RIGHT PAGE MARGINS (mm) ===
+page_right_margin_top: 10
+page_right_margin_bottom: 10
+page_right_margin_left: 10
+page_right_margin_right: 25
+
+# === LAYOUT OPTIONS ===
+bleed: true
+marks: true
+
+# === NOTES OPTIONS ===
+printNotes: "bottom"

@@ -1,0 +1,89 @@
+.toc {
+	page: clean;
+	page-break-after: always;
+	display: flex;
+	justify-content: center;
+	height: calc(var(--pagedjs-pagebox-height) - var(--pagedjs-margin-bottom) - var(--pagedjs-margin-top));
+	font-family: 'Hershey-Futural-15';
+}
+
+.toc #nav-toc {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	flex: 1; 
+	padding: 0;
+}
+
+.toc #list-toc-generated {
+	list-style: none;
+	padding: 0;
+	margin: 0; 
+	text-align: center;
+}
+
+
+
+.toc a {
+	text-decoration: none;
+}
+
+.toc #list-toc-generated li:first-child {
+	margin-top: 0em;
+}
+
+.toc #list-toc-generated .toc-element a {
+	font-family: var(--heading);
+	font-size: 25pt;
+	line-height: 140%;
+/* ────────────────────────────────────────
+	↑ espacement entre les les élements de la liste en %
+	cela peut être une valeure fixe en mm, pt ect.
+   ──────────────────────────────────────── */
+	display: block; 
+	text-align: center; 
+}
+
+.toc #list-toc-generated .toc-element a::after {
+	content: target-counter( attr(href), page ); 
+	margin-left: var(--gutter);
+}
+
+.toc #list-toc-generated li {
+    padding-top: unset ;
+    padding-bottom: unset ;
+    margin-inline-start: unset ;
+}
+
+
+.toc #list-toc-generated li:nth-of-type(1) {
+	margin-bottom: var(--gutter);
+}
+/* ────────────────────────────────────────
+   ↑ CIBLE le 1er élément de liste dans la TOC
+   
+   .toc #list-toc-generated = Conteneur de la table des matières
+   li:nth-of-type(1) = Premier <li> parmi tous les <li>
+   margin-bottom: var(--gutter) = Ajoute un espacement en bas
+   
+   Rendu visuel :
+   [1. Premier chapitre    ]
+   [                       ] ← Espace ajouté
+   [2. Deuxième chapitre   ]
+   [3. Troisième chapitre  ]
+   ──────────────────────────────────────── */
+
+.toc #list-toc-generated li:nth-last-of-type(3) {
+	margin-top: var(--gutter);
+}
+
+
+
+
+
+/* ────────────────────────────────────────
+   ↑ Le pseudo-sélecteur :nth-last-of-type(3) compte les éléments 
+   à partir de la fin de la liste, 
+   donc il ciblera le 3ème élément <li> en partant du dernier.
+   ──────────────────────────────────────── */
