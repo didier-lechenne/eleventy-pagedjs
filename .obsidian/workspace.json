@@ -61,14 +61,14 @@
             "state": {
               "type": "vscode-editor",
               "state": {
-                "file": "_11ty/_layouts/screen.njk"
+                "file": "_11ty/assets/themes/valentine/css/templates/toc-sommaire.css"
               },
               "icon": "lucide-file",
-              "title": "screen"
+              "title": "toc-sommaire"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -327,19 +327,22 @@
       }
     ]
   },
-  "active": "fd27c2b354aedf67",
+  "active": "6e2b6736a8e03856",
   "lastOpenFiles": [
-    "_site/images/velo4.jpg",
-    "_site/images/velo2.jpg",
     "_site/images/velo3.jpg",
+    "_site/images/velo2.jpg",
     "_site/images/velo.jpg",
-    "_site/images/siege.jpg",
     "_site/images/tomeIII-candle_dithered.png",
+    "_site/images/siege.jpg",
     "_site/images/reparer1.png",
     "_site/images/nobody-at-table-edited_dithered.png",
-    "_site/images/maxresdefault.webp",
     "_site/images/mongolian-child-archer-Nasanbat_Nasaa_dithered.png",
     "_site/images/lowtech2.png",
+    "_site/images/intro_objet.png",
+    "_site/images/intro_domestique.png",
+    "_11ty/assets/themes/valentine/css/templates/toc-sommaire.css",
+    "_11ty/_layouts/screen.njk",
+    "_11ty/_layouts/print.njk",
     "_site/index.html",
     "_site/print.html",
     "_site/assets/css/print/fonts/Hershey-Futural-15/Hershey-Futural--15.woff2",
@@ -347,9 +350,6 @@
     "_site/assets/css/print/fonts/Hershey-Futural-15/index.css",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
     "_site/assets/css/print/fonts/Hershey-Futural-15/Hershey-Futural--15.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
