@@ -39,24 +39,17 @@
 
 
 <div class="meta">
- <div>
- {% if config.author %} <div class="meta-name">{{ config.author }}</div> {% endif %}
- {% if cconfig.year %} <div class="meta-name">{{ config.author }}</div> {% endif %}
- </div>
 
-<div>
- <p>
-  {% if config.meta_1 %} {{ config.meta_1 }} <br> {% endif %}
-  {% if config.meta_2 %} {{ config.meta_2 }} <br> {% endif %}
-  {% if config.meta_3 %} {{ config.meta_3 }} <br> {% endif %}
-  {% if config.meta_4 %} {{ config.meta_4 }} <br> {% endif %}
- </p>   
-</div>
 
-<div>
- <p>
- </p>   
-</div>
+<ul>
+  {% if config.author %} <li class="meta-name"> {{ config.author }}</li> {% endif %}
+  {% if config.year %} <li class="meta-year"> {{ config.year }}</li> {% endif %}
+  {% if config.meta_1 %} <li class="meta-1"> {{ config.meta_1 }} </li> {% endif %}
+  {% if config.meta_2 %} <li class="meta-2"> {{ config.meta_2 }} </li> {% endif %}
+  {% if config.meta_3 %} <li class="meta-3"> {{ config.meta_3 }} </li> {% endif %}
+  {% if config.meta_4 %} <li class="meta-4"> {{ config.meta_4 }} </li> {% endif %} 
+</ul>
+
 
 </div>
 

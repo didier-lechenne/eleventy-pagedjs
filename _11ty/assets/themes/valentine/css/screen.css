@@ -178,127 +178,51 @@ hr {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: left;
+  font-family: var(--labeur);
+  color: var(--text-color);
 }
+
+
+#header .meta{
+  --labeur-size: 14px;
+  font-size: var(--labeur-size);
+  --labeur-line-height: 140%;
+  line-height: var(--labeur-line-height);
+  --labeur-weight: 300;
+  font-weight: var(--labeur-weight);
+}
+
+#header .meta ul{
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+#header .meta li.meta-year{
+  padding-bottom: var(--baseline);
+}
+
 
 #header {
   position: fixed;
-  top: 0px;
-  top: 3px;
-  left: 0px;
-  padding-left: var(--top);
-  padding-top: var(--top);
-  width: calc(var(--grid-unit) * 5 + var(--gap) * 4);
-  /* height: calc(var(--baseline) * 3); */
+  top: calc(var(--gap) * 3);
+  width: calc(var(--grid-unit) * 3 + var(--gap) * 2);
   z-index: 200;
+
+
 }
 
 @media screen and (min-width: 1900px) {
   #header {
-    top: calc(var(--baseline) * 1 + 3px);
-    left: calc(var(--grid-unit) * 1 + var(--gap));
+    top: calc(var(--gap) * 3);
+    left: calc(var(--grid-unit) * 1 + var(--gap) + var(--padding));
+    padding-bottom: var(--baseline);
     width: calc(var(--grid-unit) * 2 + var(--gap) * 1);
   }
 }
 
-#menu {
-  position: fixed;
-  width: calc(var(--grid-unit) * 5 + var(--gap) * 4);
-  height: calc(var(--baseline) * 10);
-  top: calc(100vh - var(--top) - var(--baseline) * 10);
-  z-index: 100;
-}
-@media screen and (min-width: 1900px) {
-  #menu {
-    left: calc(var(--grid-unit) * 1 + var(--gap) + var(--padding));
-    padding-bottom: var(--baseline);
-    width: calc(var(--grid-unit) * 3 + var(--gap) * 2);
-  }
-}
-#menu-phone {
-  display: none;
-  z-index: 160;
-}
 
-#header h1 {
-  margin: 0;
-  /* line-height: 1.1;
-  max-width: calc(var(--bigsize) * 16);
-  font-size: calc(var(--bigsize) * 1);
-  color: var(--accentcolor); */
-  text-wrap: balance;
-}
-#header h2 {
-  margin: 0;
-  /* line-height: 1.2; */
-  /* max-width: calc(var(--bigsize) * 16); */
-  /* font-size: calc(var(--bigsize) * 0.75); */
-  /* color: var(--accentcolor); */
-  /* margin: 0.5em 0; */
-  /* text-wrap: balance; */
-}
-/* #header h2::before{
-  content: "";
-  display: block;
-  width: 1ch;
-  border-top: 2px solid ;
-} */
-#header h2:empty {
-  display: none;
-}
-.meta {
-  /* display: grid; */
-  /* grid-gap: var(--spacer); */
-  /* grid-template-columns: repeat(3, 1fr); */
-  margin-top: 2rem;
-}
-#quicklinks {
-  position: absolute;
-  bottom: var(--spacer);
-}
-#quicklinks a {
-  display: inline-block;
-  margin-right: 1em;
-}
-/* le titre courant nâ€™est affichÃ© quâ€™en contexte print */
-.runningtitle,
-.runningfolio {
-  display: none;
-}
-.runningtitle + h1,
-.runningtitle + h2,
-.runningtitle + h3 {
-  margin-top: 0;
-}
-@media screen and (max-width: 45rem) {
-  .meta {
-    display: block;
-  }
-  .meta > * {
-    margin-bottom: 1em;
-  }
-  #quicklinks a {
-    display: block;
-  }
-}
 /* ------------------------------------------------------------------------ Nav */
-#nav {
-  /* min-height: 100vh; */
-  /* display: grid;
-  grid-template-columns: 15vw 1fr;
-  grid-gap: var(--spacer);
-  padding: var(--spacer);
-  align-content: center; */
-}
-/* #nav h2,
-#nav ul {
-  grid-column: 2;
-  margin: 0;
-  font-size: 1em;
-}
-.nav-default + .nav-appendices {
-  margin-top: 1em;
-} */
 
 nav#index {
   position: fixed;
@@ -308,7 +232,7 @@ nav#index {
 }
 
 @media screen and (min-width: 1900px) {
-  nav#index #menu {
+  nav#index {
     left: calc(var(--grid-unit) * 1 + var(--gap) + var(--padding));
     padding-bottom: var(--baseline);
     width: calc(var(--grid-unit) * 2 + var(--gap) * 1);
@@ -413,15 +337,18 @@ nav#index {
 
 /* ------------------------------------------------------------------------ Content */
 main {
-  grid-column: 4/12;
+  grid-column: 5/11;
   grid-row: 1;
   min-height: calc(100vh - var(--top) * 2);
-  /* max-width: 740px; */
+  max-width: 740px;
   position: relative;
 }
+
 @media screen and (min-width: 1900px) {
   main {
     padding-top: var(--baseline);
+    grid-column: 5/12;
+    
   }
 }
 
@@ -443,7 +370,7 @@ main p,
 main ul,
 main blockquote,
 main ol {
-  max-width: var(--maxwidth);
+  
 }
 main h1:first-child,
 main h2:first-child,
