@@ -53,10 +53,10 @@ Sommaire :
   --footnote-bold-weight: 500;
 
   --caption: var(--labeur), sans-serif;
-  --caption-size: 9pt;
-  --caption-line-height: 12pt;
-  --caption-weight: 300;
-  --caption-bold-weight: normal;
+  --caption-size: 10pt;
+  --caption-line-height: 140%;
+  --caption-weight: 400;
+  --caption-bold-weight: 500;
 
   --baseline: 1ch;
   --gutter: 3mm;
@@ -68,7 +68,7 @@ Sommaire :
   --basesize: 1.15rem;
   --color: rgba(0, 0, 0, 0.85);
   /* espacements homogÃ¨nes */
-  --spacer: 2rem;
+  --spacer: var(--gutter);
   /* largeur des notes de cÃ´tÃ© */
   --sn-width: 15rem;
   /* couleur dâ€™accentuation */
@@ -372,6 +372,7 @@ main h2 {
 }
 
 main h3 {
+  font-family: var(--heading);
   font-size: 1em;
   padding-left: 2em;
   font-weight: normal;
@@ -380,6 +381,7 @@ main h3 {
   text-wrap: pretty;
 }
 main h4 {
+  font-family: var(--heading);
   font-size: 1em;
   margin-left: 2em;
   font-weight: normal;
@@ -665,7 +667,7 @@ sup a.footnote-ref {
   margin-top: 0.25em;
 }
 .sn-note .caption::before {
-  content: "â†‘ ";
+  content: " ";
 }
 
 @media screen and (max-width: 80rem) {
@@ -768,8 +770,13 @@ hr.footnotes-sep {
   max-width: none;
 }
 
+.figcaption,
 figcaption {
-  font-size: 0.85rem;
+  font-family: var(--caption);
+  font-size: var(--caption-size);
+  line-height: var(--caption-line-height);
+  font-weight: var(--caption-weight);
+  
   background: white;
   padding: 0.5em 0 0;
 }

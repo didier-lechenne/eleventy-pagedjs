@@ -9,6 +9,12 @@
       "icon": "space",
       "name": "Microtypographie: Insérer espace insécable",
       "mode": "any"
+    },
+    {
+      "id": "obsidian-shellcommands:shell-command-q7xuamppak",
+      "icon": "lucide-rocket",
+      "name": "Shell commands: Execute: npm run deploy",
+      "mode": "any"
     }
   ],
   "leftRibbon": [

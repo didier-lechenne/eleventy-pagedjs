@@ -20,35 +20,43 @@
             }
           },
           {
-            "id": "b8a1000c879ae006",
+            "id": "02fffa100618095f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "vscode-editor",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "_11ty/assets/themes/valentine/css/print/base.css"
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "base"
             }
           },
           {
-            "id": "62c30339cefdfcaf",
+            "id": "930bb07fdb052a4b",
             "type": "leaf",
             "state": {
-              "type": "webviewer",
+              "type": "vscode-editor",
               "state": {
-                "url": "https://ebabx.codeberg.page/desencombrement/print.html",
-                "title": "Désencombrement",
-                "mode": "webview"
+                "file": "_11ty/assets/themes/valentine/css/screen.css"
               },
-              "icon": "globe-2",
-              "title": "Désencombrement"
+              "icon": "lucide-file",
+              "title": "screen"
+            }
+          },
+          {
+            "id": "6e2b6736a8e03856",
+            "type": "leaf",
+            "state": {
+              "type": "vscode-editor",
+              "state": {
+                "file": "_11ty/assets/themes/valentine/css/screen.css"
+              },
+              "icon": "lucide-file",
+              "title": "screen"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -307,43 +315,44 @@
       }
     ]
   },
-  "active": "62c30339cefdfcaf",
+  "active": "6e2b6736a8e03856",
   "lastOpenFiles": [
-    "README.md",
-    "_11ty/_data/token.yml",
-    "_11ty/_data/config.yml",
-    "_site/csspageweaver/plugins/a_garder.zip",
-    "_site/index.html",
-    "_site/print.html",
-    "_site/images/alternative1.jpg",
-    "_site/images/carte_skate-03.jpg",
-    "_site/images/cover.jpg",
-    "_site/images/collection-of-solar-panels_dithered.png",
-    "_site/images/carte_skate-01.jpg",
-    "_site/images/carte_skate-02.jpg",
-    "_site/images/alternative2.jpg",
-    "_site/images/alternative_crasset.png",
-    "_site/images/1430077789-398f32bbf5de586eb7325d2e44215f75aad64154121b379aaf2d4e06a8c90b46-d.avif",
-    "_site/images/archery-outdoors-women-dithered.png",
-    "deploy.js",
-    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-bold.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
+    "_site/images/velo.jpg",
+    "_site/images/velo4.jpg",
+    "_site/images/velo2.jpg",
+    "_site/images/maxresdefault.webp",
+    "_site/images/siege.jpg",
+    "_site/images/nobody-at-table-edited_dithered.png",
+    "_site/images/intro_objet.png",
+    "_site/images/reparer1.png",
+    "_site/images/mongolian-child-archer-Nasanbat_Nasaa_dithered.png",
+    "_site/images/lowtech2.png",
+    "_site/images/lowtech_distilateur.png",
+    "_site/csspageweaver/plugins/tableOfContent/config.json",
+    "_site/csspageweaver/README.md",
+    "_site/csspageweaver/plugins/tableOfContent/.gitignore",
+    "_site/csspageweaver/plugins/spread/spread.html",
+    "_site/csspageweaver/plugins/spread/config.json",
+    "_site/csspageweaver/plugins/spread/spread-ui.js",
+    "_site/csspageweaver/plugins/reloadInPlace/config.json",
+    "_site/csspageweaver/plugins/spread/spread-hook.js",
+    "_site/csspageweaver/plugins/spread/.gitignore",
+    "_site/csspageweaver/plugins/reloadInPlace/reloadInPlace.js",
+    "_site/csspageweaver/plugins/previewPage/stylesheet.css",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
-    "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
-    "_site/csspageweaver/plugins/marker/README.md",
     "_site/csspageweaver/plugins/layout/README.md",
     "_site/csspageweaver/plugins/inlineNotes/README.md",
     "_site/csspageweaver/plugins/fullPage/README.md",
-    "_site/csspageweaver/plugins/fullContent/README.md",
+    "_site/csspageweaver/plugins/tableOfContent/README.md",
+    "_site/csspageweaver/plugins/marker/README.md",
     "_site/csspageweaver/plugins/footnotesFix/README.md",
+    "_site/csspageweaver/plugins/fullContent/README.md",
+    "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
     "_site/csspageweaver/plugins/editor/README.md",
     "_site/csspageweaver/plugins/editor/README-DEV-TURNDOWN.md",
-    "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
     "_site/csspageweaver/plugins/baseline/README.md",
-    "_site/csspageweaver/README.md",
+    "README.md",
     "node_modules/@11ty/eleventy-utils/README.md",
     "./docs/terminology.md",
     "docs/terminology.md",
