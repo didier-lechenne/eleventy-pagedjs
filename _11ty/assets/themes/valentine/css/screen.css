@@ -360,7 +360,8 @@ main h2 {
   font-weight: normal;
   max-width: var(--maxwidth);
 
-  padding-top: 4ch;
+  padding-top: calc(var(--gap) * 4);
+  margin-top: 0;
   margin-bottom: 4ch;
  
 }
@@ -411,31 +412,6 @@ main blockquote p:last-child {
   display: none;
 }
 
-/* ------------------------------------------------------------------------ Entretiens (template = interview) */
-.interview p {
-  --indent: 8em;
-  padding-left: var(--indent);
-}
-@media screen and (max-width: 40rem) {
-  .interview p {
-    --indent: 0;
-  }
-}
-/* .interview p:nth-child(1) strong:first-child,
-.interview p:nth-child(2) strong:first-child {
-  text-align: left;
-} */
-.interview :not([data-split-from]) strong:first-child {
-  margin-left: calc(var(--indent) * -1);
-  min-width: calc(var(--indent) - 1em);
-  /* float: left; */
-  width: 0;
-  position: absolute;
-  text-align: right;
-  padding-right: 1em;
-  text-decoration: underline;
-  font-weight: normal;
-}
 
 /* ------------------------------------------------------------------------ Glossaire (template = glossary) */
 .glossary {
@@ -600,7 +576,7 @@ sup a.footnote-ref {
   position: relative;
   text-decoration: none;
   border: none;
-  font-weight: bold;
+  font-weight: var(--footnote-weight);
 }
 /* appels de note */
 .sn-toggle-label::before {
@@ -632,8 +608,8 @@ sup a.footnote-ref {
 
   float: right;
   clear: right;
-  width: var(--sn-width);
-  margin-right: calc(var(--sn-width) * -1 - var(--spacer));
+  width: calc(var(--grid-unit) * 2 );
+  margin-right: calc( var(--grid-unit) * 2 * -1 - var(--padding));
   margin-bottom: 1rem;
   position: relative;
   font-style: normal;
