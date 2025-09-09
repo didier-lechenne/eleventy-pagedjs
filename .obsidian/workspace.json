@@ -244,7 +244,7 @@
             "state": {
               "type": "footnotes",
               "state": {
-                "file": "package.json"
+                "file": "_11ty/assets/themes/valentine/css/screen.css"
               },
               "icon": "lucide-file-signature",
               "title": "Footnotes"
@@ -256,8 +256,8 @@
             "state": {
               "type": "SC-custom-variables-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "SC-custom-variables-view"
+              "icon": "code-glyph",
+              "title": "Shell commands: Custom variables"
             }
           }
         ],
@@ -287,45 +287,6 @@
       "cmdr:Shell commands: Execute: npm run stop": false,
       "cmdr:Shell commands: Execute: npm run deploy": false
     }
-  },
-  "floating": {
-    "id": "9047355fb17b5172",
-    "type": "floating",
-    "children": [
-      {
-        "id": "9d10a7a200098bac",
-        "type": "window",
-        "children": [
-          {
-            "id": "5a2d6471081ff0f0",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "e286824f9df357b4",
-                "type": "leaf",
-                "state": {
-                  "type": "webviewer",
-                  "state": {
-                    "url": "https://github.com/Vinzent03/obsidian-git",
-                    "title": "data:text/plain,",
-                    "mode": "blank"
-                  },
-                  "icon": "globe-2",
-                  "title": "data:text/plain,"
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 768,
-        "y": 320,
-        "width": 1024,
-        "height": 800,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
   },
   "active": "6e2b6736a8e03856",
   "lastOpenFiles": [
