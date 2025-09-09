@@ -21,19 +21,37 @@
     {
       "id": "obsidian-shellcommands:shell-command-9way2ugn3g",
       "icon": "lucide-package",
-      "name": "Installer",
+      "name": "Installer le projet",
       "mode": "any"
     },
     {
       "id": "obsidian-shellcommands:shell-command-4horjvrpdb",
       "icon": "lucide-play",
-      "name": "Shell commands: Execute: npm run serve",
+      "name": "Lancer le server (rechargement automatique)",
       "mode": "any"
     },
     {
       "id": "obsidian-shellcommands:shell-command-5gq95exd5i",
       "icon": "lucide-globe",
-      "name": "site web (sans rechargement automatique)",
+      "name": "Lancer le server (sans rechargement automatique)",
+      "mode": "any"
+    },
+    {
+      "id": "obsidian-shellcommands:shell-command-p8wzy8yuu2",
+      "icon": "lucide-rocket",
+      "name": "Creer le site",
+      "mode": "any"
+    },
+    {
+      "id": "obsidian-shellcommands:shell-command-nw7fdej20l",
+      "icon": "lucide-trash-2",
+      "name": "Efface le site généré (clean)",
+      "mode": "any"
+    },
+    {
+      "id": "obsidian-shellcommands:shell-command-1uvwskrc0p",
+      "icon": "lucide-stop-circle",
+      "name": "Stop",
       "mode": "any"
     }
   ],

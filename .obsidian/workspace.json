@@ -4,71 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "ea135e066c3d9cb9",
+        "id": "d3e28ab093506859",
         "type": "tabs",
         "children": [
           {
-            "id": "7c478a8819eff148",
+            "id": "db154bf58bda9264",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "_11ty/_data/config.yml"
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "config"
-            }
-          },
-          {
-            "id": "02fffa100618095f",
-            "type": "leaf",
-            "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "_11ty/_layouts/screen.njk"
-              },
-              "icon": "lucide-file",
-              "title": "screen"
-            }
-          },
-          {
-            "id": "6e2b6736a8e03856",
-            "type": "leaf",
-            "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "package.json"
-              },
-              "icon": "lucide-file",
-              "title": "package"
-            }
-          },
-          {
-            "id": "c68886f671285e7a",
-            "type": "leaf",
-            "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "package.json"
-              },
-              "icon": "lucide-file",
-              "title": "package"
-            }
-          },
-          {
-            "id": "fd27c2b354aedf67",
-            "type": "leaf",
-            "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "_11ty/assets/themes/valentine/css/templates/toc-sommaire.css"
-              },
-              "icon": "lucide-file",
-              "title": "toc-sommaire"
+              "title": "Nouvel onglet"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -279,45 +228,51 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false,
       "obsidian42-brat:BRAT": false,
       "obsidian-git:Open Git source control": false,
-      "vscode-editor:Create Code File": false
+      "vscode-editor:Create Code File": false,
+      "cmdr:Installer le projet": false,
+      "cmdr:Lancer le server (rechargement automatique)": false,
+      "cmdr:Lancer le server (sans rechargement automatique)": false,
+      "cmdr:Creer le site": false,
+      "cmdr:Efface le site généré (clean)": false,
+      "cmdr:Stop": false
     }
   },
-  "active": "c68886f671285e7a",
+  "active": "0eba038119f666d3",
   "lastOpenFiles": [
-    "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css",
-    "package.json",
-    "_11ty/_data/token.yml",
     "_site/images/cover.jpg",
     "_site/images/fullHorizontal-2.jpg",
-    "_site/images/velo4.jpg",
     "_site/images/intro.JPG",
     "_site/index.html",
     "_site/print.html",
     "_site/images/fullHorizontal-1.jpg",
     "_site/images/carte_skate-02.jpg",
     "_site/images/carte_skate-03.jpg",
-    "_site/images/carte_skate-01.jpg",
-    "_site/images/velo.jpg",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
+    "_site/assets/css/print/fonts/GTMaru/GTMaru-Regular.woff2",
+    "_site/assets/css/print/fonts/GTMaru/index.css",
+    "_site/assets/css/print/fonts/GTMaru/GTMaru-RegularOblique.woff2",
+    "_site/assets/css/print/fonts/GTMaru/GTMaru-RegularOblique.woff",
+    "_site/assets/css/print/fonts/GTMaru/GTMaru-Regular.woff",
+    "_site/assets/css/print/fonts/GTMaru/GTMaru-LightOblique.woff2",
+    "_site/assets/css/print/fonts/GTMaru/GTMaru-LightOblique.woff",
+    "_site/assets/css/print/fonts/GTMaru/GTMaru-Light.woff2",
+    "_site/images/intro_objet.png",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
-    "_site/csspageweaver/plugins/marker/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
     "_site/csspageweaver/plugins/layout/README.md",
-    "_site/csspageweaver/plugins/fullContent/README.md",
+    "_site/csspageweaver/plugins/marker/README.md",
     "_site/csspageweaver/plugins/inlineNotes/README.md",
+    "_site/csspageweaver/plugins/fullContent/README.md",
     "_site/csspageweaver/plugins/fullPage/README.md",
     "_site/csspageweaver/plugins/footnotesFix/README.md",
     "_site/csspageweaver/plugins/editor/README-DEV-TURNDOWN.md",
-    "_site/csspageweaver/plugins/editor/README.md",
     "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
+    "_site/csspageweaver/plugins/editor/README.md",
     "_site/csspageweaver/plugins/baseline/README.md",
     "_site/csspageweaver/README.md",
-    "_site/images/siege.jpg",
+    "_site/images/intro_heritage.png",
+    "_site/images/1430077789-398f32bbf5de586eb7325d2e44215f75aad64154121b379aaf2d4e06a8c90b46-d.avif",
+    "_site/images/maxresdefault.webp",
+    "_site/images/lowtech_distilateur.png",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "valentine/templates/screen.md",
     "README.md",
