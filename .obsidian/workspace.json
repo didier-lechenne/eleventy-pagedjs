@@ -307,11 +307,11 @@
                   "type": "webviewer",
                   "state": {
                     "url": "https://github.com/Vinzent03/obsidian-git",
-                    "title": "GitHub - Vinzent03/obsidian-git: Integrate Git version control with automatic commit-and-sync and other advanced features in Obsidian.md",
-                    "mode": "webview"
+                    "title": "data:text/plain,",
+                    "mode": "blank"
                   },
                   "icon": "globe-2",
-                  "title": "GitHub - Vinzent03/obsidian-git: Integrate Git version control with automatic commit-and-sync and other advanced features in Obsidian.md"
+                  "title": "data:text/plain,"
                 }
               }
             ]
