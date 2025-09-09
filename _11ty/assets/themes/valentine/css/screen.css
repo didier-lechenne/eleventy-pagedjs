@@ -185,6 +185,15 @@ hr {
   margin: 0px;
 }
 
+#header {
+  position: fixed;
+  top: calc(var(--gap) * 3);
+  width: calc(var(--grid-unit) * 3 + var(--gap) * 2);
+  z-index: 200;
+}
+
+
+
 #header h1 {
   /* font-family: var(--heading); */
   --labeur-size: 36px;
@@ -195,7 +204,7 @@ hr {
   font-weight: var(--labeur-weight);
   padding: 0px;
   margin: 0px;
-  padding-bottom: calc( var(--baseline) / 4);
+  padding-bottom: calc(var(--baseline) / 4);
 }
 
 #header h2 {
@@ -235,11 +244,27 @@ hr {
   padding-bottom: calc(var(--baseline) / 2);
 }
 
-#header {
-  position: fixed;
-  top: calc(var(--gap) * 3);
-  width: calc(var(--grid-unit) * 3 + var(--gap) * 2);
-  z-index: 200;
+@media screen and (max-width: 640px) {
+
+  #header {
+    position: absolute ;
+    background-color: #fff;
+    width: calc(100%  );
+    /* height: calc(var(--baseline) * 2.5 + 3px); */
+    /* top: 0px; */
+    border-bottom: 2px solid var(--black);
+    margin-right: calc( var(--padding) );
+  }
+
+  #header  h1,
+  #header  h2,
+  #header  .meta{
+    --labeur-size: 10px;
+    font-size: var(--labeur-size);
+  }
+
+
+
 }
 
 @media screen and (min-width: 1900px) {
@@ -347,7 +372,6 @@ main blockquote,
 main ol {
 }
 
-
 main h1 {
   font-size: 1.5em;
   text-wrap: pretty;
@@ -364,7 +388,6 @@ main h2 {
   padding-top: calc(var(--gap) * 4);
   margin-top: 0;
   margin-bottom: 4ch;
- 
 }
 
 main h3 {
@@ -412,7 +435,6 @@ main blockquote p:last-child {
 .breakprint {
   display: none;
 }
-
 
 /* ------------------------------------------------------------------------ Glossaire (template = glossary) */
 .glossary {
@@ -509,7 +531,7 @@ main blockquote p:last-child {
   text-wrap: pretty;
 }
 .imagenote .caption::before {
-  content: "â†‘ ";
+  content: "↑ ";
 }
 
 @media screen and (max-width: 80rem) {
@@ -609,8 +631,8 @@ sup a.footnote-ref {
 
   float: right;
   clear: right;
-  width: calc(var(--grid-unit) * 2 );
-  margin-right: calc( var(--grid-unit) * 2 * -1 - var(--padding));
+  width: calc(var(--grid-unit) * 2);
+  margin-right: calc(var(--grid-unit) * 2 * -1 - var(--padding));
   margin-bottom: 1rem;
   position: relative;
   font-style: normal;
