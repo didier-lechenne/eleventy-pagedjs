@@ -37,10 +37,10 @@
             "state": {
               "type": "vscode-editor",
               "state": {
-                "file": "_11ty/_data/token.yml"
+                "file": "package.json"
               },
               "icon": "lucide-file",
-              "title": "token"
+              "title": "package"
             }
           },
           {
@@ -49,10 +49,10 @@
             "state": {
               "type": "vscode-editor",
               "state": {
-                "file": "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css"
+                "file": "package.json"
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "package"
             }
           },
           {
@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -279,17 +279,14 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false,
       "obsidian42-brat:BRAT": false,
       "obsidian-git:Open Git source control": false,
-      "vscode-editor:Create Code File": false,
-      "cmdr:Microtypographie: Corriger toute la note": false,
-      "cmdr:Microtypographie: Corriger la sélection": false,
-      "cmdr:Shell commands: Execute: npm run start": false,
-      "cmdr:Shell commands: Execute: npm run serve": false,
-      "cmdr:Shell commands: Execute: npm run stop": false,
-      "cmdr:Shell commands: Execute: npm run deploy": false
+      "vscode-editor:Create Code File": false
     }
   },
-  "active": "6e2b6736a8e03856",
+  "active": "c68886f671285e7a",
   "lastOpenFiles": [
+    "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css",
+    "package.json",
+    "_11ty/_data/token.yml",
     "_site/images/cover.jpg",
     "_site/images/fullHorizontal-2.jpg",
     "_site/images/velo4.jpg",
@@ -307,8 +304,6 @@
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff2",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-ExtraLightItalic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/marker/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
@@ -323,7 +318,6 @@
     "_site/csspageweaver/plugins/baseline/README.md",
     "_site/csspageweaver/README.md",
     "_site/images/siege.jpg",
-    "_site/images/intro_heritage.png",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "valentine/templates/screen.md",
     "README.md",
