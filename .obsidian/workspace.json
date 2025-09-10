@@ -11,10 +11,14 @@
             "id": "db154bf58bda9264",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "valentine/71.alternative-figure.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nouvel onglet"
+              "title": "71.alternative-figure"
             }
           }
         ]
@@ -237,8 +241,12 @@
       "cmdr:Stop": false
     }
   },
-  "active": "0eba038119f666d3",
+  "active": "db154bf58bda9264",
   "lastOpenFiles": [
+    ".obsidian/plugins/image-captions/styles.css",
+    ".obsidian/plugins/image-captions/main.js",
+    ".obsidian/plugins/image-captions/manifest.json",
+    ".obsidian/plugins/image-captions",
     "_site/images/cover.jpg",
     "_site/images/fullHorizontal-2.jpg",
     "_site/images/intro.JPG",
@@ -252,9 +260,6 @@
     "_site/assets/css/print/fonts/GTMaru/GTMaru-RegularOblique.woff2",
     "_site/assets/css/print/fonts/GTMaru/GTMaru-RegularOblique.woff",
     "_site/assets/css/print/fonts/GTMaru/GTMaru-Regular.woff",
-    "_site/assets/css/print/fonts/GTMaru/GTMaru-LightOblique.woff2",
-    "_site/assets/css/print/fonts/GTMaru/GTMaru-LightOblique.woff",
-    "_site/assets/css/print/fonts/GTMaru/GTMaru-Light.woff2",
     "_site/images/intro_objet.png",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
@@ -272,7 +277,6 @@
     "_site/images/intro_heritage.png",
     "_site/images/1430077789-398f32bbf5de586eb7325d2e44215f75aad64154121b379aaf2d4e06a8c90b46-d.avif",
     "_site/images/maxresdefault.webp",
-    "_site/images/lowtech_distilateur.png",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "valentine/templates/screen.md",
     "README.md",
