@@ -218,8 +218,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -239,7 +238,9 @@
       "cmdr:Lancer le server (sans rechargement automatique)": false,
       "cmdr:Creer le site": false,
       "cmdr:Efface le site généré (clean)": false,
-      "cmdr:Stop": false
+      "cmdr:Stop": false,
+      "cmdr:Microtypographie: Corriger la sélection": false,
+      "cmdr:Microtypographie: Corriger toute la note": false
     }
   },
   "active": "db154bf58bda9264",
