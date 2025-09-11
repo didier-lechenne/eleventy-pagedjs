@@ -53,6 +53,18 @@
       "icon": "lucide-stop-circle",
       "name": "Stop",
       "mode": "any"
+    },
+    {
+      "id": "microtypographie-v2:fix-selection",
+      "icon": "type",
+      "name": "Microtypographie: Corriger la sélection",
+      "mode": "any"
+    },
+    {
+      "id": "microtypographie-v2:fix-entire-note",
+      "icon": "whole-word",
+      "name": "Microtypographie: Corriger toute la note",
+      "mode": "any"
     }
   ],
   "rightRibbon": [],
