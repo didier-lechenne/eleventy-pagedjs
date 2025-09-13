@@ -1,0 +1,24 @@
+.mediashortcode-figure {
+    margin: 0;
+    padding: 2px;
+    display: table; /* To allow for correct caption text wrapping */
+    border-radius: 2px;
+}
+
+.mediashortcode-caption {
+    margin: -5px 0 0 0;
+    padding: 3px 5px;
+    text-align: center;
+    display: table-caption; /* To allow for correct caption text wrapping */
+    caption-side: bottom;
+}
+
+.theme-dark .mediashortcode-figure,
+.theme-dark .mediashortcode-caption {
+    background: #303030;
+}
+
+.theme-light .mediashortcode-figure,
+.theme-light .mediashortcode-caption {
+    background: #ebebeb;
+}

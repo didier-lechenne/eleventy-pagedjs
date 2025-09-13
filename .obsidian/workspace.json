@@ -260,11 +260,11 @@
                   "type": "webviewer",
                   "state": {
                     "url": "https://github.com/xRyul/obsidian-image-converter/tree/main",
-                    "title": "GitHub - xRyul/obsidian-image-converter: ⚡️ Convert, compress, resize, annotate, markup, draw, crop, rotate, flip, align images directly in Obsidian. Drag-resize, rename with variables, batch process. WEBP, JPG, PNG, HEIC, TIF.",
-                    "mode": "webview"
+                    "title": "data:text/plain,",
+                    "mode": "blank"
                   },
                   "icon": "globe-2",
-                  "title": "GitHub - xRyul/obsidian-image-converter: ⚡️ Convert, compress, resize, annotate, markup, draw, crop, rotate, flip, align images directly in Obsidian. Drag-resize, rename with variables, batch process. WEBP, JPG, PNG, HEIC, TIF."
+                  "title": "data:text/plain,"
                 }
               }
             ]
@@ -280,19 +280,20 @@
       }
     ]
   },
-  "active": "db154bf58bda9264",
+  "active": "e58101aae03f7dbc",
   "lastOpenFiles": [
+    ".obsidian/plugins/mediashortcode/styles.css",
+    ".obsidian/plugins/mediashortcode/manifest.json",
+    ".obsidian/plugins/mediashortcode/main.js",
+    ".obsidian/plugins/mediashortcode",
+    "_11ty/csspageweaver/plugins/reloadInPlace/.gitignore",
+    "_11ty/csspageweaver/plugins/reloadInPlace/reloadInPlace.js",
+    "_11ty/csspageweaver/plugins/reloadInPlace/Readme.md",
+    "_11ty/csspageweaver/plugins/reloadInPlace/config.json",
+    "_11ty/csspageweaver/plugins/reloadInPlace",
     "_site/index.html",
     "_site/print.html",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-ExtraLightItalic.woff2",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/marker/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
@@ -326,7 +327,6 @@
     "docs/terminology.md",
     "./examples/README.md",
     "examples/README.md",
-    "node_modules/cloneable-readable/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
-    "node_modules/chokidar/README.md"
+    "node_modules/cloneable-readable/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md"
   ]
 }
