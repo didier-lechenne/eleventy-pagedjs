@@ -16,19 +16,15 @@ PageTypeToPrint is a tool that...
 
 PageTypeToPrint is free software. Its code is available on [GitHub](https://github.com/esadpyrenees/PageTypeToPrint). The purpose of the following pages is to present the features and the main lines of the default choices made in the tool, from the point of view of editing a master's thesis.
 
-
-> [!fullimage]
-> ![Description|453x355](images/alternative_crasset.png)
+![[images/alternative_crasset.png|image|caption: Ma légende|width:300|class:highlight|id:custom-id]]
 
 
-
-![[images/alternative_crasset.png|Thirs is a caption|453x355]]![[images/alternative_crasset.png|Thirs is a caption|453x355]]
 
 ### Markdown
 
 Markdown is a lightweight markup language for creating formatted text using a plain-text editor. 
 
-![[images/alternative_crasset.png|453x355]]
+
 
 John Gruber and Aaron Swartz created Markdown in 2004 as a markup language that is intended to be easy to read in its source code form. Markdown is widely used for blogging and instant messaging, and also used elsewhere in online forums, collaborative software, documentation pages, and readme files[^note1].
 
