@@ -18,15 +18,20 @@ PageTypeToPrint is free software. Its code is available on [GitHub](https://gith
 
 
 > [!fullimage]
-> ![Description](images/alternative_crasset.png)
+> ![Description|453x355](images/alternative_crasset.png)
 
 
 
-![[images/alternative_crasset.png|Thirs is a caption]]
+![[images/alternative_crasset.png|Thirs is a caption|453x355]]![[images/alternative_crasset.png|Thirs is a caption|453x355]]
 
 ### Markdown
 
-Markdown is a lightweight markup language for creating formatted text using a plain-text editor. John Gruber and Aaron Swartz created Markdown in 2004 as a markup language that is intended to be easy to read in its source code form. Markdown is widely used for blogging and instant messaging, and also used elsewhere in online forums, collaborative software, documentation pages, and readme files[^note1].
+Markdown is a lightweight markup language for creating formatted text using a plain-text editor. 
+
+![[images/alternative_crasset.png|453x355]]
+
+John Gruber and Aaron Swartz created Markdown in 2004 as a markup language that is intended to be easy to read in its source code form. Markdown is widely used for blogging and instant messaging, and also used elsewhere in online forums, collaborative software, documentation pages, and readme files[^note1].
+
 
 
 
