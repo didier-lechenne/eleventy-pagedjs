@@ -245,7 +245,9 @@
   },
   "active": "db154bf58bda9264",
   "lastOpenFiles": [
+    ".obsidian/snippets/custom.css",
     "valentine/page-de-test.md",
+    ".obsidian/snippets",
     "valentine/71.alternative-figure.md",
     ".obsidian/plugins/image-captions/styles.css",
     ".obsidian/plugins/image-captions/main.js",
@@ -261,8 +263,6 @@
     "_site/images/carte_skate-03.jpg",
     "_site/assets/css/print/fonts/GTMaru/GTMaru-Regular.woff2",
     "_site/assets/css/print/fonts/GTMaru/index.css",
-    "_site/assets/css/print/fonts/GTMaru/GTMaru-RegularOblique.woff2",
-    "_site/assets/css/print/fonts/GTMaru/GTMaru-RegularOblique.woff",
     "_site/images/intro_objet.png",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
@@ -289,7 +289,6 @@
     "./examples/README.md",
     "examples/README.md",
     "node_modules/cloneable-readable/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
-    "node_modules/chokidar/README.md",
-    "node_modules/duplexer/README.md"
+    "node_modules/chokidar/README.md"
   ]
 }

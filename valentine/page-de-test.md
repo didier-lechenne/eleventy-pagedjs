@@ -16,6 +16,12 @@ PageTypeToPrint is a tool that...
 
 PageTypeToPrint is free software. Its code is available on [GitHub](https://github.com/esadpyrenees/PageTypeToPrint). The purpose of the following pages is to present the features and the main lines of the default choices made in the tool, from the point of view of editing a master's thesis.
 
+
+> [!fullimage]
+> ![Description](images/alternative_crasset.png)
+
+
+
 ![[images/alternative_crasset.png|Thirs is a caption]]
 
 ### Markdown

@@ -1,0 +1,67 @@
+/* obsidian-tufte-preview.css */
+
+/* Callout margin notes */
+.callout[data-callout="margin"] {
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 50%;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 0.9em;
+  line-height: 1.3;
+  vertical-align: baseline;
+  position: relative;
+  background: var(--background-secondary);
+  border-left: 3px solid var(--accent-color);
+}
+
+/* Callout sidenotes */
+.callout[data-callout="sidenote"] {
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 50%;
+  font-size: 0.9em;
+  background: var(--background-modifier-border);
+  border-left: 3px solid var(--color-orange);
+}
+
+.callout[data-callout="sidenote"] .callout-title {
+  font-weight: bold;
+  color: var(--color-orange);
+}
+
+/* Callout épigraphes */
+.callout[data-callout="epigraph"] {
+  font-style: italic;
+  margin: 2em 0;
+  text-align: center;
+  border: none;
+  background: transparent;
+}
+
+.callout[data-callout="epigraph"] .callout-content {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* Images full width */
+.callout[data-callout="fullimage"] {
+  width: 100%;
+  margin: 2em 0;
+  background: transparent;
+  border: none;
+}
+
+.callout[data-callout="fullimage"] img {
+  width: 100%;
+  height: auto;
+}
+
+/* Vidéos responsives */
+.callout[data-callout="video"] {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+}
