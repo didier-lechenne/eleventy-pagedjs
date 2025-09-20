@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "valentine/41.intro-figure.md",
+                "file": "valentine/111.domotique-image.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "41.intro-figure"
+              "title": "111.domotique-image"
             }
           }
         ]
@@ -245,6 +245,14 @@
   },
   "active": "539df2c78a73822c",
   "lastOpenFiles": [
+    "valentine/111.domotique-image.md",
+    "valentine/110.domotique.md",
+    "valentine/100.domestique.md",
+    "valentine/90.commun.md",
+    "valentine/80.bijoux.md",
+    "valentine/71.alternative-figure.md",
+    "valentine/40.introduction.md",
+    "valentine/41.intro-figure.md",
     "_site/index.html",
     "_site/print.html",
     "_site/assets/css/print/layout.css",
@@ -255,7 +263,6 @@
     "_site/csspageweaver/plugins/floatElements/.gitignore",
     "_site/csspageweaver/plugins/inlineNotes/.gitignore",
     "_site/csspageweaver/plugins/fullPage/.gitignore",
-    "_site/csspageweaver/plugins/imposition/.gitignore",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/layout/README.md",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
@@ -282,14 +289,7 @@
     "_site/images/maxresdefault.webp",
     "valentine/page-de-test.md",
     "_11ty/csspageweaver/plugins/reloadInPlace/Readme.md",
-    "valentine/71.alternative-figure.md",
     "valentine/templates/screen.md",
-    "README.md",
-    "node_modules/@11ty/eleventy-utils/README.md",
-    "./docs/terminology.md",
-    "docs/terminology.md",
-    "./examples/README.md",
-    "examples/README.md",
-    "node_modules/cloneable-readable/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md"
+    "README.md"
   ]
 }
