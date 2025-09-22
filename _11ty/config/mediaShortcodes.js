@@ -72,7 +72,7 @@ module.exports = function (eleventyConfig) {
 
     switch (type) {
       case "image":
-        return `<figure data-id="${id}" data-src="${config.src}" data-grid="image" id="image-${globalElementCounter}" class="figure image${classAttr}"${styleAttr}>
+        return `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" data-grid="image" id="image-${globalElementCounter}" class="figure image${classAttr}"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}" >
         ${
           captionHTML
@@ -82,7 +82,7 @@ module.exports = function (eleventyConfig) {
       </figure>`;
 
       case "grid":
-        let output = `<figure data-id="${id}" data-src="${config.src}" data-type="${config.type}"  data-grid="image" class="${classAttr}" id="figure-${globalElementCounter}"${styleAttr}>
+        let output = `<figure data-id="${id}" data-src="${config.src}" data-type="${type}"  data-grid="image" class="${classAttr}" id="figure-${globalElementCounter}"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}" >
       </figure>`;
         if (captionHTML) {
@@ -91,32 +91,21 @@ module.exports = function (eleventyConfig) {
         return output;
 
       case "fullpage":
-        return `<figure data-id="${id}" data-src="${config.src}" data-grid="image" id="figure-${globalElementCounter}" class="full-page ${classAttr}"${styleAttr}>
+        return `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" data-grid="image" id="figure-${globalElementCounter}" class="full-page ${classAttr}"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}">
       </figure>`;
 
-      case "figure":
-        return `<span class="spanMove figure_call" id="fig-${globalElementCounter}-call">
-        [<a href="#fig-${globalElementCounter}">fig. ${globalElementCounter}</a>]
-      </span>
-      <span class="figure figmove${classAttr}" data-src="${config.src}" data-grid="image" id="fig-${globalElementCounter}"${styleAttr}>
-        <img src="${config.src}" alt="${cleanAlt}" >
-        ${
-          captionHTML
-            ? `<span class="figcaption"><span class="figure_reference">[fig. ${globalElementCounter}]</span> ${captionHTML}</span>`
-            : ""
-        }
-      </span>`;
+
 
       case "imagenote":
-        return `<span class="imagenote sideNote${classAttr}" data-src="${config.src}" data-grid="image"${styleAttr}>
+        return `<span class="imagenote sideNote${classAttr}" data-type="${type}" data-src="${config.src}" data-grid="image"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}" >
         ${captionHTML ? `<span class="caption">${captionHTML}</span>` : ""}
       </span>`;
 
       case "video":
         const posterAttr = config.poster ? ` poster="${config.poster}"` : "";
-        return `<figure class="video${classAttr}" data-grid="content"${styleAttr}>
+        return `<figure class="video${classAttr}" data-type="${type}" data-grid="content"${styleAttr}>
         <video controls${posterAttr}>
           <source src="${config.src}">
         </video>
