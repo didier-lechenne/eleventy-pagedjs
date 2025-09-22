@@ -1,1 +1,1 @@
-# eleventy-pagedjs-sept
+# eleventy-pagedjs
