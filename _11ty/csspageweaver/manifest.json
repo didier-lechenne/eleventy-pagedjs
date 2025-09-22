@@ -1,0 +1,26 @@
+{
+    "plugins": [ "pageMove", "spread", "previewPage", "layout",  "marker", "inlineNotes",  "bgColor", "fullContent",  "invisibleSpaces",   "tableOfContent",  "imposition", "marginBox",  "editor", "reloadInPlace"],
+
+    "pluginsParameters":{
+
+        "reloadInPlace": {
+            "blur": false,
+            "behavior": "instant"
+        },
+
+        "tableOfContent": {
+            "tocContainer": "#nav-toc",
+            "tocTitles": [ "h2"]
+        }
+
+    },
+    
+    "css": [
+        "./assets/css/print.css"
+    ],
+    
+    "hook": [
+        
+    ]
+}
+

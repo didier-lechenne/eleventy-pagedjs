@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% if title %}{{ title }} | {% endif %}{{ config.title }}</title>
+    <meta name="description" content="{{ subtitle or config.subtitle }}" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{{ config.title }}"
+      href="/feed.xml"
+    />
+
+    <meta property="og:title" content="{{ title or config.title }}" />
+    <meta
+      property="og:description"
+      content="{{ subtitle or config.subtitle }}"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ config.url }}{{ page.url }}" />
+
+
+
+    <link rel="stylesheet" href="./assets/css/screen.css" />
+    <script  src="./assets/js/screen.js"></script>
+    <script  src="./assets/js/sideNotes.js"></script>
+    
+  </head>
+  <body class="screen {{ bodyClass }}" lang="{{ lang }}">
+
+<header id="header">
+
+{% if config.title %} <h1>{{ config.title }}</h1> {% endif %}
+{% if config.subtitle %} <h2>{{ config.subtitle }}</h2> {% endif %}
+
+
+<div class="meta">
+ <div>
+ {% if config.author %} <div class="meta-name">{{ config.author }}</div> {% endif %}
+ {% if cconfig.year %} <div class="meta-name">{{ config.author }}</div> {% endif %}
+ </div>
+
+<div>
+ <p>
+  {% if config.meta_1 %} {{ config.meta_1 }} <br> {% endif %}
+  {% if config.meta_2 %} {{ config.meta_2 }} <br> {% endif %}
+  {% if config.meta_3 %} {{ config.meta_3 }} <br> {% endif %}
+  {% if config.meta_4 %} {{ config.meta_4 }} <br> {% endif %}
+ </p>   
+</div>
+
+<div>
+ <p>
+ </p>   
+</div>
+
+</div>
+
+
+</header>
+
+
+    <main id="main">
+
+    <nav id="index">
+      <button>☰</button>
+      <ul class="nav-ul">
+        {% for p in collections.screenPages %}
+        <li id="nav-{{ p.fileSlug | cleanTitle | slug }}" class="nav-{{ p.data.template | default("default") }}">
+          <a href="#{{ p.fileSlug | cleanTitle | slug }}">{{ p.templateContent | extractTitle  }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+      {% for p in collections.screenPages %}
+         {% set templateName =
+        p.data.template | default('default') %} {% include "templates/" +
+        templateName + ".njk" %} 
+      {% endfor %}
+    </main>
+  </body>
+</html>
