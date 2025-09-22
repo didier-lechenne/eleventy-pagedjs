@@ -809,6 +809,11 @@ return template
       }
     });
 
+      const caption = this.getCaption(element);
+      if (caption && caption.trim()) {
+        properties.caption = `"${caption.replace(/"/g, '\\"')}"`;
+      }
+
     return properties;
   }
 
@@ -845,12 +850,20 @@ return template
   }
 
   getCaption(element) {
-    let figcaption = element.nextElementSibling;
-    if (figcaption && figcaption.tagName.toLowerCase() === "figcaption") {
+    // 1. Chercher figcaption enfant (cas classique - shortcode image)
+    let figcaption = element.querySelector("figcaption");
+    
+    // 2. Si pas trouvé, chercher figcaption suivant (cas shortcode grid)
+    if (!figcaption) {
+      const nextSibling = element.nextElementSibling;
+      if (nextSibling && nextSibling.tagName.toLowerCase() === "figcaption") {
+        figcaption = nextSibling;
+      }
+    }
+
+    if (figcaption) {
       const clone = figcaption.cloneNode(true);
-      const toRemove = clone.querySelectorAll(
-        ".figure_call_back, .figure_reference"
-      );
+      const toRemove = clone.querySelectorAll(".figure_call_back, .figure_reference");
       toRemove.forEach((el) => el.remove());
 
       if (this.turndownService) {
@@ -862,6 +875,7 @@ return template
       }
     }
 
+    // Fallback sur img.alt
     const img = element.querySelector("img");
     if (img && img.alt) return img.alt;
 
@@ -872,30 +886,7 @@ return template
     return str.replace(/"/g, '\\"');
   }
 
-  // async copyToClipboard(text) {
-  //   try {
-  //     await navigator.clipboard.writeText(text);
-  //     // console.log('📋 Code copié dans le presse-papier:', text.length, 'caractères');
 
-  //     const copyElement = document.querySelector(".copy");
-  //     if (copyElement) {
-  //       copyElement.classList.add("copied");
-  //       setTimeout(() => copyElement.classList.remove("copied"), 1000);
-  //     }
-
-  //     return true;
-  //   } catch (err) {
-  //     console.warn("⚠️ Erreur copie clipboard, fallback vers execCommand");
-  //     const input = document.querySelector("#showCode");
-  //     if (input) {
-  //       input.select();
-  //       document.execCommand("copy");
-  //       return true;
-  //     }
-  //     console.error("❌ Échec copie:", err);
-  //     return false;
-  //   }
-  // }
 
 async copyToClipboard(text) {
   try {

@@ -171,7 +171,7 @@ module.exports = function (eleventyConfig) {
           const renderedContent = cleanFile.endsWith(".md")
             ? md.render(content)
             : content;
-          return `<div data-grid="markdown" data-md="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
+          return `<div data-type="markdown" data-grid="markdown" data-src="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
         } catch (error) {
           console.error(`Erreur inclusion ${cleanFile}:`, error.message);
           return `<div class="include error">❌ Erreur: ${cleanFile} non trouvé</div>`;
@@ -239,7 +239,7 @@ module.exports = function (eleventyConfig) {
           ? md.render(content)
           : content;
 
-        return `<div data-grid="markdown" data-md="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
+        return `<div data-grid="markdown" data-src="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
       } catch (error) {
         console.error(`Erreur inclusion ${cleanFile}:`, error.message);
         return `<div class="include error">❌ Erreur: ${cleanFile} non trouvé</div>`;
