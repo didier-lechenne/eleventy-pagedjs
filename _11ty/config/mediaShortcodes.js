@@ -32,6 +32,7 @@ module.exports = function (eleventyConfig) {
       imgY: "--img-y",
       imgW: "--img-w",
       page: "--pagedjs-full-page",
+      content: "--pagedjs-full-content",
     };
 
     let styles = "";
@@ -67,7 +68,7 @@ module.exports = function (eleventyConfig) {
     }
 
     // Incrémenter le compteur pour tous les types qui en ont besoin
-    if (["image", "grid", "fullpage", "mardown", "figure"].includes(type)) {
+    if (["image", "grid", "fullcontent", "fullpage" , "mardown", "figure"].includes(type)) {
       globalElementCounter++;
     }
 
@@ -91,8 +92,13 @@ module.exports = function (eleventyConfig) {
         }
         return output;
 
+      case "fullcontent":
+        return `<figure data-id="${id}" data-src="${config.src}" data-grid="image" data-type="${type}" id="figure-${globalElementCounter}" class="full-content  ${classAttr}"${styleAttr}>
+        <img src="${config.src}" alt="${cleanAlt}">
+      </figure>`;
+
       case "fullpage":
-        return `<figure data-id="${id}" data-src="${config.src}" data-grid="image" data-type="${type}" id="figure-${globalElementCounter}" class="full-page ${classAttr}"${styleAttr}>
+        return `<figure data-id="${id}" data-src="${config.src}" data-grid="image" data-type="${type}" id="figure-${globalElementCounter}" class="full-page  ${classAttr}"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}">
       </figure>`;
 
@@ -208,6 +214,11 @@ module.exports = function (eleventyConfig) {
     return generateHTML("imagenote", config);
   });
 
+  eleventyConfig.addShortcode("fullcontent", function (src, options = {}) {
+    const config = { src, ...options };
+    return generateHTML("fullcontent", config);
+  });
+
   eleventyConfig.addShortcode("fullpage", function (src, options = {}) {
     const config = { src, ...options };
     return generateHTML("fullpage", config);
@@ -248,7 +259,7 @@ module.exports = function (eleventyConfig) {
           ? md.render(content)
           : content;
 
-        return `<div data-grid="markdown" data-md="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
+        return `<div data-grid="markdown" data-type="markdown" data-md="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
       } catch (error) {
         console.error(`Erreur inclusion ${cleanFile}:`, error.message);
         return `<div class="include error">❌ Erreur: ${cleanFile} non trouvé</div>`;

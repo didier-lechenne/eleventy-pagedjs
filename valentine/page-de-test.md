@@ -5,7 +5,7 @@ draft: true
 ---
 ### Markdown
 
-{% fullpage "./images/archery-outdoors-women-dithered.png", { 
+{% fullcontent "./images/archery-outdoors-women-dithered.png", { 
   id: "full-page-cover",
   class: "cover"
 } %}
