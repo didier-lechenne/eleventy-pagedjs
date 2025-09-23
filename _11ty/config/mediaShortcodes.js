@@ -93,12 +93,12 @@ module.exports = function (eleventyConfig) {
         return output;
 
       case "fullcontent":
-        return `<figure data-id="${id}" data-src="${config.src}" data-grid="image" data-type="${type}" id="figure-${globalElementCounter}" class="full-content  ${classAttr}"${styleAttr}>
+        return `<figure  data-src="${config.src}" data-grid="image" data-type="${type}" id="${id}" class="  ${classAttr}"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}">
       </figure>`;
 
       case "fullpage":
-        return `<figure data-id="${id}" data-src="${config.src}" data-grid="image" data-type="${type}" id="figure-${globalElementCounter}" class="full-page  ${classAttr}"${styleAttr}>
+        return `<figure data-id="${id}" data-src="${config.src}"  data-type="${type}" id="figure-${globalElementCounter}" class="full-page  ${classAttr}"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}">
       </figure>`;
 
