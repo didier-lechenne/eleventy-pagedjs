@@ -11,14 +11,12 @@
             "id": "539df2c78a73822c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "vscode-editor",
               "state": {
-                "file": "valentine/41.intro-figure.md",
-                "mode": "source",
-                "source": false
+                "file": "_11ty/csspageweaver/plugins/fullContent/fullContent.js"
               },
               "icon": "lucide-file",
-              "title": "41.intro-figure"
+              "title": "fullContent"
             }
           }
         ]
@@ -245,6 +243,8 @@
   },
   "active": "539df2c78a73822c",
   "lastOpenFiles": [
+    "_11ty/csspageweaver/plugins/fullContent/fullContent.css",
+    "valentine/41.intro-figure.md",
     "_site/index.html",
     "_site/print.html",
     "_site/assets/css/print/fonts/IBM-plex-sans/license.txt",
@@ -255,7 +255,6 @@
     "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-Text.woff2",
     "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-SemiBoldItalic.woff2",
     "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-SemiBold.woff2",
-    "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-Regular.woff2",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
@@ -288,7 +287,6 @@
     "valentine/90.commun.md",
     "valentine/80.bijoux.md",
     "valentine/71.alternative-figure.md",
-    "valentine/41.intro-figure.md",
     "valentine/page-de-test.md",
     "_11ty/csspageweaver/plugins/reloadInPlace/Readme.md"
   ]
