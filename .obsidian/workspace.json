@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "d4b59b03456fef2d",
+        "id": "d88ade9af6a8a292",
         "type": "tabs",
         "children": [
           {
-            "id": "539df2c78a73822c",
+            "id": "8d3083b4ce111541",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "_11ty/csspageweaver/plugins/fullContent/fullContent.js"
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "fullContent"
+              "title": "Nouvel onglet"
             }
           }
         ]
@@ -241,8 +239,9 @@
       "cmdr:Microtypographie: Corriger toute la note": false
     }
   },
-  "active": "539df2c78a73822c",
+  "active": "8d3083b4ce111541",
   "lastOpenFiles": [
+    "_11ty/csspageweaver/plugins/fullContent/fullContent.js",
     "_11ty/csspageweaver/plugins/fullContent/fullContent.css",
     "valentine/41.intro-figure.md",
     "_site/index.html",
@@ -254,7 +253,6 @@
     "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-TextItalic.woff2",
     "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-Text.woff2",
     "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-SemiBoldItalic.woff2",
-    "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-SemiBold.woff2",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
