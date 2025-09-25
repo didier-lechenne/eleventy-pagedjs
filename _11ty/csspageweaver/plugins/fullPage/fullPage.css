@@ -51,7 +51,7 @@
   }
 
   /* hack pour une image full en cover */
- .pagedjs_right_page .pagedjs_full-page_content.cover {
+ #page-1  .pagedjs_full-page_content {
     width: calc(var(--pagedjs-pagebox-width) + var(--bleed-images) + var(--bleed-images));
     height: calc(var(--pagedjs-pagebox-height) + var(--bleed-images) * 2) !important;
     left: calc(var(--pagedjs-margin-left) - var(--pagedjs-margin-right) + var(--bleed-images)  * -1) !important;

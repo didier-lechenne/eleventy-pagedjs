@@ -2,7 +2,7 @@
  * @name Full Content
  * @author Julie Blanc <contact@julie-blanc.fr>
  * @author Didier Lechenne <didier@lechenne.fr>
- * Plugin fullContent basé sur fullPage avec support inline et noms uniques
+ * Plugin fullContent basé sur fullPage avec support CSS uniquement
  */
 import { Handler } from "../../../lib/paged.esm.js";
 
@@ -45,82 +45,55 @@ export default class fullContent extends Handler {
   afterParsed(parsed) {
     console.log("FULL CONTENT loaded");
 
-   
+    // ADD pagedjs classes to elements from CSS rules only
     for (let item of this.selectorFullPage) {
       let elems = parsed.querySelectorAll(item);
       for (let elem of elems) {
-        elem.classList.add("pagedjs_full-content-elem"); // ← NOUVEAU NOM
+        elem.classList.add("pagedjs_full-content-elem");
       }
     }
     for (let item of this.selectorFullSpread) {
       let elems = parsed.querySelectorAll(item);
       for (let elem of elems) {
-        elem.classList.add("pagedjs_full-content-spread-elem"); // ← NOUVEAU NOM
+        elem.classList.add("pagedjs_full-content-spread-elem");
       }
     }
     for (let item of this.selectorFullLeft) {
       let elems = parsed.querySelectorAll(item);
       for (let elem of elems) {
-        elem.classList.add("pagedjs_full-content-left-elem"); // ← NOUVEAU NOM
+        elem.classList.add("pagedjs_full-content-left-elem");
       }
     }
     for (let item of this.selectorFullRight) {
       let elems = parsed.querySelectorAll(item);
       for (let elem of elems) {
-        elem.classList.add("pagedjs_full-content-right-elem"); // ← NOUVEAU NOM
+        elem.classList.add("pagedjs_full-content-right-elem");
       }
     }
 
+    // SPECIFIC PAGE (from CSS rules only)
     this.specificPage.forEach((entry) => {
       const obj = JSON.parse(entry);
       const elements = parsed.querySelectorAll(obj.elem);
       if (elements.length > 0) {
-        elements[0].classList.add("pagedjs_full-content-specific"); // ← NOUVEAU NOM
+        elements[0].classList.add("pagedjs_full-content-specific");
         const clone = elements[0].cloneNode(true);
         obj.elemClone = clone.outerHTML;
         elements[0].remove();
       }
       this.specificPageClone.add(JSON.stringify(obj));
     });
-
-    // Support des styles inline avec nouveaux noms
-    const inlineElements = parsed.querySelectorAll('[style*="--pagedjs-full-content"]');
-    inlineElements.forEach((element) => {
-      const style = element.getAttribute("style");
-      const match = style.match(/--pagedjs-full-content:\s*([^;]+)/);
-
-      if (match) {
-        const value = match[1].trim();
-        console.log("Valeur inline trouvée:", value);
-
-        if (value.includes("page")) {
-          element.classList.add("pagedjs_full-content-elem"); // ← NOUVEAU NOM
-        } else if (value.includes("spread")) {
-          element.classList.add("pagedjs_full-content-spread-elem"); // ← NOUVEAU NOM
-        } else if (value.includes("right")) {
-          element.classList.add("pagedjs_full-content-right-elem"); // ← NOUVEAU NOM
-        } else if (value.includes("left")) {
-          element.classList.add("pagedjs_full-content-left-elem"); // ← NOUVEAU NOM
-        } else {
-          element.classList.add("pagedjs_full-content-specific"); // ← NOUVEAU NOM
-          const obj = { page: value, elem: "#" + element.id };
-          const clone = element.cloneNode(true);
-          obj.elemClone = clone.outerHTML;
-          element.remove();
-          this.specificPageClone.add(JSON.stringify(obj));
-        }
-      }
-    });
   }
 
   renderNode(clone, node) {
-    // CHANGEMENT: Utilisation des nouveaux noms de classes
+    // FULL SPREAD
     if (node.nodeType == 1 && node.classList.contains("pagedjs_full-content-spread-elem")) {
       this.fullSpreadEls.add(node);
       this.usedPagedEls.add(node);
       clone.style.display = "none";
     }
 
+    // FULL PAGE
     if (node.nodeType == 1 && node.classList.contains("pagedjs_full-content-left-elem")) {
       this.fullLeftEls.add(node);
       this.usedPagedEls.add(node);
@@ -151,7 +124,7 @@ export default class fullContent extends Handler {
       }
     }
 
-    // FULL SPREAD avec containers uniques
+    // FULL SPREAD
     for (let img of this.fullSpreadEls) {
       if (page.element.classList.contains("pagedjs_right_page")) {
         let imgLeft;
@@ -159,92 +132,92 @@ export default class fullContent extends Handler {
 
         if (img.nodeName == "IMG") {
           let containerLeft = document.createElement("div");
-          containerLeft.classList.add("pagedjs_full-content-spread_container"); // ← NOUVEAU NOM
+          containerLeft.classList.add("pagedjs_full-content-spread_container");
           let containerLeftInside = document.createElement("div");
-          containerLeftInside.classList.add("pagedjs_full-content-spread_content"); // ← NOUVEAU NOM
+          containerLeftInside.classList.add("pagedjs_full-content-spread_content");
           containerLeft.appendChild(containerLeftInside).appendChild(img);
           imgLeft = containerLeft;
 
           let containerRight = document.createElement("div");
-          containerRight.classList.add("pagedjs_full-content-spread_container"); // ← NOUVEAU NOM
+          containerRight.classList.add("pagedjs_full-content-spread_container");
           let containerRightInside = document.createElement("div");
-          containerRightInside.classList.add("pagedjs_full-content-spread_content"); // ← NOUVEAU NOM
+          containerRightInside.classList.add("pagedjs_full-content-spread_content");
           containerRight.appendChild(containerRightInside).appendChild(img.cloneNode(true));
           imgRight = containerRight;
         } else {
           let containerLeft = document.createElement("div");
-          containerLeft.classList.add("pagedjs_full-content-spread_container"); // ← NOUVEAU NOM
-          img.classList.add("pagedjs_full-content-spread_content"); // ← NOUVEAU NOM
+          containerLeft.classList.add("pagedjs_full-content-spread_container");
+          img.classList.add("pagedjs_full-content-spread_content");
           containerLeft.appendChild(img);
           imgLeft = containerLeft;
           
           let containerRight = document.createElement("div");
-          containerRight.classList.add("pagedjs_full-content-spread_container"); // ← NOUVEAU NOM
-          img.classList.add("pagedjs_full-content-spread_content"); // ← NOUVEAU NOM
+          containerRight.classList.add("pagedjs_full-content-spread_container");
+          img.classList.add("pagedjs_full-content-spread_content");
           containerRight.appendChild(img.cloneNode(true));
           imgRight = containerRight;
         }
 
         let fullPage = chunker.addPage();
         fullPage.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", imgLeft);
-        fullPage.element.classList.add("pagedjs_page_fullContentLeft"); // ← NOUVEAU NOM
+        fullPage.element.classList.add("pagedjs_page_fullContentLeft");
 
         let fullPageRight = chunker.addPage();
         fullPageRight.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", imgRight);
-        fullPageRight.element.classList.add("pagedjs_page_fullContentRight"); // ← NOUVEAU NOM
+        fullPageRight.element.classList.add("pagedjs_page_fullContentRight");
         
         img.style.removeProperty("display");
         this.fullSpreadEls.delete(img);
       }
     }
 
-    // FULL PAGE avec containers uniques
+    // FULL PAGE
     for (let img of this.fullPageEls) {
       let container = document.createElement("div");
-      container.classList.add("pagedjs_full-content_content"); // ← NOUVEAU NOM
+      container.classList.add("pagedjs_full-content_content");
       container.appendChild(img);
       let fullPage = chunker.addPage();
 
       fullPage.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", container);
-      fullPage.element.classList.add("pagedjs_page_fullContent"); // ← NOUVEAU NOM
+      fullPage.element.classList.add("pagedjs_page_fullContent");
       
       img.style.removeProperty("display");
       this.fullPageEls.delete(img);
     }
 
-    // FULL LEFT avec containers uniques
+    // FULL LEFT PAGE
     for (let img of this.fullLeftEls) {
       if (page.element.classList.contains("pagedjs_right_page")) {
         let container = document.createElement("div");
-        container.classList.add("pagedjs_full-content_content"); // ← NOUVEAU NOM
+        container.classList.add("pagedjs_full-content_content");
         container.appendChild(img);
         let fullPage = chunker.addPage();
 
         fullPage.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", container);
-        fullPage.element.classList.add("pagedjs_page_fullContent"); // ← NOUVEAU NOM
+        fullPage.element.classList.add("pagedjs_page_fullContent");
         
         img.style.removeProperty("display");
         this.fullLeftEls.delete(img);
       }
     }
 
-    // FULL RIGHT avec containers uniques
+    // FULL RIGHT PAGE
     for (let img of this.fullRightEls) {
       if (page.element.classList.contains("pagedjs_left_page")) {
         let container = document.createElement("div");
-        container.classList.add("pagedjs_full-content_content"); // ← NOUVEAU NOM
+        container.classList.add("pagedjs_full-content_content");
         container.appendChild(img);
         let fullPage = chunker.addPage();
 
         fullPage.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", container);
-        fullPage.element.classList.add("pagedjs_page_fullContent"); // ← NOUVEAU NOM
+        fullPage.element.classList.add("pagedjs_page_fullContent");
         
         img.style.removeProperty("display");
         this.fullRightEls.delete(img);
       }
     }
 
-    // SPECIFIC PAGE avec containers uniques
+    // SPECIFIC PAGE
     let pageNum = pageElement.id.split("page-")[1];
     pageNum = parseInt(pageNum);
 
@@ -254,14 +227,25 @@ export default class fullContent extends Handler {
       let prevPage = parseInt(targetedPage) - 1;
       let elem = obj.elemClone;
 
-      if (prevPage == pageNum) {
+      if (targetedPage == 1 && pageNum == 1) {
         let container = document.createElement("div");
-        container.classList.add("pagedjs_full-content_content"); // ← NOUVEAU NOM
+        container.classList.add("pagedjs_full-content_content");
+        container.innerHTML = elem;
+
+        pageElement
+          .querySelector(".pagedjs_page_content")
+          .insertAdjacentElement("afterbegin", container);
+        pageElement.classList.add("pagedjs_page_fullContent");
+      } else if (prevPage == pageNum) {
+        let container = document.createElement("div");
+        container.classList.add("pagedjs_full-content_content");
         container.innerHTML = elem;
         let fullPage = chunker.addPage();
 
-        fullPage.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", container);
-        fullPage.element.classList.add("pagedjs_page_fullContent"); // ← NOUVEAU NOM
+        fullPage.element
+          .querySelector(".pagedjs_page_content")
+          .insertAdjacentElement("afterbegin", container);
+        fullPage.element.classList.add("pagedjs_page_fullContent");
       }
     });
   }

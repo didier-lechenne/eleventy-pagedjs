@@ -1,5 +1,5 @@
 const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
+// const markdownItAnchor = require("markdown-it-anchor");
 const markdownItFootnote = require("markdown-it-footnote");
 const markdownItAttrs = require("markdown-it-attrs");
 const markdownItSup = require("markdown-it-sup");

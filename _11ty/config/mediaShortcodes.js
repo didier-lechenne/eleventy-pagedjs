@@ -17,40 +17,46 @@ md.use(markdownItFootnote);
 module.exports = function (eleventyConfig) {
   let globalElementCounter = 0;
 
-  function generateStyles(config) {
-    const cssVarMapping = {
-      col: "--col",
-      printCol: "--print-col",
-      width: "--width",
-      printWidth: "--print-width",
-      printRow: "--print-row",
-      printHeight: "--print-height",
-      alignSelf: "--align-self",
-      alignself: "--align-self",
-      "align-self": "--align-self",
-      imgX: "--img-x",
-      imgY: "--img-y",
-      imgW: "--img-w",
-      page: "--pagedjs-full-page",
-      content: "--pagedjs-full-content",
-    };
+function generateStyles(config) {
+  const cssVarMapping = {
+    col: "--col",
+    printCol: "--print-col",
+    width: "--width",
+    printWidth: "--print-width",
+    printRow: "--print-row",
+    printHeight: "--print-height",
+    alignSelf: "--align-self",
+    alignself: "--align-self",
+    "align-self": "--align-self",
+    imgX: "--img-x",
+    imgY: "--img-y",
+    imgW: "--img-w"
+  };
 
-    let styles = "";
-    Object.entries(config).forEach(([key, value]) => {
-      if (
-        cssVarMapping[key] &&
-        value !== undefined &&
-        value !== null &&
-        value !== ""
-      ) {
-        // Nettoie les guillemets si présents
-        const cleanValue =
-          typeof value === "string" ? value.replace(/^["']|["']$/g, "") : value;
-        styles += `${cssVarMapping[key]}: ${cleanValue}; `;
-      }
-    });
-    return styles ? ` style="${styles}"` : "";
+  let styles = "";
+  
+  // Traitement des propriétés CSS via cssVarMapping
+  Object.entries(config).forEach(([key, value]) => {
+    if (
+      cssVarMapping[key] &&
+      value !== undefined &&
+      value !== null &&
+      value !== ""
+    ) {
+      const cleanValue =
+        typeof value === "string" ? value.replace(/^["']|["']$/g, "") : value;
+      styles += `${cssVarMapping[key]}: ${cleanValue}; `;
+    }
+  });
+  
+  // Ajout du style personnalisé s'il existe
+  if (config.style) {
+    const cleanStyle = config.style.endsWith(';') ? config.style : config.style + ';';
+    styles += cleanStyle + ' ';
   }
+  
+  return styles ? ` style="${styles.trim()}"` : "";
+}
 
   function generateHTML(type, config) {
     const styleAttr = generateStyles(config);
@@ -74,14 +80,15 @@ module.exports = function (eleventyConfig) {
 
     switch (type) {
       case "image":
-        return `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" data-grid="image" id="image-${globalElementCounter}" class="figure image${classAttr}"${styleAttr}>
-        <img src="${config.src}" alt="${cleanAlt}" >
-        ${
-          captionHTML
-            ? `<figcaption class="figcaption">${captionHTML}</figcaption>`
-            : ""
+        let outputImage = `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" id="figure-${globalElementCounter}" class="figure image${classAttr}"${styleAttr}>
+          <img src="${config.src}" alt="${cleanAlt}" >`;
+        
+        if (captionHTML) {
+          outputImage += `<figcaption class="figcaption">${captionHTML}</figcaption>`;
         }
-      </figure>`;
+        
+        outputImage += `</figure>`;
+        return outputImage;
 
       case "grid":
         let output = `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" data-grid="image" class="${classAttr}" id="figure-${globalElementCounter}"${styleAttr}>
@@ -92,30 +99,21 @@ module.exports = function (eleventyConfig) {
         }
         return output;
 
-      case "fullcontent":
-        return `<figure  data-src="${config.src}" data-grid="image" data-type="${type}" id="${id}" class="  ${classAttr}"${styleAttr}>
-        <img src="${config.src}" alt="${cleanAlt}">
-      </figure>`;
-
-      case "fullpage":
-        return `<figure data-id="${id}" data-src="${config.src}"  data-type="${type}" id="figure-${globalElementCounter}" class="full-page  ${classAttr}"${styleAttr}>
-        <img src="${config.src}" alt="${cleanAlt}">
-      </figure>`;
-
       case "figure":
-        return `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" data-grid="image" id="figure-${globalElementCounter}" class="figure image${classAttr}"${styleAttr}>
-        <img src="${config.src}" alt="${cleanAlt}" >
-        ${
-          captionHTML
-            ? `<figcaption class="figcaption">${captionHTML}</figcaption>`
-            : ""
+        let outputFigure = `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" data-grid="image" id="figure-${globalElementCounter}" class="figure ${classAttr}"${styleAttr}>
+          <img src="${config.src}" alt="${cleanAlt}" >`;
+        
+        if (captionHTML) {
+          outputFigure += `<figcaption class="figcaption">${captionHTML}</figcaption>`;
         }
-      </figure>`;
+        
+        outputFigure += `</figure>`;
+        return outputFigure;
 
       case "imagenote":
         return `<span class="imagenote sideNote${classAttr}" data-src="${config.src}" data-grid="image"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}" >
-        ${captionHTML ? `<span class="caption">${captionHTML}</span>` : ""}
+        ${captionHTML ? `<span class="caption">${captionHTML}</span>` : null}
       </span>`;
 
       case "video":
@@ -127,7 +125,7 @@ module.exports = function (eleventyConfig) {
         ${
           captionHTML
             ? `<figcaption class="figcaption">${captionHTML}</figcaption>`
-            : ""
+            : null
         }
       </figure>`;
 

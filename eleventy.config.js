@@ -14,6 +14,7 @@ const filtersConfig = require("./_11ty/config/filters.js");
 
 // === POST-TRAITEMENT ===
 const transformsConfig = require("./_11ty/config/transforms.js");
+const beautifyConfig = require("./_11ty/config/beautify.js");
 const afterBuild = require("./_11ty/config/afterBuild.js");
 
 // === CONFIGURATION SITE ===
@@ -50,6 +51,7 @@ module.exports = function (eleventyConfig) {
   collectionsConfig(eleventyConfig);
   filtersConfig(eleventyConfig);
   transformsConfig(eleventyConfig);
+  beautifyConfig(eleventyConfig);
   eleventyConfig.addPlugin(afterBuild);
 
   // === CONFIGURATION SERVEUR DE DEV ===

@@ -22,4 +22,9 @@
 
 
 
+.fullpage-cover {
+  --pagedjs-full-page: 1;
+}
+
+
 

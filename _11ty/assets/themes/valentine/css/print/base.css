@@ -206,3 +206,46 @@ sup {
 .footnotes {
   display: none;
 }
+
+
+/* ========================================
+ * CLASS GENERIQUE
+ * ======================================== */
+
+.fullcontent-page {
+  --pagedjs-full-content: page;
+}
+
+
+.fullcontent-left {
+  --pagedjs-full-content: left;
+}
+
+.fullcontent-right {
+  --pagedjs-full-content: right;
+}
+
+
+.fullcontent-spread {
+  --pagedjs-full-content: spread;
+}
+
+
+.fullpage-page {
+  --pagedjs-full-page: page;
+}
+
+
+.fullpage-left {
+  --pagedjs-full-page: left;
+}
+
+.fullpage-right {
+  --pagedjs-full-page: right;
+}
+
+
+.fullpage-spread {
+  --pagedjs-full-page: spread;
+}
+
