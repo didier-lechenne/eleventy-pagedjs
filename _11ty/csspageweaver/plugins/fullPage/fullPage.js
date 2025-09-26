@@ -45,7 +45,7 @@ export default class fullPage extends Handler {
   }
 
   afterParsed(parsed) {
-    console.log("FULL PAGE loaded");
+    // console.log("FULL PAGE loaded");
 
     // ADD pagedjs classes to elements
     for (let item of this.selectorFullPage) {

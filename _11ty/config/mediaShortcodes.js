@@ -17,52 +17,69 @@ md.use(markdownItFootnote);
 module.exports = function (eleventyConfig) {
   let globalElementCounter = 0;
 
-function generateStyles(config) {
-  const cssVarMapping = {
-    col: "--col",
-    printCol: "--print-col",
-    width: "--width",
-    printWidth: "--print-width",
-    printRow: "--print-row",
-    printHeight: "--print-height",
-    alignSelf: "--align-self",
-    alignself: "--align-self",
-    "align-self": "--align-self",
-    imgX: "--img-x",
-    imgY: "--img-y",
-    imgW: "--img-w"
-  };
-
-  let styles = "";
-  
-  // Traitement des propriétés CSS via cssVarMapping
-  Object.entries(config).forEach(([key, value]) => {
-    if (
-      cssVarMapping[key] &&
-      value !== undefined &&
-      value !== null &&
-      value !== ""
-    ) {
-      const cleanValue =
-        typeof value === "string" ? value.replace(/^["']|["']$/g, "") : value;
-      styles += `${cssVarMapping[key]}: ${cleanValue}; `;
-    }
-  });
-  
-  // Ajout du style personnalisé s'il existe
-  if (config.style) {
-    const cleanStyle = config.style.endsWith(';') ? config.style : config.style + ';';
-    styles += cleanStyle + ' ';
+  // Fonction pour slugifier le src
+  function slugify(text) {
+    if (!text) return '';
+    // Garde seulement le nom du fichier
+    const filename = path.basename(text);
+    return filename
+      .toLowerCase()
+      .replace(/\.[^/.]+$/, "") // Supprime l'extension
+      .replace(/[^a-z0-9]+/g, '-') // Remplace les caractères non alphanumériques par des tirets
+      .replace(/^-+|-+$/g, '') // Supprime les tirets en début et fin
+      .replace(/-+/g, '-'); // Remplace les tirets multiples par un seul
   }
-  
-  return styles ? ` style="${styles.trim()}"` : "";
-}
+
+  function generateStyles(config) {
+    const cssVarMapping = {
+      col: "--col",
+      printCol: "--print-col",
+      width: "--width",
+      printWidth: "--print-width",
+      printRow: "--print-row",
+      printHeight: "--print-height",
+      alignSelf: "--align-self",
+      alignself: "--align-self",
+      "align-self": "--align-self",
+      imgX: "--img-x",
+      imgY: "--img-y",
+      imgW: "--img-w",
+      page: "--pagedjs-full-page",
+      content: "--pagedjs-full-content",
+    };
+
+    let styles = "";
+    
+    // Traitement des propriétés CSS via cssVarMapping
+    Object.entries(config).forEach(([key, value]) => {
+      if (
+        cssVarMapping[key] &&
+        value !== undefined &&
+        value !== null &&
+        value !== ""
+      ) {
+        const cleanValue =
+          typeof value === "string" ? value.replace(/^["']|["']$/g, "") : value;
+        styles += `${cssVarMapping[key]}: ${cleanValue}; `;
+      }
+    });
+    
+    // Ajout du style personnalisé s'il existe
+    if (config.style) {
+      const cleanStyle = config.style.endsWith(';') ? config.style : config.style + ';';
+      styles += cleanStyle + ' ';
+    }
+    
+    return styles ? ` style="${styles.trim()}"` : "";
+  }
 
   function generateHTML(type, config) {
     const styleAttr = generateStyles(config);
     const classAttr = config.class ? ` ${config.class}` : "";
     const captionHTML = config.caption ? md.renderInline(config.caption) : "";
-    const id = config.id;
+    const slugifiedSrc = slugify(config.src);
+    const elementId = config.id || slugifiedSrc;
+    
     let cleanAlt = "";
     if (config.caption) {
       cleanAlt = config.caption
@@ -74,13 +91,13 @@ function generateStyles(config) {
     }
 
     // Incrémenter le compteur pour tous les types qui en ont besoin
-    if (["image", "grid", "fullcontent", "fullpage" , "mardown", "figure"].includes(type)) {
+    if (["image", "grid", "fullcontent", "fullpage", "markdown", "figure"].includes(type)) {
       globalElementCounter++;
     }
 
     switch (type) {
       case "image":
-        let outputImage = `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" id="figure-${globalElementCounter}" class="figure image${classAttr}"${styleAttr}>
+        let outputImage = `<figure data-id="${elementId}" data-src="${config.src}" data-type="${type}" id="${elementId}" class="figure image${classAttr}"${styleAttr}>
           <img src="${config.src}" alt="${cleanAlt}" >`;
         
         if (captionHTML) {
@@ -91,16 +108,26 @@ function generateStyles(config) {
         return outputImage;
 
       case "grid":
-        let output = `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" data-grid="image" class="${classAttr}" id="figure-${globalElementCounter}"${styleAttr}>
+        let output = `<figure data-id="${elementId}" data-src="${config.src}" data-type="${type}" data-grid="image" class="${classAttr}" id="${elementId}"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}" >
       </figure>`;
         if (captionHTML) {
-          output += `<figcaption class="figcaption figcaption-${globalElementCounter}" ${styleAttr}>${captionHTML}</figcaption>`;
+          output += `<figcaption class="figcaption figcaption-${slugifiedSrc}" ${styleAttr}>${captionHTML}</figcaption>`;
         }
         return output;
 
+      case "fullcontent":
+        return `<figure data-id="${elementId}" data-src="${config.src}" data-grid="image" data-type="${type}" id="${elementId}" class="full-content ${classAttr}"${styleAttr}>
+        <img src="${config.src}" alt="${cleanAlt}">
+      </figure>`;
+
+      case "fullpage":
+        return `<figure data-id="${elementId}" data-src="${config.src}" data-grid="image" data-type="${type}" id="${elementId}" class="full-page ${classAttr}"${styleAttr}>
+        <img src="${config.src}" alt="${cleanAlt}">
+      </figure>`;
+
       case "figure":
-        let outputFigure = `<figure data-id="${id}" data-src="${config.src}" data-type="${type}" data-grid="image" id="figure-${globalElementCounter}" class="figure ${classAttr}"${styleAttr}>
+        let outputFigure = `<figure data-id="${elementId}" data-src="${config.src}" data-type="${type}" data-grid="image" id="${elementId}" class="figure ${classAttr}"${styleAttr}>
           <img src="${config.src}" alt="${cleanAlt}" >`;
         
         if (captionHTML) {
@@ -113,7 +140,7 @@ function generateStyles(config) {
       case "imagenote":
         return `<span class="imagenote sideNote${classAttr}" data-src="${config.src}" data-grid="image"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}" >
-        ${captionHTML ? `<span class="caption">${captionHTML}</span>` : null}
+        ${captionHTML ? `<span class="caption">${captionHTML}</span>` : ""}
       </span>`;
 
       case "video":
@@ -125,7 +152,7 @@ function generateStyles(config) {
         ${
           captionHTML
             ? `<figcaption class="figcaption">${captionHTML}</figcaption>`
-            : null
+            : ""
         }
       </figure>`;
 
@@ -177,14 +204,13 @@ function generateStyles(config) {
           const classAttr = parsedOptions.class
             ? ` class="${parsedOptions.class}"`
             : "";
-          const idAttr = parsedOptions.id
-            ? ` id="${parsedOptions.id}"`
-            : ` id="markdown-${globalElementCounter}"`;
+          const slugifiedFile = slugify(cleanFile);
+          const elementId = parsedOptions.id || slugifiedFile;
 
           const renderedContent = cleanFile.endsWith(".md")
             ? md.render(content)
             : content;
-          return `<div data-grid="markdown" data-type="markdown" data-md="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
+          return `<div data-grid="markdown" data-type="markdown" data-md="${cleanFile}" id="${elementId}"${classAttr}${styleAttr}>${renderedContent}</div>`;
         } catch (error) {
           console.error(`Erreur inclusion ${cleanFile}:`, error.message);
           return `<div class="include error">❌ Erreur: ${cleanFile} non trouvé</div>`;
@@ -249,15 +275,14 @@ function generateStyles(config) {
 
         const styleAttr = generateStyles(options);
         const classAttr = options.class ? ` class="${options.class}"` : "";
-        const idAttr = options.id
-          ? ` id="${options.id}"`
-          : ` id="markdown-${globalElementCounter}"`;
+        const slugifiedFile = slugify(cleanFile);
+        const elementId = options.id || slugifiedFile;
 
         const renderedContent = cleanFile.endsWith(".md")
           ? md.render(content)
           : content;
 
-        return `<div data-grid="markdown" data-type="markdown" data-md="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
+        return `<div data-grid="markdown" data-type="markdown" data-src="${cleanFile}" id="${elementId}"${classAttr}${styleAttr}>${renderedContent}</div>`;
       } catch (error) {
         console.error(`Erreur inclusion ${cleanFile}:`, error.message);
         return `<div class="include error">❌ Erreur: ${cleanFile} non trouvé</div>`;
@@ -266,3 +291,7 @@ function generateStyles(config) {
   );
 
 };
+
+
+
+

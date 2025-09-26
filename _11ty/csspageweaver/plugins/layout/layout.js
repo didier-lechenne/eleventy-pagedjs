@@ -666,13 +666,13 @@ class ResizeManager {
 
 // Générateur de code
 
+// Générateur de code complet
 class CodeGenerator {
   
   constructor() {
     this.turndownService = this.setupTurndown();
     this.templates = null;
     this.loadTemplates();
-    // console.log('📝 CodeGenerator créé');
   }
 
   async loadTemplates() {
@@ -705,28 +705,27 @@ class CodeGenerator {
     return turndown;
   }
 
-generateCode(element, shouldCopy = false) {
-  if (!element) return "";
+  generateCode(element, shouldCopy = false) {
+    if (!element) return "";
 
-  const type = element.dataset.grid;
-  let code = "";
+    const type = element.dataset.grid;
+    let code = "";
 
-  switch (type) {
-    case "markdown":
-      code = this.generateMarkdownCode(element);
-      break;
-    case "image":
-      code = this.generateImageCode(element);
-      break;
-    // Supprimez le default case
+    switch (type) {
+      case "markdown":
+        code = this.generateMarkdownCode(element);
+        break;
+      case "image":
+        code = this.generateImageCode(element);
+        break;
+    }
+
+    if (shouldCopy) {
+      this.copyToClipboard(code);
+    }
+
+    return code;
   }
-
-  if (shouldCopy) {
-    this.copyToClipboard(code);
-  }
-
-  return code;
-}
 
   generateMarkdownCode(element) {
     const template = this.templates?.formats?.[this.templates.defaultFormat]?.markdown;
@@ -738,41 +737,31 @@ generateCode(element, shouldCopy = false) {
     return this.applyTemplate(template, element, 'image');
   }
 
+  applyTemplate(template, element, type) {
+    const img = element.querySelector("img");
 
-
-applyTemplate(template, element, type) {
-  const img = element.querySelector("img");
-
-  const dataSrc = element.getAttribute('data-src') || "";
-  const url = dataSrc;  // pour images
-  const path = dataSrc; // pour markdown
-
-  const caption = this.getCaption(element);
-  const classes = this.getCleanClasses(element);
-  const properties = this.buildPropertiesObject(element);
-  
-  const mapping = this.templates?.propertyMappings?.[this.templates.defaultFormat];
-  if (!mapping) return template;
-  
-  const inlineProperties = this.formatInline(properties, mapping);
-  
-return template
-  .replace('{url}', url)
-  .replace('{path}', path)
-  .replace('{caption}', caption)
-  .replace('{classes}', classes)
-  .replace('{inlineProperties}', inlineProperties);
-}
-
-  // formatForTemplate(properties, mapping) {
-  //   if (!properties || Object.keys(properties).length === 0) return "{}";
+    const dataSrc = element.getAttribute('data-src') || "";
+    const dataMd = element.getAttribute('data-md') || ""; // Pour fichiers markdown
     
-  //   const entries = Object.entries(properties).map(([key, value]) => 
-  //     mapping.format.replace('{key}', key).replace('{value}', value)
-  //   );
+    const url = dataSrc;  // pour images
+    const path = dataMd || dataSrc; // pour markdown: priorité à data-md
+
+    const caption = this.getCaption(element);
+    const classes = this.getCleanClasses(element);
+    const properties = this.buildPropertiesObject(element);
     
-  //   return `{\n${entries.join(mapping.separator)}\n}`;
-  // }
+    const mapping = this.templates?.propertyMappings?.[this.templates.defaultFormat];
+    if (!mapping) return template;
+    
+    const inlineProperties = this.formatInline(properties, mapping);
+    
+    return template
+      .replace('{url}', url)
+      .replace('{path}', path)
+      .replace('{caption}', caption)
+      .replace('{classes}', classes)
+      .replace('{inlineProperties}', inlineProperties);
+  }
 
   formatInline(properties, mapping) {
     if (!properties || Object.keys(properties).length === 0) return "";
@@ -798,6 +787,7 @@ return template
 
     const properties = {};
 
+    // Récupération des propriétés CSS
     Object.entries(cssVarMapping).forEach(([key, cssVar]) => {
       const value = element.style.getPropertyValue(cssVar);
       if (value && value.trim()) {
@@ -809,10 +799,17 @@ return template
       }
     });
 
-      const caption = this.getCaption(element);
-      if (caption && caption.trim()) {
-        properties.caption = `"${caption.replace(/"/g, '\\"')}"`;
-      }
+    // Récupération des classes CSS
+    const classes = this.getCleanClasses(element);
+    if (classes && classes.trim()) {
+      properties.class = `"${classes.trim()}"`;
+    }
+
+    // Récupération de la caption
+    const caption = this.getCaption(element);
+    if (caption && caption.trim()) {
+      properties.caption = `"${caption.replace(/"/g, '\\"')}"`;
+    }
 
     return properties;
   }
@@ -829,13 +826,19 @@ return template
 
   getCleanClasses(element) {
     const exclude = ["selected", "hover", "cursor", "resizable", "resizing"];
-    return Array.from(element.classList)
+    
+    // Classes de l'élément principal
+    const mainClasses = Array.from(element.classList)
       .filter((cls) => !exclude.includes(cls))
       .join(" ")
       .trim();
+
+    // Pour les éléments markdown (div avec data-grid="markdown"), 
+    // les classes sont déjà sur l'élément div généré par le shortcode grid
+    return mainClasses;
   }
 
-  getRelativePath(img) { // Prend img directement
+  getRelativePath(img) {
     if (!img) return "";
     
     const url = img.getAttribute('data-src') || img.src;
@@ -886,38 +889,53 @@ return template
     return str.replace(/"/g, '\\"');
   }
 
-
-
-async copyToClipboard(text) {
-  try {
-    // Vérifier si l'API clipboard est disponible et le document focalisé
-    if (navigator.clipboard && document.hasFocus()) {
-      await navigator.clipboard.writeText(text);
-      // console.log('📋 Code copié dans le presse-papier:', text.length, 'caractères');
-    } else {
-      // Utiliser la méthode fallback si pas de focus
-      throw new Error('API clipboard non disponible ou document non focalisé');
-    }
-
-    // Afficher l'indicateur de copie réussie
-    const copyElement = document.querySelector(".copy");
-    if (copyElement) {
-      copyElement.classList.add("copied");
-      setTimeout(() => copyElement.classList.remove("copied"), 1000);
-    }
-
-    return true;
-  } catch (err) {
-    console.warn("⚠️ API clipboard échouée, méthode alternative");
-    
-    // Méthode fallback avec execCommand
+  async copyToClipboard(text) {
     try {
-      const input = document.querySelector("#showCode");
-      if (input) {
-        input.value = text;
-        input.select();
-        input.setSelectionRange(0, 99999); // Pour mobile
+      if (navigator.clipboard && document.hasFocus()) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        throw new Error('API clipboard non disponible ou document non focalisé');
+      }
+
+      const copyElement = document.querySelector(".copy");
+      if (copyElement) {
+        copyElement.classList.add("copied");
+        setTimeout(() => copyElement.classList.remove("copied"), 1000);
+      }
+
+      return true;
+    } catch (err) {
+      console.warn("⚠️ API clipboard échouée, méthode alternative");
+      
+      try {
+        const input = document.querySelector("#showCode");
+        if (input) {
+          input.value = text;
+          input.select();
+          input.setSelectionRange(0, 99999);
+          const success = document.execCommand("copy");
+          
+          if (success) {
+            const copyElement = document.querySelector(".copy");
+            if (copyElement) {
+              copyElement.classList.add("copied");
+              setTimeout(() => copyElement.classList.remove("copied"), 1000);
+            }
+            return true;
+          }
+        }
+        
+        const tempElement = document.createElement("textarea");
+        tempElement.value = text;
+        tempElement.style.position = "fixed";
+        tempElement.style.left = "-999999px";
+        tempElement.style.top = "-999999px";
+        document.body.appendChild(tempElement);
+        tempElement.focus();
+        tempElement.select();
+        
         const success = document.execCommand("copy");
+        document.body.removeChild(tempElement);
         
         if (success) {
           const copyElement = document.querySelector(".copy");
@@ -925,53 +943,30 @@ async copyToClipboard(text) {
             copyElement.classList.add("copied");
             setTimeout(() => copyElement.classList.remove("copied"), 1000);
           }
-          return true;
         }
-      }
-      
-      // Si tout échoue, créer un élément temporaire
-      const tempElement = document.createElement("textarea");
-      tempElement.value = text;
-      tempElement.style.position = "fixed";
-      tempElement.style.left = "-999999px";
-      tempElement.style.top = "-999999px";
-      document.body.appendChild(tempElement);
-      tempElement.focus();
-      tempElement.select();
-      
-      const success = document.execCommand("copy");
-      document.body.removeChild(tempElement);
-      
-      if (success) {
+        
+        return success;
+      } catch (fallbackErr) {
+        console.error("❌ Toutes les méthodes de copie ont échoué:", fallbackErr);
+        
         const copyElement = document.querySelector(".copy");
         if (copyElement) {
-          copyElement.classList.add("copied");
-          setTimeout(() => copyElement.classList.remove("copied"), 1000);
+          copyElement.textContent = "Échec copie";
+          copyElement.classList.add("error");
+          setTimeout(() => {
+            copyElement.textContent = "Copier";
+            copyElement.classList.remove("error");
+          }, 2000);
         }
+        
+        return false;
       }
-      
-      return success;
-    } catch (fallbackErr) {
-      console.error("❌ Toutes les méthodes de copie ont échoué:", fallbackErr);
-      
-      // Notification à l'utilisateur en dernier recours
-      const copyElement = document.querySelector(".copy");
-      if (copyElement) {
-        copyElement.textContent = "Échec copie";
-        copyElement.classList.add("error");
-        setTimeout(() => {
-          copyElement.textContent = "Copier";
-          copyElement.classList.remove("error");
-        }, 2000);
-      }
-      
-      return false;
     }
   }
 }
 
 
-}
+
 
 // Classe principale Layout 
 export default class Layout extends Handler {

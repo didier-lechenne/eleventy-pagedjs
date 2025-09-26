@@ -1,5 +1,5 @@
 import { Handler } from "../../../lib/paged.esm.js";
-import * as csstree from '../../../lib/csstree.min.js';
+
 
 export default class pageMove extends Handler {
     constructor(chunker, polisher, caller) {
@@ -145,7 +145,9 @@ export default class pageMove extends Handler {
             // Forcer l'attribution du folio
             newPage.element.setAttribute('data-page-number', targetedPage);
             newPage.element.id = `page-${targetedPage}`;
-            // console.log(`Folio ${targetedPage} assigné`);
+            
+            // ✅ Appliquer le gabarit @page modularGrid
+            newPage.element.style.page = 'modularGrid';
             
             // Activer les marges pour les folios
             this.enablePageMargins(newPage.element);

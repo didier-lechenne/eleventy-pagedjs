@@ -43,7 +43,7 @@ export default class fullContent extends Handler {
   }
 
   afterParsed(parsed) {
-    console.log("FULL CONTENT loaded");
+    // console.log("FULL CONTENT loaded");
 
     // ADD pagedjs classes to elements from CSS rules only
     for (let item of this.selectorFullPage) {

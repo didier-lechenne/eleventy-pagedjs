@@ -15,7 +15,8 @@
   ) !important;
   top: calc(var(--fullcontent-margin-top) - var(--pagedjs-margin-top));
   left: calc(-1 * var(--pagedjs-margin-left) + var(--fullcontent-margin-left));
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow: visible;
   position: absolute;
 }
 
@@ -31,7 +32,8 @@
   );
   top: calc(var(--fullcontent-margin-top) - var(--pagedjs-margin-top));
   position: absolute;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow: visible;
 }
 
 /* Positionnement du contenu spread */
@@ -100,7 +102,7 @@
 }
 
 /* Styles pour figures et images */
-.pagedjs_full-content_content figure{
+.pagedjs_full-content_content figure {
   margin: 0;
   padding: 0;
   width: 100%;

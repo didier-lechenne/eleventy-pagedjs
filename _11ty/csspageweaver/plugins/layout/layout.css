@@ -199,6 +199,7 @@
   }
 
   @page modularGrid {
+    margin: 10mm;
   }
 
   [data-template="modularGrid"],
@@ -206,7 +207,6 @@
     page: modularGrid;
 
     page-break-before: always;
-    page-break-after: always;
 
     --g-column-count: var(--grid-col, 12);
     --g-column-gutter: var(--grid-col-gutter, 0mm);
@@ -236,7 +236,7 @@
   /* === ÉLÉMENTS DATA-GRID GÉNÉRIQUES === */
 
   .modularGrid [data-grid] {
-    grid-column: var(--print-col, auto) / span var(--print-width, 3);
+    grid-column: var(--print-col, auto) / span var(--print-width, 12);
     grid-row: var(--print-row, auto) / span var(--print-height, 3);
     position: relative;
     margin: 0;
@@ -263,7 +263,7 @@
   .modularGrid .insert h3,
   .modularGrid .insert h4,
   .modularGrid .insert div,
-  .modularGrid .insert p,
+  .modularGrid  p,
   .modularGrid .insert blockquote {
     align-self: var(--align-self, start);
     flex-grow: 1;
@@ -277,7 +277,7 @@
   .modularGrid [data-grid="content"] p,
   .modularGrid .insert p {
     margin-top: 0em;
-    margin-bottom: 0em;
+    /* margin-bottom: 0em; */
   }
 
   [data-template="modularGrid"] [data-grid="content"] p:last-child,
@@ -293,6 +293,7 @@
     align-self: var(--align-self, start);
     margin: 0;
     padding: 0;
+
   }
 
   /* === ÉLÉMENTS D'IMAGES === */
@@ -301,8 +302,8 @@
   [data-template="modularGrid"] figure,
   .modularGrid [data-grid="image"],
   .modularGrid figure {
-    grid-column: var(--print-col, auto) / span var(--print-width, 3);
-    grid-row: var(--print-row, auto) / span var(--print-height, 1);
+    grid-column: var(--print-col, auto) / span var(--print-width, 12);
+    grid-row: var(--print-row, auto) / span var(--print-height, 3);
     align-self: var(--align-self, start);
     overflow: hidden;
     position: relative;

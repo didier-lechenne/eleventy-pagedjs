@@ -1,0 +1,1 @@
+↑ Aménagement domestique de la cuisine moderne proposé par Catharine Beecher, privilégiant les systèmes de rangement et les plans de travail, *The American Woman’s Home : or Principles of Domestic Science*, Ford and Company, 1869, p34.

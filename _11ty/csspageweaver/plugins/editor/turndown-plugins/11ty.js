@@ -102,7 +102,7 @@ export function _11tyPlugin(turndownService) {
       const params = extractAllParams(node, caption);
       const optionsStr = formatParams(params);
       
-      return `{% image "${cleanSrc}"${optionsStr} %}\n\n`;
+      return `\n\n{% image "${cleanSrc}"${optionsStr} %}\n\n`;
     }
   });
 
@@ -126,7 +126,7 @@ export function _11tyPlugin(turndownService) {
       const params = extractAllParams(node, caption);
       const optionsStr = formatParams(params);
       
-      return `{% grid "${cleanSrc}"${optionsStr} %}\n\n`;
+      return `\n\n{% grid "${cleanSrc}"${optionsStr} %}\n\n`;
     }
   });
 
@@ -144,7 +144,7 @@ export function _11tyPlugin(turndownService) {
       const params = extractAllParams(node);
       const optionsStr = formatParams(params);
       
-      return `{% fullpage "${cleanSrc}"${optionsStr} %}\n\n`;
+      return `\n\n{% fullpage "${cleanSrc}"${optionsStr} %}\n\n`;
     }
   });
 
@@ -165,7 +165,7 @@ export function _11tyPlugin(turndownService) {
       const params = extractAllParams(node, caption);
       const optionsStr = formatParams(params);
       
-      return `{% figure "${cleanSrc}"${optionsStr} %}\n\n`;
+      return `\n\n{% figure "${cleanSrc}"${optionsStr} %}\n\n`;
     }
   });
 
@@ -193,7 +193,7 @@ export function _11tyPlugin(turndownService) {
       
       const optionsStr = formatParams(params);
       
-      return `{% video "${cleanSrc}"${optionsStr} %}\n\n`;
+      return `\n\n{% video "${cleanSrc}"${optionsStr} %}\n\n`;
     }
   });
 
@@ -230,7 +230,7 @@ export function _11tyPlugin(turndownService) {
       const params = extractAllParams(node);
       const optionsStr = formatParams(params);
       
-      return `{% markdown "${src}"${optionsStr} %}\n\n`;
+      return `\n\n{% markdown "${src}"${optionsStr} %}\n\n`;
     }
   });
 

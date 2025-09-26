@@ -97,14 +97,11 @@ body.interface-preview figcaption sup,
 body.interface-preview figcaption br,
 body.interface-preview .paged-editor-active .paged-editor-content,
 body.interface-preview .paged-editor-active .paged-editor-content:focus,
-body.interface-preview .paged-editor-toolbar,
-body.interface-preview [style*="--ls"],
-body.interface-preview .letterspacing-input {
+body.interface-preview .paged-editor-toolbar {
   background-color: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
   transition: none !important;
-  /* Les inputs letter-spacing sont complètement cachés en mode preview */
   visibility: hidden !important;
 }
 
