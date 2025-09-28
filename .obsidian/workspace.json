@@ -11,10 +11,14 @@
             "id": "8d3083b4ce111541",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "valentine/fullcontent.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Nouvel onglet"
+              "title": "fullcontent"
             }
           }
         ]
@@ -178,16 +182,6 @@
             }
           },
           {
-            "id": "d3189af0e915f8a2",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
-          },
-          {
             "id": "69e51b0e2de3c9cf",
             "type": "leaf",
             "state": {
@@ -210,7 +204,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -241,18 +235,32 @@
   },
   "active": "8d3083b4ce111541",
   "lastOpenFiles": [
-    "_11ty/csspageweaver/plugins/fullContent/fullContent.js",
-    "_11ty/csspageweaver/plugins/fullContent/fullContent.css",
-    "valentine/41.intro-figure.md",
+    "_site/csspageweaver/plugins/editor/actions/reset.js",
+    "_site/csspageweaver/plugins/editor/actions/exportMd.js",
+    "valentine/columnGrid.md",
+    "valentine/80.bijoux.md",
+    "valentine/fullcontent.md",
+    "valentine/page-de-test.md",
+    "_site/images/Excerpt from Mother of All Demos (1968).ogg",
+    "_site/images/domestique.png",
+    "_site/images/alternative1.jpg",
+    "_site/images/alternative_crasset.png",
+    "_site/images/velo3.jpg",
+    "_site/images/velo2.jpg",
+    "_site/images/reparer1.png",
+    "_site/images/lowtech2.png",
+    "_site/images/alternative2.jpg",
+    "_site/images/intro_domestique.png",
+    "_site/images/intro0.png",
+    "README.md",
+    "_11ty/csspageweaver/plugins/modularGrid/modularGrid.js",
     "_site/index.html",
     "_site/print.html",
-    "_site/assets/css/print/fonts/IBM-plex-sans/license.txt",
-    "_site/assets/css/print/fonts/IBM-plex-sans/index.css",
-    "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-ThinItalic.woff2",
-    "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-Thin.woff2",
-    "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-TextItalic.woff2",
-    "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-Text.woff2",
-    "_site/assets/css/print/fonts/IBM-plex-sans/IBMPlexSans-SemiBoldItalic.woff2",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff2",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
@@ -260,32 +268,18 @@
     "_site/csspageweaver/plugins/layout/README.md",
     "_site/csspageweaver/plugins/inlineNotes/README.md",
     "_site/csspageweaver/plugins/fullPage/README.md",
-    "_site/csspageweaver/plugins/footnotesFix/README.md",
+    "_site/csspageweaver/plugins/floatPage/README.md",
     "_site/csspageweaver/plugins/fullContent/README.md",
-    "_site/csspageweaver/plugins/editor/README.md",
+    "_site/csspageweaver/plugins/footnotesFix/README.md",
     "_site/csspageweaver/plugins/editor/README-DEV-TURNDOWN.md",
     "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
+    "_site/csspageweaver/plugins/editor/README.md",
     "_site/csspageweaver/plugins/baseline/README.md",
     "_site/csspageweaver/README.md",
-    "_site/images/velo4.jpg",
-    "_site/images/intro_domestique.png",
-    "_site/images/velo.jpg",
-    "_site/images/velo3.jpg",
-    "_site/images/velo2.jpg",
-    "_site/images/intro0.png",
-    "_site/images/tomeIII-candle_dithered.png",
-    "_site/images/reparer1.png",
-    "_site/images/siege.jpg",
-    "_site/images/rebar-foundation-wind-turbine_dithered.png",
+    "_11ty/csspageweaver/plugins/modularGrid/README.md",
+    "valentine/20.faux_titre.md",
+    "valentine/41.intro-figure.md",
     "valentine/40.introduction.md",
-    "valentine/30.sommaire.md",
-    "valentine/111.domotique-image.md",
-    "valentine/110.domotique.md",
-    "valentine/100.domestique.md",
-    "valentine/90.commun.md",
-    "valentine/80.bijoux.md",
-    "valentine/71.alternative-figure.md",
-    "valentine/page-de-test.md",
-    "_11ty/csspageweaver/plugins/reloadInPlace/Readme.md"
+    "valentine/30.sommaire.md"
   ]
 }
