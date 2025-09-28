@@ -250,7 +250,7 @@ sup {
   --pagedjs-full-page: spread;
 }
 
-.floatpage-next{
+.floatpage-next-page{
 	--pagedjs-float-page: next-page;
 }
 
@@ -263,3 +263,17 @@ sup {
   margin-bottom: 0 !important;
 }
 
+
+.text-left{
+text-align: left;
+}
+
+.text-right,
+.text-right > * {
+    text-align: right;
+}
+
+
+.text-center{
+    text-align: center;
+}
