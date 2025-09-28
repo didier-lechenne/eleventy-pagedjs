@@ -1,7 +1,6 @@
 /**
  * @name Full page
  * @author Julie Blanc <contact@julie-blanc.fr>
- * @author Didier Lechenne <didier@lechenne.fr>
  * @see { @link https://gitlab.com/csspageweaver/plugins/fullPage }
  */
 import { Handler } from "../../../lib/paged.esm.js";
@@ -46,7 +45,7 @@ export default class fullPage extends Handler {
   }
 
   afterParsed(parsed) {
-    console.log("FULL PAGE loaded");
+    // console.log("FULL PAGE loaded");
 
     // ADD pagedjs classes to elements
     for (let item of this.selectorFullPage) {
@@ -75,38 +74,25 @@ export default class fullPage extends Handler {
     }
 
     // SPECIFIC PAGE ------------------------------------
-    this.specificPage.forEach((entry) => {
-      const obj = JSON.parse(entry);
-      const elements = parsed.querySelectorAll(obj.elem);
-      if (elements.length > 0) {
-        // pourquoi c’est ajouté même si l’élément n’existe pas ?
-        elements[0].classList.add("pagedjs_full-page-specific");
-        const clone = elements[0].cloneNode(true);
-        obj.elemClone = clone.outerHTML;
-        elements[0].remove();
-      }
-      this.specificPageClone.add(JSON.stringify(obj));
-    });
+this.specificPage.forEach(entry => {
+  const obj = JSON.parse(entry);
+  const elements = parsed.querySelectorAll(obj.elem);
+  if (elements.length > 0) {
+    elements[0].classList.add("pagedjs_full-page-specific");
+    const clone = elements[0].cloneNode(true);
+    
+    // Créer un nouvel objet avec elemClone
+    const newObj = {
+      page: obj.page,
+      elem: obj.elem,
+      elemClone: clone.outerHTML
+    };
+    
+    elements[0].remove();
+    this.specificPageClone.add(JSON.stringify(newObj)); // ← Sauvegarder le nouvel objet
+  }
+});
 
-    // Ajouter dans fullPage.js après le code existant dans afterParsed
-    const inlineElements = parsed.querySelectorAll(
-      '[style*="--pagedjs-full-page"]'
-    );
-    inlineElements.forEach((element) => {
-      const style = element.getAttribute("style");
-      const match = style.match(/--pagedjs-full-page:\s*([^;]+)/);
-
-      if (match && match[1].match(/^\d+$/)) {
-        element.classList.add("pagedjs_full-page-specific");
-        const obj = { page: match[1].trim(), elem: "#" + element.id };
-        this.specificPage.add(JSON.stringify(obj));
-
-        const clone = element.cloneNode(true);
-        obj.elemClone = clone.outerHTML;
-        element.remove();
-        this.specificPageClone.add(JSON.stringify(obj));
-      }
-    });
   }
 
   renderNode(clone, node) {
@@ -289,18 +275,16 @@ export default class fullPage extends Handler {
       let elem = obj.elemClone;
 
       if (targetedPage == 1 && pageNum == 1) {
+        // Utiliser la page 1 existante au lieu de créer une nouvelle page
         let container = document.createElement("div");
         container.classList.add("pagedjs_full-page_content");
-        container.classList.add("cover");
         container.innerHTML = elem;
 
-        // Utiliser la page actuelle (page 1) au lieu de créer une nouvelle page
         pageElement
-          .querySelector("section")
+          .querySelector(".pagedjs_page_content")
           .insertAdjacentElement("afterbegin", container);
         pageElement.classList.add("pagedjs_page_fullPage");
       } else if (prevPage == pageNum) {
-        // Garder la logique originale pour les autres pages
         let container = document.createElement("div");
         container.classList.add("pagedjs_full-page_content");
         container.innerHTML = elem;

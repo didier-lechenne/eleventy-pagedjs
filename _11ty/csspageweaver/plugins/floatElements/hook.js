@@ -6,7 +6,7 @@
  */
 
 import { Handler } from "../../../lib/paged.esm.js";
-import * as csstree from '../../../lib/csstree.min.js';
+
 
 export class floatElems extends Handler {
   constructor(chunker, polisher, caller) {

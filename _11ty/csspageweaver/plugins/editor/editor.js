@@ -1,7 +1,7 @@
 /**
  * @name Editor
- * @file Plugin éditeur Medium-like pour PagedJS avec formatage français
- * @author Editor Plugin
+ * @file Plugin éditeur de la microtypographie (Medium-like) pour PagedJS
+ * @author didier@lechenne.fr
  */
 import { Handler } from "../../../lib/paged.esm.js";
 import { Toolbar } from "./toolbar.js";

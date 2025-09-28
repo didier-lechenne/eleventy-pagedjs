@@ -20,9 +20,9 @@ export function spacesPlugin(turndownService) {
     replacement: function (content, node) {
       // Si c'est un breakpage, ne pas ajouter de \n
       if (node.className.includes('breakpage')) {
-        return '<breakpage>';
+        return '<breakpage />';
       }
-      return "  <br>\n";
+      return "  <br />\n";
     },
   });
 

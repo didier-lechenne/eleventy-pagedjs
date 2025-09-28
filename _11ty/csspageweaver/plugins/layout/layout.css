@@ -1,4 +1,4 @@
-@media screen {
+
   .layout .ui-layout {
     display: block;
   }
@@ -9,7 +9,6 @@
 
   /* === ÉLÉMENTS DATA-GRID === */
 
-  /* Sélecteur unifié pour tous les éléments data-grid */
   .modularGrid [data-grid] {
     position: relative;
   }
@@ -22,15 +21,15 @@
 
   /* Couleurs par type d'élément */
   .modularGrid [data-grid="content"].resizable {
-    outline-color: #ff6600 !important;
+    /* outline-color: #ff6600 !important; */
   }
 
   .modularGrid [data-grid="image"].resizable {
-    outline-color: #00cc66 !important;
+    /* outline-color: #00cc66 !important; */
   }
 
   .modularGrid [data-grid="insert"].resizable {
-    outline-color: #9966cc !important;
+    /* outline-color: #9966cc !important; */
   }
 
   .element-info {
@@ -193,6 +192,24 @@
     margin-bottom: 0ch !important;
   }
 
+ 
+  .ui-layout:has(#position[data-shortcode="markdown"]) #gridStudio-image {
+    display: none;
+  }
+
+  .ui-layout:has(#position[data-shortcode="image"]) #gridStudio-image {
+    display: flex;
+  }
+
+
+  .ui-layout:has(#position[data-shortcode="image"]) #gridStudio-valign {
+    display: none;
+  }
+
+   .ui-layout:has(#position[data-shortcode="markdown"])#gridStudio-valign {
+    display: flex;
+  }
+
   /* === AFFICHAGE DE L'INDICATEUR AU SURVOL === */
 
   body.layout .modularGrid [data-grid].resizable:hover::after {
@@ -200,6 +217,7 @@
   }
 
   @page modularGrid {
+    margin: 10mm;
   }
 
   [data-template="modularGrid"],
@@ -207,7 +225,6 @@
     page: modularGrid;
 
     page-break-before: always;
-    page-break-after: always;
 
     --g-column-count: var(--grid-col, 12);
     --g-column-gutter: var(--grid-col-gutter, 0mm);
@@ -237,16 +254,26 @@
   /* === ÉLÉMENTS DATA-GRID GÉNÉRIQUES === */
 
   .modularGrid [data-grid] {
-    grid-column: var(--print-col, auto) / span var(--print-width, 3);
+    grid-column: var(--print-col, auto) / span var(--print-width, 12);
     grid-row: var(--print-row, auto) / span var(--print-height, 3);
     position: relative;
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
     width: 100%;
     height: 100%;
     display: flex;
+    justify-content: var(--align-self, flex-start);
     max-width: unset;
+    flex-direction: column;
   }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+
 
   /* === ÉLÉMENTS DE CONTENU === */
 
@@ -262,11 +289,9 @@
   .modularGrid .insert h3,
   .modularGrid .insert h4,
   .modularGrid .insert div,
-  .modularGrid .insert p,
+  .modularGrid  p,
   .modularGrid .insert blockquote {
-    align-self: var(--align-self, start);
-    flex-grow: 1;
-    margin: 0;
+    width: 100% ;
     padding: 0;
     overflow: hidden;
   }
@@ -276,7 +301,7 @@
   .modularGrid [data-grid="content"] p,
   .modularGrid .insert p {
     margin-top: 0em;
-    margin-bottom: 0em;
+    /* margin-bottom: 0em; */
   }
 
   [data-template="modularGrid"] [data-grid="content"] p:last-child,
@@ -289,9 +314,9 @@
   /* === ÉLÉMENTS MARKDOWN === */
 
   .modularGrid [data-grid="markdown"] > * {
-    align-self: var(--align-self, start);
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
+
   }
 
   /* === ÉLÉMENTS D'IMAGES === */
@@ -300,8 +325,8 @@
   [data-template="modularGrid"] figure,
   .modularGrid [data-grid="image"],
   .modularGrid figure {
-    grid-column: var(--print-col, auto) / span var(--print-width, 3);
-    grid-row: var(--print-row, auto) / span var(--print-height, 1);
+    grid-column: var(--print-col, auto) / span var(--print-width, 12);
+    grid-row: var(--print-row, auto) / span var(--print-height, 3);
     align-self: var(--align-self, start);
     overflow: hidden;
     position: relative;
@@ -349,7 +374,7 @@
 
   /* === CLASSES SPÉCIFIQUES === */
 
-  /* Figure mobile (legacy) */
+  
   .modularGrid .figmove {
     position: absolute;
     z-index: 10;
@@ -375,4 +400,4 @@
     width: auto;
     height: auto;
   }
-}
+

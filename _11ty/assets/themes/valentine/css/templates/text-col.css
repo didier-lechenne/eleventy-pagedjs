@@ -53,7 +53,8 @@
   font-weight: normal;
   text-align: center;
 
-  margin-bottom: 1ch;
+ 	margin: 0;
+  padding: 0;
 
   /* supprime le folio et ajoute un saut de page*/
   /* page: clean; */

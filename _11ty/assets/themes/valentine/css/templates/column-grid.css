@@ -1,18 +1,16 @@
 @page columnGrid {
-  page-break-before: always;
-  page-break-after: always;
+
 }
 
 [data-template="columnGrid"] {
 	page: columnGrid;
   page-break-before: always;
-  page-break-after: always;
+  /* page-break-after: always; */
 
 }
 
 [data-template="columnGrid"]  {
   --g-column-count: var(--grid-col, 12);
-
   display: grid;
   grid-template-columns: repeat(var(--g-column-count), 1fr);
   grid-gap: var(--gutter);
@@ -26,9 +24,12 @@
 	border: 0 !important;
 	height: 1px !important;
 	width: 1px !important;
-	padding: 0 !important;
 	overflow: hidden !important;
 	clip: rect(0, 0, 0, 0) !important;
+
+	margin: 0;
+    padding: 0;
+
 }
 
 [data-template="columnGrid"] .videofigure,

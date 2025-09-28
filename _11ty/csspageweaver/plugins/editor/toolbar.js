@@ -1,48 +1,57 @@
 import { PagedMarkdownRecovery } from "./recovery.js";
-import { TOOLBAR_CONFIG } from "./toolbar-config.js";
 import {
   UIFactory,
   ToolbarButton,
   ToolbarSelect,
+  ToolbarToggleSelect,
   validateToolbarConfiguration,
 } from "./ui-factory.js";
 import { ACTIONS_REGISTRY } from "./actions.js";
 
-
 export class Toolbar {
-  constructor(editor, customConfig = null) {
+  constructor(editor) {
     this.editor = editor;
-    this.config = customConfig || TOOLBAR_CONFIG;
+    this.config = { elements: [] }; // Config par défaut vide
 
-    // Validation de la configuration
-    const validationReport = validateToolbarConfiguration(this.config);
-    if (!validationReport.isValid) {
-      console.error(
-        "❌ Configuration de toolbar invalide:",
-        validationReport.errors
-      );
-    }
-
-    // État de la toolbar
     this.element = null;
     this.isVisible = false;
-
-    // Maps pour stocker les éléments créés
     this.buttons = new Map();
     this.selects = new Map();
-
-    // Recovery pour les actions d'export
     this.recovery = new PagedMarkdownRecovery();
 
-    // Initialisation
     this.setupTurndown();
+    this.loadPlugins().then(() => {
+      this.validateAndInit();
+    });
+  }
+
+  async loadPlugins() {
+    await ACTIONS_REGISTRY.loadPlugins();
+    
+    // Charger config externe si elle existe
+    try {
+      const response = await fetch('csspageweaver/plugins/editor/actions/toolbar.json');
+      const pluginConfig = await response.json();
+      if (pluginConfig.elements && pluginConfig.elements.length > 0) {
+        this.config.elements = [...this.config.elements, ...pluginConfig.elements];
+      }
+    } catch (error) {
+      console.warn('Config plugin non trouvée, utilisation config par défaut');
+    }
+  }
+
+  validateAndInit() {
+    const validationReport = validateToolbarConfiguration(this.config);
+    if (!validationReport.isValid) {
+      console.error("❌ Configuration de toolbar invalide:", validationReport.errors);
+    }
+
     this.createToolbar();
   }
 
-  
   setupTurndown() {
-      this.turndown = this.recovery.turndownService;
-      window.mainTurndownService = this.turndown;
+    this.turndown = this.recovery.turndownService;
+    window.mainTurndownService = this.turndown;
   }
 
   /**
@@ -76,61 +85,61 @@ export class Toolbar {
   /**
    * Gestion des événements DOM
    */
-bindEvents() {
- // Empêcher la perte de sélection
- this.element.addEventListener("mousedown", (e) => {
-   if (!e.target.classList.contains("ls-input")) {
-     e.preventDefault();
-   }
- });
+  bindEvents() {
+    // Empêcher la perte de sélection
+    this.element.addEventListener("mousedown", (e) => {
+      if (!e.target.classList.contains("ls-input")) {
+        e.preventDefault();
+      }
+    });
 
- // Délégation d'événements unifiée
- this.element.addEventListener("click", (e) => {
-   // Input letter-spacing - ne rien faire sur click
-   if (e.target.classList.contains("ls-input")) {
-     e.stopPropagation();
-     return;
-   }
+    // Délégation d'événements unifiée
+    this.element.addEventListener("click", (e) => {
+      // Input letter-spacing - ne rien faire sur click
+      if (e.target.classList.contains("ls-input")) {
+        e.stopPropagation();
+        return;
+      }
 
-   // Gestion des options de dropdown
-   const option = e.target.closest(".custom-option");
-   if (option) {
-     this.handleCustomOptionClick(option);
-     return;
-   }
+      // Gestion des options de dropdown
+      const option = e.target.closest(".custom-option");
+      if (option) {
+        this.handleCustomOptionClick(option);
+        return;
+      }
 
-   // Gestion des triggers de dropdown
-   const trigger = e.target.closest(".select-trigger");
-   if (trigger) {
-     e.stopPropagation();
-     this.toggleCustomDropdown(trigger);
-     return;
-   }
+      // Gestion des triggers de dropdown
+      const trigger = e.target.closest(".select-trigger");
+      if (trigger) {
+        e.stopPropagation();
+        this.toggleCustomDropdown(trigger);
+        return;
+      }
 
-   // Gestion des boutons normaux
-   const button = e.target.closest("button[data-command]");
-   if (button) {
-     const command = button.dataset.command;
-     const buttonElement = this.buttons.get(command);
+      // Gestion des boutons normaux
+      const button = e.target.closest("button[data-command]");
+      if (button) {
+        const command = button.dataset.command;
+        const buttonElement = this.buttons.get(command);
 
-     if (buttonElement?.action) {
-       buttonElement.action();
-       this.updateButtonStates();
-     }
-   }
- });
+        if (buttonElement?.action) {
+          buttonElement.action();
+          this.updateButtonStates();
+        }
+      }
+    });
 
- // Event listener unique pour l'input letter-spacing
- this.element.addEventListener("input", (e) => {
-   if (e.target.classList.contains("ls-input")) {
-     e.stopPropagation();
-     
-     // Appliquer le letter-spacing immédiatement
-     this.editor.commands.toggleLetterSpacing();
-     this.updateButtonStates();
-   }
- });
-}
+    // Event listener unique pour l'input letter-spacing
+    this.element.addEventListener("input", (e) => {
+      if (e.target.classList.contains("ls-input")) {
+        e.stopPropagation();
+        
+        // Appliquer le letter-spacing immédiatement
+        this.editor.commands.toggleLetterSpacing();
+        this.updateButtonStates();
+      }
+    });
+  }
 
   /**
    * Gestion des dropdowns personnalisés
@@ -237,7 +246,6 @@ bindEvents() {
 
   /**
    * Mise à jour des états des boutons
-   * Délègue la logique métier aux actions via checkActive
    */
   updateButtonStates() {
     const selection = window.getSelection();
@@ -248,7 +256,7 @@ bindEvents() {
     const element =
       ancestor.nodeType === Node.TEXT_NODE ? ancestor.parentElement : ancestor;
 
-    // Utilise les fonctions checkActive définies dans actions.js
+    // Boutons normaux
     this.buttons.forEach((buttonElement, actionId) => {
       if (buttonElement.isToggle) {
         const isActive = buttonElement.updateActiveState(element);
@@ -258,13 +266,26 @@ bindEvents() {
         domButton?.classList.toggle("active", isActive);
       }
     });
+
+    // Toggle-selects  
+    this.selects.forEach((selectElement, actionId) => {
+      if (selectElement instanceof ToolbarToggleSelect) {
+        const activeStates = selectElement.updateActiveStates(element);
+        const wrapper = this.element.querySelector(`[data-command="${actionId}"]`);
+        
+        activeStates.forEach(state => {
+          const option = wrapper?.querySelector(`[data-value="${state.value}"]`);
+          option?.classList.toggle("active", state.isActive);
+        });
+      }
+    });
   }
 
   /**
    * Méthodes utilitaires pour l'extensibilité
    */
   getAction(actionId) {
-    return ACTIONS_REGISTRY[actionId] || null;
+    return ACTIONS_REGISTRY.get(actionId) || null;
   }
 
   addAction(actionId, position = -1) {

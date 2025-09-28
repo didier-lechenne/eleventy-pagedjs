@@ -11,12 +11,12 @@ figure.image {
 
 }
 
-figcaption::before {
+.figcaption:not([data-type="markdown"])::before {
   content: "↑ ";
 }
 
 
-figcaption {
+.figcaption {
   font-family: var(--labeur);
   font-size: var(--caption-size);
   line-height: var(--caption-line-height);
@@ -25,12 +25,12 @@ figcaption {
 }
 
 
-figcaption strong em,
-figcaption em strong {
+.figcaption strong em,
+.figcaption em strong {
   font-weight: var(--caption-bold-weight);
 }
 
-figure.videofigure::after {
+.figure.videofigure::after {
   display: block;
   content: "→ " attr(data-src);
   font-size: var(--caption-size);

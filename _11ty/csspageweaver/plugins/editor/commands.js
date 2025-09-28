@@ -23,30 +23,6 @@ export class Commands {
     return element;
   }
 
-  // ====== GESTION DU TEXTE ======
-
-  insertText(text) {
-    const selection = this.editor.selection.getCurrentSelection();
-    if (!selection?.isValid) return;
-
-    const range = selection.range;
-
-    // Créer un span avec timestamp et classe pour pouvoir annuler
-    const span = this.createElement("span", "editor-add");
-    span.textContent = text;
-
-    range.deleteContents();
-    range.insertNode(span);
-
-    // Positionner le curseur après l'insertion
-    range.setStartAfter(span);
-    range.setEndAfter(span);
-    selection.selection.removeAllRanges();
-    selection.selection.addRange(range);
-
-    this.triggerAutoCopy();
-  }
-
   // ====== FORMATAGE ======
 
   toggleFormatting(tagName) {
@@ -90,138 +66,6 @@ export class Commands {
     parent.removeChild(element);
   }
 
-  // ====== GESTION DES BALISES SPÉCIFIQUES ======
-
-  toggleSmallCaps() {
-    const selection = this.editor.selection.getCurrentSelection();
-    if (!selection?.isValid) return;
-
-    const range = selection.range;
-    const selectedText = range.toString();
-
-    if (selectedText.length === 0) return;
-
-    // Vérifier si déjà en petites capitales
-    let container = range.commonAncestorContainer;
-    if (container.nodeType === Node.TEXT_NODE) {
-      container = container.parentElement;
-    }
-
-    if (container.classList && container.classList.contains("small-caps")) {
-      // Supprimer les petites capitales
-      this.unwrapElement(container);
-    } else {
-      // Appliquer les petites capitales
-      const span = this.createElement("span", "small-caps");
-      try {
-        range.surroundContents(span);
-      } catch (e) {
-        span.textContent = selectedText;
-        range.deleteContents();
-        range.insertNode(span);
-      }
-    }
-
-    this.triggerAutoCopy();
-  }
-
-  toggleSuperscript() {
-    this.toggleFormatting("sup");
-  }
-
-  // ====== GUILLEMETS FRANÇAIS ======
-
-  toggleFrenchQuotes() {
-    const selection = this.editor.selection.getCurrentSelection();
-    if (!selection?.isValid) return;
-
-    const range = selection.range;
-    const text = range.toString();
-
-    if (text) {
-      range.deleteContents();
-
-      const timestamp = Date.now();
-
-      const fragment = document.createDocumentFragment();
-
-      const openQuoteSpan = this.createElement("span", "french-quote-open");
-      openQuoteSpan.setAttribute("data-timestamp", timestamp);
-      openQuoteSpan.textContent = UNICODE_CHARS.LAQUO; // Guillemet ouvrant français
-
-      const openSpaceSpan = this.createElement(
-        "span",
-        "i_space no-break-narrow-space"
-      );
-      openQuoteSpan.setAttribute("data-timestamp", timestamp);
-      openSpaceSpan.textContent = UNICODE_CHARS.NO_BREAK_THIN_SPACE;
-
-      const textNode = document.createTextNode(text);
-
-      const closeSpaceSpan = this.createElement(
-        "span",
-        "i_space no-break-narrow-space"
-      );
-      closeSpaceSpan.setAttribute("data-timestamp", timestamp);
-      closeSpaceSpan.textContent = UNICODE_CHARS.NO_BREAK_THIN_SPACE;
-
-      const closeQuoteSpan = this.createElement("span", "french-quote-close");
-      closeQuoteSpan.setAttribute("data-timestamp", timestamp);
-      closeQuoteSpan.textContent = UNICODE_CHARS.RAQUO; // Guillemet fermant français
-
-      // Ordre correct : « [espace fine] texte [espace fine] »
-      fragment.appendChild(openQuoteSpan);
-      fragment.appendChild(openSpaceSpan);
-      fragment.appendChild(textNode);
-      fragment.appendChild(closeSpaceSpan);
-      fragment.appendChild(closeQuoteSpan);
-
-      range.insertNode(fragment);
-      range.setStartBefore(openQuoteSpan);
-      range.setEndAfter(closeQuoteSpan);
-    }
-
-    this.triggerAutoCopy();
-  }
-
-  // ====== GUILLEMETS ANGLAIS ======
-
-  toggleEnglishQuotes() {
-    const selection = this.editor.selection.getCurrentSelection();
-    if (!selection?.isValid) return;
-
-    const range = selection.range;
-    const text = range.toString();
-
-    if (text) {
-      range.deleteContents();
-
-      const fragment = document.createDocumentFragment();
-
-      const openQuoteSpan = this.createElement("span", "english-quote-open ");
-
-      openQuoteSpan.textContent = UNICODE_CHARS.LDQUO;
-
-      const textNode = document.createTextNode(text);
-
-      const closeQuoteSpan = this.createElement(
-        "span",
-        "english-quote-close editor-add"
-      );
-      closeQuoteSpan.textContent = UNICODE_CHARS.RDQUO;
-
-      fragment.appendChild(openQuoteSpan);
-      fragment.appendChild(textNode);
-      fragment.appendChild(closeQuoteSpan);
-
-      range.insertNode(fragment);
-      range.setStartBefore(openQuoteSpan);
-      range.setEndAfter(closeQuoteSpan);
-    }
-
-    this.triggerAutoCopy();
-  }
-
   toggleLetterSpacing() {
     const input = document.querySelector(".ls-input");
     const value = input?.value || "0";
@@ -245,34 +89,6 @@ export class Commands {
 
     this.triggerAutoCopy();
   }
-
-  setupLetterSpacingControls(span) {
-    span.addEventListener("wheel", (e) => {
-      e.preventDefault();
-
-      let currentValue = parseInt(span.style.getPropertyValue("--ls")) || 0;
-      const step = e.shiftKey ? 10 : 1;
-
-      if (e.deltaY < 0) {
-        // Molette vers le haut
-        currentValue += step;
-      } else {
-        // Molette vers le bas
-        currentValue -= step;
-      }
-
-      span.style.setProperty("--ls", currentValue.toString());
-      this.triggerAutoCopy();
-    });
-
-    // Feedback visuel au survol
-    span.addEventListener("mouseenter", () => {
-      span.style.cursor = "ns-resize";
-
-    });
-  }
-
-  // ====== VÉRIFICATIONS ======
 
   hasParentWithTag(element, tagNames, className = null) {
     if (!Array.isArray(tagNames)) {
@@ -300,31 +116,6 @@ export class Commands {
     return false;
   }
 
-  // ====== INSERTION D'ESPACES ======
-
-  insertSpace(className, content) {
-    const selection = window.getSelection();
-
-    if (selection.rangeCount === 0) return;
-
-    const range = selection.getRangeAt(0);
-    const span = this.createElement("span", `i_space ${className} editor-add`);
-    span.textContent = content;
-
-    // Supprimer sélection si elle existe
-    if (!range.collapsed) {
-      range.deleteContents();
-    }
-
-    range.insertNode(span);
-    range.setStartAfter(span);
-    range.collapse(true);
-    selection.removeAllRanges();
-    selection.addRange(range);
-
-    this.triggerAutoCopy();
-  }
-
   // ====== ACTIONS UTILITAIRES ======
 
   undoLastTransformation() {
@@ -335,17 +126,17 @@ export class Commands {
       return;
     }
 
-    console.log("Element en focus:", editableElement);
+    // console.log("Element en focus:", editableElement);
 
     // 1. Récupérer TOUS les éléments avec timestamp
     const timestampedElements = Array.from(
       editableElement.querySelectorAll("[data-timestamp]")
     );
 
-    console.log("Éléments avec timestamp trouvés:", timestampedElements);
-    timestampedElements.forEach((el) =>
-      console.log("Timestamp:", el.getAttribute("data-timestamp"))
-    );
+    // console.log("Éléments avec timestamp trouvés:", timestampedElements);
+    // timestampedElements.forEach((el) =>
+    //   console.log("Timestamp:", el.getAttribute("data-timestamp"))
+    // );
 
     if (timestampedElements.length === 0) {
       console.log("Aucune transformation à annuler");
@@ -398,8 +189,6 @@ export class Commands {
 
   // ====== MÉTHODES UTILITAIRES ======
 
-
-
   fusionFragments(dataRef) {
     const allFragments = document.querySelectorAll(`[data-ref="${dataRef}"]`);
 
@@ -428,10 +217,8 @@ export class Commands {
     let content;
 
     if (dataRef) {
-      // Fragment scindé - fusionner manuellement
       content = this.fusionFragments(dataRef);
     } else {
-      // Élément normal
       content = element.innerHTML;
     }
 
@@ -439,9 +226,14 @@ export class Commands {
       .getTurndownService()
       .turndown(content);
 
+    // Ajouter try/catch pour gérer l'erreur clipboard
     navigator.clipboard
       .writeText(markdown)
-      .then(() => this.editor.showFeedback("Copié !"));
+      .then(() => this.editor.showFeedback("Copié !"))
+      .catch(() => {
+        // Fallback silencieux ou message alternatif
+        console.log("Clipboard non accessible");
+      });
   }
 
   exportMarkdownByRange() {

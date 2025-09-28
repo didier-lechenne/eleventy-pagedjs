@@ -97,14 +97,11 @@ body.interface-preview figcaption sup,
 body.interface-preview figcaption br,
 body.interface-preview .paged-editor-active .paged-editor-content,
 body.interface-preview .paged-editor-active .paged-editor-content:focus,
-body.interface-preview .paged-editor-toolbar,
-body.interface-preview [style*="--ls"],
-body.interface-preview .letterspacing-input {
+body.interface-preview .paged-editor-toolbar {
   background-color: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
   transition: none !important;
-  /* Les inputs letter-spacing sont complètement cachés en mode preview */
   visibility: hidden !important;
 }
 
@@ -398,6 +395,7 @@ span[style*="--ls"] {
 
 /* Menu déroulant personnalisé */
 .toolbar-select-wrapper .custom-dropdown {
+  font-size: var(--editor-font-size);
   position: absolute;
   top: 100%;
   left: 0;
@@ -414,7 +412,9 @@ span[style*="--ls"] {
 
 /* Options individuelles dans le dropdown */
 .toolbar-select-wrapper .custom-option {
-  padding: 8px 12px;
+  font-size: var(--editor-font-size);
+
+  padding: 2px 12px;
   color: white;
   cursor: pointer;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);

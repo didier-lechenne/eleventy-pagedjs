@@ -1,12 +1,10 @@
-@page modularGrid {
-}
+
 
 [data-template="modularGrid"],
 .modularGrid {
-  page: modularGrid;
+  page: modularGrid !important;
 
   page-break-before: always;
-  page-break-after: always;
 
   --g-column-count: var(--grid-col, 12);
   --g-column-gutter: var(--grid-col-gutter, 0mm);
@@ -15,7 +13,7 @@
 
   display: grid;
   grid-template-columns: repeat(var(--g-column-count), 1fr);
-  grid-template-rows: repeat(var(--g-row-count), 1fr);
+  grid-template-rows: repeat(var(--g-row-count), 3fr);
   column-gap: var(--g-column-gutter);
   row-gap: var(--g-row-gutter);
   height: calc(
@@ -28,6 +26,8 @@
   padding-bottom: 0;
 }
 
+
+
 .modularGrid .pagedjs_full-page_content {
   left: calc((var(--pagedjs-margin-left) + 6mm) * -1) !important;
   width: calc(var(--pagedjs-pagebox-width) + 6mm + 6mm) !important;
@@ -36,7 +36,7 @@
 /* === ÉLÉMENTS DATA-GRID GÉNÉRIQUES === */
 
 .modularGrid [data-grid] {
-  grid-column: var(--print-col, auto) / span var(--print-width, 3);
+  grid-column: var(--print-col, auto) / span var(--print-width, 12);
   grid-row: var(--print-row, auto) / span var(--print-height, 3);
   position: relative;
   margin: 0;
@@ -48,7 +48,6 @@
 }
 
 /* === ÉLÉMENTS DE CONTENU === */
-
 
 .modularGrid [data-grid="content"] h1,
 .modularGrid [data-grid="content"] h2,
@@ -105,8 +104,8 @@
 [data-template="modularGrid"] figure,
 .modularGrid [data-grid="image"],
 .modularGrid figure {
-  grid-column: var(--print-col, auto) / span var(--print-width, 3);
-  grid-row: var(--print-row, auto) / span var(--print-height, 1);
+  grid-column: var(--print-col, auto) / span var(--print-width, 12);
+  grid-row: var(--print-row, auto) / span var(--print-height, 3);
   align-self: var(--align-self, start);
   overflow: hidden;
   position: relative;
@@ -125,7 +124,7 @@
 [data-template="modularGrid"] figcaption,
 .modularGrid figcaption {
   grid-column: var(--print-col, auto) / span var(--print-width, 12);
-  grid-row: calc( var(--print-row) + var(--print-height) ) / span 1;
+  grid-row: calc(var(--print-row) + var(--print-height)) / span 1;
   position: relative;
   width: 100%;
 }

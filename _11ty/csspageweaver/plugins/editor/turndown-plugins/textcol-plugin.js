@@ -27,4 +27,25 @@ export function textColPlugin(turndownService) {
       return `<textCol ${attributes}>\n${processedContent}\n</textCol>`;
     },
   });
+
+
+turndownService.addRule("markdownContainersModularGrid", {
+  filter: function (node) {
+    return node.nodeName === "DIV" && node.classList.contains("modularGrid");
+  },
+  replacement: function (content, node) {
+    const style = node.getAttribute('style');
+    let attributes = '';
+    
+    if (style) {
+      attributes = ` {style="${style}"}`;
+    }
+    
+    return `\n\n::: modularGrid${attributes}\n${content}\n:::\n\n`;
+  },
+});
+
+
+
 }
+

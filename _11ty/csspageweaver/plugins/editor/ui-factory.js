@@ -18,17 +18,14 @@ export class UIFactory {
    * @param {Object} editor - Instance de l'éditeur pour les callbacks
    * @returns {ToolbarButton|ToolbarSelect|null} - Élément d'interface créé
    */
+
   static createElement(actionId, editor) {
-    // Vérification de sécurité : l'action existe-t-elle ?
     if (!isValidAction(actionId)) {
-      console.warn(
-        `🚨 Action inconnue demandée: "${actionId}". Vérifiez votre configuration.`
-      );
+      console.warn(`🚨 Action inconnue demandée: "${actionId}". Vérifiez votre configuration.`);
       return null;
     }
 
-    // Récupération de la configuration de l'action
-    const actionConfig = ACTIONS_REGISTRY[actionId];
+    const actionConfig = ACTIONS_REGISTRY.get(actionId); 
 
     // Choix de la stratégie de création selon le type d'action
     // Ceci implémente le pattern Strategy au sein du pattern Factory
@@ -44,6 +41,9 @@ export class UIFactory {
 
       case "select":
         return UIFactory.createSelectElement(actionId, actionConfig, editor);
+
+      case "toggle-select":
+        return UIFactory.createToggleSelectElement(actionId, actionConfig, editor);
 
       default:
         console.error(
@@ -159,6 +159,19 @@ export class UIFactory {
     );
   }
 
+
+  static createToggleSelectElement(actionId, actionConfig, editor) {
+    return new ToolbarToggleSelect(
+      actionId,
+      actionConfig.icon,
+      actionConfig.title,
+      actionConfig.options,
+      (selectedValue) => executeAction(actionId, editor, selectedValue)
+    );
+  }
+
+
+
   /**
    * Méthode utilitaire pour créer plusieurs éléments à partir d'une liste d'IDs
    *
@@ -187,13 +200,14 @@ export class UIFactory {
         insert: [],
         utility: [],
         select: [],
+        'toggle-select': [],
       },
     };
 
     actionIds.forEach((actionId) => {
       if (isValidAction(actionId)) {
         analysis.valid.push(actionId);
-        const actionType = ACTIONS_REGISTRY[actionId].type;
+        const actionType = ACTIONS_REGISTRY.get(actionId).type;
         analysis.byType[actionType].push(actionId);
       } else {
         analysis.invalid.push(actionId);
@@ -202,6 +216,7 @@ export class UIFactory {
 
     return analysis;
   }
+
 }
 
 /**
@@ -303,6 +318,37 @@ export class ToolbarSelect {
     return this.options.find((option) => option.value === value);
   }
 }
+
+export class ToolbarToggleSelect extends ToolbarSelect {
+  constructor(command, icon, title, options, action) {
+    super(command, icon, title, options, action);
+  }
+
+  render() {
+    const optionsHTML = this.options
+      .map(opt => 
+        `<div class="custom-option toggle-option" data-value="${opt.value}" title="${opt.label}">${opt.label}</div>`
+      )
+      .join("");
+
+    return `
+      <div class="toolbar-select-wrapper toggle-select-wrapper" data-command="${this.command}" data-tooltip="${this.title}">
+        <button class="select-trigger">${this.icon}</button>
+        <div class="custom-dropdown" style="display: none;">
+          ${optionsHTML}
+        </div>
+      </div>
+    `;
+  }
+
+  updateActiveStates(element) {
+    return this.options.map(option => ({
+      value: option.value,
+      isActive: option.isActive ? option.isActive(element) : false
+    }));
+  }
+}
+
 
 /**
  * @name Configuration Helpers

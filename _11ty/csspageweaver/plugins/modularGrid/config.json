@@ -1,0 +1,9 @@
+{
+	"name": "modular grid",
+	"description": "Move a modular grid.",
+	"licence": "MIT",
+	"author": ["DidierLechenne"],
+	"version": "2.0",
+	"hook": "modularGrid.js",
+	"stylesheet": "modularGrid.css"
+}

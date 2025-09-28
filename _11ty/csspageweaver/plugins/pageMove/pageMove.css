@@ -1,0 +1,23 @@
+.pagedjs_left_page .pagedjs_moved-content{
+    --fullcontent-margin-left: 10mm;
+    margin: 0;
+    position: absolute;
+    left: calc(-1 * var(--pagedjs-margin-left) + var(--fullcontent-margin-left));
+    page: clean;
+}
+
+
+.pagedjs_right_page .pagedjs_moved-content{
+    --fullcontent-margin-right: 10mm;
+    margin: 0;
+    position: absolute;
+    right: calc(-1 * var(--pagedjs-margin-right) + var(--fullcontent-margin-right));
+    page: clean;
+}
+
+
+
+[data-page-number="52"]
+{
+	--folio: none !important;
+}

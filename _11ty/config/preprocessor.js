@@ -42,7 +42,6 @@ module.exports = function (eleventyConfig) {
   });
 
 
-
   eleventyConfig.addPreprocessor("smallcaps", "*", (data, content) => {
     // Transformer <smallcaps>XXX</smallcaps> en <span class="smallcaps">XXX</span>
     content = content.replace(
@@ -54,19 +53,19 @@ module.exports = function (eleventyConfig) {
   });
 
 
-eleventyConfig.addPreprocessor("break", "*", (data, content) => {
-  content = content.replace(
-    /<breakcolumn\s*\/?>/gi, 
-    '<hr class="breakcolumn">'
-  );
+  eleventyConfig.addPreprocessor("break", "*", (data, content) => {
+    content = content.replace(
+      /<breakcolumn\s*\/?>/gi, 
+      '<hr class="breakcolumn">'
+    );
 
-  content = content.replace(
-    /<breakpage\s*\/?>/gi, 
-    '<br class="breakpage">'
-  );
+    content = content.replace(
+      /<breakpage\s*\/?>/gi, 
+      '<br class="breakpage">'
+    );
 
-  return content;
-});
+    return content;
+  });
 
 
 

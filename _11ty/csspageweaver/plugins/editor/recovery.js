@@ -1,10 +1,6 @@
 import { TurndownService } from "./lib/turndown.js";
 import * as turndownPlugins from "./turndown-plugins/index.js";
 
-/**
- * @name PagedMarkdownRecovery
- * @file Récupération du Markdown original depuis un contenu paginé PagedJS
- */
 export class PagedMarkdownRecovery {
   constructor() {
     this.turndownService = this.initializeTurndown();
@@ -23,32 +19,33 @@ export class PagedMarkdownRecovery {
     });
 
     turndown.use(Object.values(turndownPlugins));
-
     return turndown;
   }
 
+  /**
+   * Fonction utilitaire pour convertir en camelCase
+   */
+  toCamelCase(str) {
+    return str.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+  }
+
+  /**
+   * Reconstructs split elements from paginated content
+   */
   reconstructSplitElements(content) {
-    // Trouve toutes les sections
     const sections = content.querySelectorAll("section");
+    if (sections.length === 0) return;
 
-    if (sections.length === 0) {
-      return; // Aucune section trouvée
-    }
-
-    // Collecte tout le contenu de toutes les sections
     let combinedContent = "";
     sections.forEach((section) => {
       combinedContent += section.innerHTML;
     });
 
-    // Vide le contenu principal et ne garde qu'une seule section avec tout le contenu
     content.innerHTML = `<section>${combinedContent}</section>`;
 
-    // Maintenant réunit les paragraphes scindés
     const section = content.querySelector("section");
     const fragmentGroups = new Map();
 
-    // Groupe les éléments par data-ref
     section.querySelectorAll("[data-ref]").forEach((element) => {
       const ref = element.getAttribute("data-ref");
       if (!fragmentGroups.has(ref)) {
@@ -57,7 +54,6 @@ export class PagedMarkdownRecovery {
       fragmentGroups.get(ref).push(element);
     });
 
-    // Réunit les fragments
     fragmentGroups.forEach((fragments) => {
       if (fragments.length > 1) {
         const firstFragment = fragments[0];
@@ -69,43 +65,32 @@ export class PagedMarkdownRecovery {
 
         firstFragment.innerHTML = completeContent;
 
-        // Supprime les fragments suivants
         for (let i = 1; i < fragments.length; i++) {
           fragments[i].remove();
         }
       }
     });
 
-    // POST-TRAITEMENT : Répare les blockquotes cassées
     this.fixBrokenBlockquotes(section);
 
-    // Nettoyage des footnotes
     const footnotesSep = section.querySelector("hr.footnotes-sep");
-    if (footnotesSep) {
-      footnotesSep.remove();
-    }
+    if (footnotesSep) footnotesSep.remove();
 
     const footnotesSection = section.querySelector("section.footnotes");
-    if (footnotesSection) {
-      footnotesSection.remove();
-    }
+    if (footnotesSection) footnotesSection.remove();
   }
 
-  // POST-TRAITEMENT : Répare les blockquotes avec contenu coupé
   fixBrokenBlockquotes(container) {
     const blockquotes = container.querySelectorAll("blockquote");
 
     blockquotes.forEach((blockquote) => {
       const paragraphs = blockquote.querySelectorAll("p");
 
-      // Trouve les paragraphes qui se terminent sans ponctuation
       paragraphs.forEach((p, index) => {
         const text = p.textContent.trim();
         const nextP = paragraphs[index + 1];
 
-        // Si le paragraphe se termine par un caractère non-final ET qu'il y a un suivant
         if (nextP && text && !text.match(/[.!?»"]\s*$/)) {
-          // Fusionne avec le paragraphe suivant
           p.innerHTML += " " + nextP.innerHTML;
           nextP.remove();
         }
@@ -113,6 +98,9 @@ export class PagedMarkdownRecovery {
     });
   }
 
+  /**
+   * Export des pages avec front matter correctement formaté
+   */
   exportPageRange(startPage, endPage, filename = "pages-selection.md") {
     // 1. Récupérer le data-template et le front matter de la page de départ
     const startPageElement = document.querySelector(
@@ -124,13 +112,36 @@ export class PagedMarkdownRecovery {
     }
     const targetTemplate = startPageElement.getAttribute("data-template");
 
-    // 2. Extraire le front matter depuis les attributs frontmatter-* de la section
+    // 2. Extraire le front matter avec conversion camelCase
     const frontMatter = {};
+
+    // Mapping des attributs spéciaux pour une conversion correcte
+    const attributeMapping = {
+      'gridcol': 'gridCol',
+      'gridrow': 'gridRow', 
+      'gridcolgutter': 'gridColGutter',
+      'gridrowgutter': 'gridRowGutter',
+      'toc': 'toc',
+      'show': 'show',
+      'class': 'class',
+      'title': 'title',
+      'template': 'template'
+    };
+
     for (const attr of startPageElement.attributes) {
       if (attr.name.startsWith("frontmatter-")) {
-        const key = attr.name.replace("frontmatter-", "").replace(/-/g, "_");
+        const originalKey = attr.name.replace("frontmatter-", "");
+        
+        // Utiliser le mapping ou convertir en camelCase
+        const key = attributeMapping[originalKey] || this.toCamelCase(originalKey);
+        
         frontMatter[key] = attr.value;
       }
+    }
+
+    // Ajouter draft: false par défaut si non présent
+    if (!frontMatter.draft) {
+      frontMatter.draft = false;
     }
 
     // 3. Collecter les sections cibles
@@ -160,9 +171,9 @@ export class PagedMarkdownRecovery {
       container.innerHTML
     );
 
-    markdownContent = markdownContent
-      .replace(/<breakcolumn>(?!\s*\/)/g, "<breakcolumn />")
-      .replace(/<breakpage>(?!\s*\/)/g, "<breakpage />");
+    // markdownContent = markdownContent
+    //   .replace(/<breakcolumn>(?!\s*\/)/g, "<breakcolumn />")
+    //   .replace(/<breakpage>(?!\s*\/)/g, "<breakpage />");
 
     // 7. Ajouter le front matter au Markdown
     const frontMatterYaml = `---
@@ -181,7 +192,6 @@ ${Object.entries(frontMatter)
     return fullMarkdown;
   }
 
-  // === INTERFACE UTILISATEUR ===
   showPageRangeModal() {
     const totalPages = this.getTotalPages();
     const input = prompt(
@@ -190,7 +200,6 @@ ${Object.entries(frontMatter)
 
     if (!input) return;
 
-    // Parse l'input utilisateur
     if (input.includes("-")) {
       const [start, end] = input.split("-").map((n) => parseInt(n.trim()));
       this.exportPageRange(start, end, `pages-${start}-${end}.md`);
@@ -205,7 +214,6 @@ ${Object.entries(frontMatter)
     }
   }
 
-  // === UTILITAIRES ===
   getTotalPages() {
     const pages = document.querySelectorAll("[data-page-number]");
     return pages.length;
@@ -226,8 +234,4 @@ ${Object.entries(frontMatter)
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }
-
-
-
-
 }

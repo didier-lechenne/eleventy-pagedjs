@@ -14,43 +14,50 @@ const md = markdownIt({
 
 md.use(markdownItFootnote);
 
-// OPTION : Désactiver la sauvegarde JSON
-const ENABLE_JSON_SAVE = false; // Passer à true pour réactiver
-
 module.exports = function (eleventyConfig) {
-  let globalImageCounter = 0;
-  let globalFigureCounter = 0;
-  let globalFigureGridCounter = 0;
-  let globalFullpageCounter = 0;
   let globalElementCounter = 0;
 
-  // Cache pour les configurations d'images
-  let imageConfigs = {};
-  let configHasChanged = false;
-
-  function getImageConfig(imageId, overrides = {}) {
-    const baseConfig = imageConfigs[imageId] || {};
-    return { ...baseConfig, ...overrides };
+  // Fonction pour slugifier le src
+  function slugify(text) {
+    if (!text) return '';
+    // Garde seulement le nom du fichier
+    const filename = path.basename(text);
+    return filename
+      .toLowerCase()
+      .replace(/\.[^/.]+$/, "") // Supprime l'extension
+      .replace(/[^a-z0-9]+/g, '-') // Remplace les caractères non alphanumériques par des tirets
+      .replace(/^-+|-+$/g, '') // Supprime les tirets en début et fin
+      .replace(/-+/g, '-'); // Remplace les tirets multiples par un seul
   }
 
   function generateStyles(config) {
     const cssVarMapping = {
       col: "--col",
       printCol: "--print-col",
+      printcol: "--print-col",
       width: "--width",
       printWidth: "--print-width",
+      printwidth: "--print-width",
       printRow: "--print-row",
+      printrow: "--print-row",
       printHeight: "--print-height",
+      printheight: "--print-height",
       alignSelf: "--align-self",
       alignself: "--align-self",
       "align-self": "--align-self",
       imgX: "--img-x",
+      imgx: "--img-x",
       imgY: "--img-y",
+      imgy: "--img-y",
       imgW: "--img-w",
+      imgw: "--img-w",
       page: "--pagedjs-full-page",
+      content: "--pagedjs-full-content",
     };
 
     let styles = "";
+    
+    // Traitement des propriétés CSS via cssVarMapping
     Object.entries(config).forEach(([key, value]) => {
       if (
         cssVarMapping[key] &&
@@ -58,20 +65,28 @@ module.exports = function (eleventyConfig) {
         value !== null &&
         value !== ""
       ) {
-        // Nettoie les guillemets si présents
         const cleanValue =
           typeof value === "string" ? value.replace(/^["']|["']$/g, "") : value;
         styles += `${cssVarMapping[key]}: ${cleanValue}; `;
       }
     });
-    return styles ? ` style="${styles}"` : "";
+    
+    // Ajout du style personnalisé s'il existe
+    if (config.style) {
+      const cleanStyle = config.style.endsWith(';') ? config.style : config.style + ';';
+      styles += cleanStyle + ' ';
+    }
+    
+    return styles ? ` style="${styles.trim()}"` : "";
   }
 
   function generateHTML(type, config) {
     const styleAttr = generateStyles(config);
     const classAttr = config.class ? ` ${config.class}` : "";
     const captionHTML = config.caption ? md.renderInline(config.caption) : "";
-    const id = config.id;
+    const slugifiedSrc = slugify(config.src);
+    const elementId = config.id || slugifiedSrc;
+    
     let cleanAlt = "";
     if (config.caption) {
       cleanAlt = config.caption
@@ -83,50 +98,54 @@ module.exports = function (eleventyConfig) {
     }
 
     // Incrémenter le compteur pour tous les types qui en ont besoin
-    if (["image", "grid", "fullpage", "figure"].includes(type)) {
+    if (["image", "grid", "fullcontent", "fullpage", "markdown", "figure"].includes(type)) {
       globalElementCounter++;
     }
 
     switch (type) {
       case "image":
-        return `<figure data-id="${id}" data-grid="image" id="image-${globalElementCounter}" class="figure image${classAttr}"${styleAttr}>
-        <img src="${config.src}" alt="${cleanAlt}" >
-        ${
-          captionHTML
-            ? `<figcaption class="figcaption">${captionHTML}</figcaption>`
-            : ""
+        let outputImage = `<figure data-id="${elementId}" data-src="${config.src}" data-type="${type}" id="${elementId}" class="figure image${classAttr}"${styleAttr}>
+          <img src="${config.src}" alt="${cleanAlt}" >`;
+        
+        if (captionHTML) {
+          outputImage += `<figcaption class="figcaption">${captionHTML}</figcaption>`;
         }
-      </figure>`;
+        
+        outputImage += `</figure>`;
+        return outputImage;
 
       case "grid":
-        let output = `<figure data-id="${id}" data-grid="image" class="${classAttr}" id="figure-${globalElementCounter}"${styleAttr}>
+        let output = `<figure data-id="${elementId}" data-src="${config.src}" data-type="${type}" data-grid="image" class="${classAttr}" id="${elementId}"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}" >
       </figure>`;
         if (captionHTML) {
-          output += `<figcaption class="figcaption figcaption-${globalElementCounter}" ${styleAttr}>${captionHTML}</figcaption>`;
+          output += `<figcaption class="figcaption figcaption-${slugifiedSrc}" ${styleAttr}>${captionHTML}</figcaption>`;
         }
         return output;
 
+      case "fullcontent":
+        return `<figure data-id="${elementId}" data-src="${config.src}" data-grid="image" data-type="${type}" id="${elementId}" class="full-content ${classAttr}"${styleAttr}>
+        <img src="${config.src}" alt="${cleanAlt}">
+      </figure>`;
+
       case "fullpage":
-        return `<figure data-id="${id}" data-grid="image" id="figure-${globalElementCounter}" class="full-page ${classAttr}"${styleAttr}>
+        return `<figure data-id="${elementId}" data-src="${config.src}" data-grid="image" data-type="${type}" id="${elementId}" class="full-page ${classAttr}"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}">
       </figure>`;
 
       case "figure":
-        return `<span class="spanMove figure_call" id="fig-${globalElementCounter}-call">
-        [<a href="#fig-${globalElementCounter}">fig. ${globalElementCounter}</a>]
-      </span>
-      <span class="figure figmove${classAttr}" data-grid="image" id="fig-${globalElementCounter}"${styleAttr}>
-        <img src="${config.src}" alt="${cleanAlt}" >
-        ${
-          captionHTML
-            ? `<span class="figcaption"><span class="figure_reference">[fig. ${globalElementCounter}]</span> ${captionHTML}</span>`
-            : ""
+        let outputFigure = `<figure data-id="${elementId}" data-src="${config.src}" data-type="${type}" data-grid="image" id="${elementId}" class="figure ${classAttr}"${styleAttr}>
+          <img src="${config.src}" alt="${cleanAlt}" >`;
+        
+        if (captionHTML) {
+          outputFigure += `<figcaption class="figcaption">${captionHTML}</figcaption>`;
         }
-      </span>`;
+        
+        outputFigure += `</figure>`;
+        return outputFigure;
 
       case "imagenote":
-        return `<span class="imagenote sideNote${classAttr}" data-grid="image"${styleAttr}>
+        return `<span class="imagenote sideNote${classAttr}" data-src="${config.src}" data-grid="image"${styleAttr}>
         <img src="${config.src}" alt="${cleanAlt}" >
         ${captionHTML ? `<span class="caption">${captionHTML}</span>` : ""}
       </span>`;
@@ -150,88 +169,23 @@ module.exports = function (eleventyConfig) {
   }
 
   eleventyConfig.on("eleventy.before", () => {
-    globalFigureCounter = 0;
-    globalFigureGridCounter = 0;
-    globalImageCounter = 0;
     globalElementCounter = 0;
-
-    if (ENABLE_JSON_SAVE) {
-      try {
-        imageConfigs = JSON.parse(
-          fs.readFileSync("_11ty/_data/images.json", "utf8")
-        );
-        console.log(
-          `✅ ${Object.keys(imageConfigs).length} configs d'images chargées`
-        );
-      } catch (e) {
-        imageConfigs = {};
-        console.log("📝 Nouveau fichier images.json sera créé");
-      }
-    } else {
-      imageConfigs = {};
-      console.log("🚫 Sauvegarde JSON désactivée");
-    }
-    configHasChanged = false;
   });
 
-  eleventyConfig.on("eleventy.after", () => {
-    if (configHasChanged && ENABLE_JSON_SAVE) {
-      fs.writeFileSync(
-        "_11ty/_data/images.json",
-        JSON.stringify(imageConfigs, null, 2)
-      );
-      console.log(`💾 ${Object.keys(imageConfigs).length} configs sauvées`);
-    }
-  });
-
-  eleventyConfig.addShortcode("image", function (firstParam, options = {}) {
-    let config, imageId;
-
-    if (
-      typeof firstParam === "string" &&
-      !firstParam.includes("/") &&
-      !firstParam.includes(".")
-    ) {
-      imageId = firstParam;
-      config = getImageConfig(imageId, options);
-
-      if (!config.src) {
-        return `<!-- ERROR: Image "${imageId}" non trouvée dans JSON -->`;
-      }
-    } else {
-      imageId = options.id;
-      const existingConfig = imageConfigs[imageId] || {};
-
-      config = {
-        ...existingConfig,
-        ...options,
-        src: firstParam,
-      };
-
-      if (
-        imageId &&
-        ENABLE_JSON_SAVE &&
-        JSON.stringify(existingConfig) !== JSON.stringify(config)
-      ) {
-        imageConfigs[imageId] = { ...config };
-        configHasChanged = true;
-      }
-    }
-
+  eleventyConfig.addShortcode("image", function (src, options = {}) {
+    const config = { src, ...options };
     return generateHTML("image", config);
   });
 
   eleventyConfig.addAsyncShortcode(
     "grid",
     async function (firstParam, options = {}) {
-      let imageConfig, itemId;
-
       // Détection automatique du type de contenu
       const isMarkdownFile = firstParam.endsWith(".md");
-      const isImageFile = /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(firstParam);
+      
 
       if (isMarkdownFile) {
-        // Traitement markdown - copie de la logique du shortcode markdown
+        // Traitement markdown
         let parsedOptions = {};
         if (typeof options === "string") {
           try {
@@ -257,225 +211,54 @@ module.exports = function (eleventyConfig) {
           const classAttr = parsedOptions.class
             ? ` class="${parsedOptions.class}"`
             : "";
-          const idAttr = parsedOptions.id
-            ? ` id="${parsedOptions.id}"`
-            : ` id="markdown-${globalElementCounter}"`;
+          const slugifiedFile = slugify(cleanFile);
+          const elementId = parsedOptions.id || slugifiedFile;
 
           const renderedContent = cleanFile.endsWith(".md")
             ? md.render(content)
             : content;
-          return `<div data-grid="markdown" data-md="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
+          return `<div data-grid="markdown" data-type="markdown" data-md="${cleanFile}" id="${elementId}"${classAttr}${styleAttr}>${renderedContent}</div>`;
         } catch (error) {
           console.error(`Erreur inclusion ${cleanFile}:`, error.message);
           return `<div class="include error">❌ Erreur: ${cleanFile} non trouvé</div>`;
         }
-      } else if (
-        isImageFile ||
-        firstParam.includes("/") ||
-        firstParam.includes(".")
-      ) {
-        // Traitement comme image (URL ou chemin)
-
-        if (
-          typeof firstParam === "string" &&
-          !firstParam.includes("/") &&
-          !firstParam.includes(".")
-        ) {
-          // ID référence dans JSON
-          itemId = firstParam;
-          imageConfig = getImageConfig(itemId, options);
-
-          if (!imageConfig.src) {
-            return `<!-- ERROR: Image "${itemId}" non trouvée dans JSON -->`;
-          }
-        } else {
-          // URL/chemin direct
-          itemId = options.id;
-          const existingConfig = imageConfigs[itemId] || {};
-
-          imageConfig = {
-            ...existingConfig,
-            ...options,
-            src: firstParam,
-          };
-
-          if (
-            itemId &&
-            ENABLE_JSON_SAVE &&
-            JSON.stringify(existingConfig) !== JSON.stringify(imageConfig)
-          ) {
-            imageConfigs[itemId] = { ...imageConfig };
-            configHasChanged = true;
-          }
-        }
-
-        return generateHTML("grid", imageConfig);
       } else {
-        // Fallback: traitement comme référence d'image
-        itemId = firstParam;
-        imageConfig = getImageConfig(itemId, options);
-
-        if (!imageConfig.src) {
-          return `<!-- ERROR: Item "${itemId}" non trouvé dans JSON -->`;
-        }
-
-        return generateHTML("grid", imageConfig);
+        // Traitement comme image
+        const config = { src: firstParam, ...options };
+        return generateHTML("grid", config);
       }
     }
   );
 
-  eleventyConfig.addShortcode("video", function (firstParam, options = {}) {
-    let config, imageId;
-
-    if (
-      typeof firstParam === "string" &&
-      !firstParam.includes("/") &&
-      !firstParam.includes(".")
-    ) {
-      imageId = firstParam;
-      config = getImageConfig(imageId, options);
-
-      if (!config.src) {
-        return `<!-- ERROR: Video "${imageId}" non trouvée dans JSON -->`;
-      }
-    } else {
-      imageId = options.id;
-      const existingConfig = imageConfigs[imageId] || {};
-
-      config = {
-        ...existingConfig,
-        ...options,
-        src: firstParam,
-      };
-
-      if (
-        imageId &&
-        ENABLE_JSON_SAVE &&
-        JSON.stringify(existingConfig) !== JSON.stringify(config)
-      ) {
-        imageConfigs[imageId] = { ...config };
-        configHasChanged = true;
-      }
-    }
-
+  eleventyConfig.addShortcode("video", function (src, options = {}) {
+    const config = { src, ...options };
     return generateHTML("video", config);
   });
 
-  eleventyConfig.addShortcode("figure", function (firstParam, options = {}) {
-    let config, imageId;
-
-    if (
-      typeof firstParam === "string" &&
-      !firstParam.includes("/") &&
-      !firstParam.includes(".")
-    ) {
-      imageId = firstParam;
-      config = getImageConfig(imageId, options);
-
-      if (!config.src) {
-        return `<!-- ERROR: Figure "${imageId}" non trouvée dans JSON -->`;
-      }
-    } else {
-      imageId = options.id;
-      const existingConfig = imageConfigs[imageId] || {};
-
-      config = {
-        ...existingConfig,
-        ...options,
-        src: firstParam,
-      };
-
-      if (
-        imageId &&
-        ENABLE_JSON_SAVE &&
-        JSON.stringify(existingConfig) !== JSON.stringify(config)
-      ) {
-        imageConfigs[imageId] = { ...config };
-        configHasChanged = true;
-      }
-    }
-
+  eleventyConfig.addShortcode("figure", function (src, options = {}) {
+    const config = { src, ...options };
     return generateHTML("figure", config);
   });
 
-  eleventyConfig.addShortcode("imagenote", function (firstParam, options = {}) {
-    let config, imageId;
-
-    if (
-      typeof firstParam === "string" &&
-      !firstParam.includes("/") &&
-      !firstParam.includes(".")
-    ) {
-      imageId = firstParam;
-      config = getImageConfig(imageId, options);
-
-      if (!config.src) {
-        return `<!-- ERROR: ImageNote "${imageId}" non trouvée dans JSON -->`;
-      }
-    } else {
-      imageId = options.id;
-      const existingConfig = imageConfigs[imageId] || {};
-
-      config = {
-        ...existingConfig,
-        ...options,
-        src: firstParam,
-      };
-
-      if (
-        imageId &&
-        ENABLE_JSON_SAVE &&
-        JSON.stringify(existingConfig) !== JSON.stringify(config)
-      ) {
-        imageConfigs[imageId] = { ...config };
-        configHasChanged = true;
-      }
-    }
-
+  eleventyConfig.addShortcode("imagenote", function (src, options = {}) {
+    const config = { src, ...options };
     return generateHTML("imagenote", config);
   });
 
-  eleventyConfig.addShortcode("fullpage", function (firstParam, options = {}) {
-    let config, itemId;
+  eleventyConfig.addShortcode("fullcontent", function (src, options = {}) {
+    const config = { src, ...options };
+    return generateHTML("fullcontent", config);
+  });
 
-    if (
-      typeof firstParam === "string" &&
-      !firstParam.includes("/") &&
-      !firstParam.includes(".")
-    ) {
-      itemId = firstParam;
-      config = getImageConfig(itemId, options);
-
-      if (!config.src) {
-        return `<!-- ERROR: Item "${itemId}" non trouvé dans JSON -->`;
-      }
-    } else {
-      itemId = options.id;
-      const existingConfig = imageConfigs[itemId] || {};
-
-      config = {
-        ...existingConfig,
-        ...options,
-        src: firstParam,
-      };
-
-      if (
-        itemId &&
-        ENABLE_JSON_SAVE &&
-        JSON.stringify(existingConfig) !== JSON.stringify(config)
-      ) {
-        imageConfigs[itemId] = { ...config };
-        configHasChanged = true;
-      }
-    }
-
+  eleventyConfig.addShortcode("fullpage", function (src, options = {}) {
+    const config = { src, ...options };
     return generateHTML("fullpage", config);
   });
 
   eleventyConfig.addAsyncShortcode(
     "markdown",
     async function (file, optionsString) {
-      // Parse manual pour supporter les trailing commas
+      // Parse manuel pour supporter les trailing commas
       let options = {};
       if (typeof optionsString === "string") {
         try {
@@ -499,19 +282,23 @@ module.exports = function (eleventyConfig) {
 
         const styleAttr = generateStyles(options);
         const classAttr = options.class ? ` class="${options.class}"` : "";
-        const idAttr = options.id
-          ? ` id="${options.id}"`
-          : ` id="markdown-${globalElementCounter}"`;
+        const slugifiedFile = slugify(cleanFile);
+        const elementId = slugifiedFile;
 
         const renderedContent = cleanFile.endsWith(".md")
           ? md.render(content)
           : content;
 
-        return `<div data-grid="markdown" data-md="${cleanFile}"${idAttr}${classAttr}${styleAttr}>${renderedContent}</div>`;
+        return `<div data-grid="markdown" data-type="markdown" data-md="${cleanFile}" data-src="${cleanFile}"  id="${elementId}"${classAttr}${styleAttr}><div class="content-wrapper">${renderedContent}</div></div>`;
       } catch (error) {
         console.error(`Erreur inclusion ${cleanFile}:`, error.message);
         return `<div class="include error">❌ Erreur: ${cleanFile} non trouvé</div>`;
       }
     }
   );
+
 };
+
+
+
+

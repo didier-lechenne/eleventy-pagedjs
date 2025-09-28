@@ -1,8 +1,8 @@
 /**
- * @name Full page
+ * @name Full Content
  * @author Julie Blanc <contact@julie-blanc.fr>
  * @author Didier Lechenne <didier@lechenne.fr>
- * @see { @link https://gitlab.com/csspageweaver/plugins/fullContent }
+ * Plugin fullContent basé sur fullPage avec support CSS uniquement
  */
 import { Handler } from "../../../lib/paged.esm.js";
 
@@ -14,7 +14,7 @@ export default class fullContent extends Handler {
     this.selectorFullSpread = new Set();
     this.fullSpreadEls = new Set();
     this.selectorFullPage = new Set();
-    this.fullContentEls = new Set();
+    this.fullPageEls = new Set();
     this.selectorFullRight = new Set();
     this.fullRightEls = new Set();
     this.selectorFullLeft = new Set();
@@ -25,11 +25,8 @@ export default class fullContent extends Handler {
   }
 
   onDeclaration(declaration, dItem, dList, rule) {
-    // Read customs properties
-    if (declaration.property == "--pagedjs-full-page") {
-      // get selector of the declaration (NOTE: need csstree.js)
+    if (declaration.property == "--pagedjs-full-content") {
       let selector = csstree.generate(rule.ruleNode.prelude);
-      // Push selector in correct set
       if (declaration.value.value.includes("page")) {
         this.selectorFullPage.add(selector);
       } else if (declaration.value.value.includes("spread")) {
@@ -46,103 +43,67 @@ export default class fullContent extends Handler {
   }
 
   afterParsed(parsed) {
-    // console.log("FULL PAGE loaded");
+    // console.log("FULL CONTENT loaded");
 
-    // ADD pagedjs classes to elements
+    // ADD pagedjs classes to elements from CSS rules only
     for (let item of this.selectorFullPage) {
       let elems = parsed.querySelectorAll(item);
       for (let elem of elems) {
-        elem.classList.add("pagedjs_full-page-elem");
+        elem.classList.add("pagedjs_full-content-elem");
       }
     }
     for (let item of this.selectorFullSpread) {
       let elems = parsed.querySelectorAll(item);
       for (let elem of elems) {
-        elem.classList.add("pagedjs_full-spread-elem");
+        elem.classList.add("pagedjs_full-content-spread-elem");
       }
     }
     for (let item of this.selectorFullLeft) {
       let elems = parsed.querySelectorAll(item);
       for (let elem of elems) {
-        elem.classList.add("pagedjs_full-page-left-elem");
+        elem.classList.add("pagedjs_full-content-left-elem");
       }
     }
     for (let item of this.selectorFullRight) {
       let elems = parsed.querySelectorAll(item);
       for (let elem of elems) {
-        elem.classList.add("pagedjs_full-page-right-elem");
+        elem.classList.add("pagedjs_full-content-right-elem");
       }
     }
 
-    // SPECIFIC PAGE ------------------------------------
+    // SPECIFIC PAGE (from CSS rules only)
     this.specificPage.forEach((entry) => {
       const obj = JSON.parse(entry);
       const elements = parsed.querySelectorAll(obj.elem);
       if (elements.length > 0) {
-        // pourquoi c’est ajouté même si l’élément n’existe pas ?
-        elements[0].classList.add("pagedjs_full-page-specific");
+        elements[0].classList.add("pagedjs_full-content-specific");
         const clone = elements[0].cloneNode(true);
         obj.elemClone = clone.outerHTML;
         elements[0].remove();
       }
       this.specificPageClone.add(JSON.stringify(obj));
     });
-
-    // Ajouter dans fullContent.js après le code existant dans afterParsed
-    const inlineElements = parsed.querySelectorAll(
-      '[style*="--pagedjs-full-page"]'
-    );
-    inlineElements.forEach((element) => {
-      const style = element.getAttribute("style");
-      const match = style.match(/--pagedjs-full-page:\s*([^;]+)/);
-
-      if (match && match[1].match(/^\d+$/)) {
-        element.classList.add("pagedjs_full-page-specific");
-        const obj = { page: match[1].trim(), elem: "#" + element.id };
-        this.specificPage.add(JSON.stringify(obj));
-
-        const clone = element.cloneNode(true);
-        obj.elemClone = clone.outerHTML;
-        element.remove();
-        this.specificPageClone.add(JSON.stringify(obj));
-      }
-    });
   }
 
   renderNode(clone, node) {
     // FULL SPREAD
-    // if you find a full page element, move it in the array
-    if (
-      node.nodeType == 1 &&
-      node.classList.contains("pagedjs_full-spread-elem")
-    ) {
+    if (node.nodeType == 1 && node.classList.contains("pagedjs_full-content-spread-elem")) {
       this.fullSpreadEls.add(node);
       this.usedPagedEls.add(node);
-
-      // remove the element from the flow by hiding it.
       clone.style.display = "none";
     }
 
     // FULL PAGE
-    if (
-      node.nodeType == 1 &&
-      node.classList.contains("pagedjs_full-page-left-elem")
-    ) {
+    if (node.nodeType == 1 && node.classList.contains("pagedjs_full-content-left-elem")) {
       this.fullLeftEls.add(node);
       this.usedPagedEls.add(node);
       clone.style.display = "none";
-    } else if (
-      node.nodeType == 1 &&
-      node.classList.contains("pagedjs_full-page-right-elem")
-    ) {
+    } else if (node.nodeType == 1 && node.classList.contains("pagedjs_full-content-right-elem")) {
       this.fullRightEls.add(node);
       this.usedPagedEls.add(node);
       clone.style.display = "none";
-    } else if (
-      node.nodeType == 1 &&
-      node.classList.contains("pagedjs_full-page-elem")
-    ) {
-      this.fullContentEls.add(node);
+    } else if (node.nodeType == 1 && node.classList.contains("pagedjs_full-content-elem")) {
+      this.fullPageEls.add(node);
       this.usedPagedEls.add(node);
       clone.style.display = "none";
     }
@@ -154,7 +115,6 @@ export default class fullContent extends Handler {
       allPages.style.setProperty("--bleed-images", bleedFull);
     }
 
-    // ADD --pagedjs-fold on body if doesn't exist
     if (pageElement.classList.contains("pagedjs_first_page")) {
       let body = document.getElementsByTagName("body")[0];
       let style = window.getComputedStyle(body);
@@ -165,127 +125,99 @@ export default class fullContent extends Handler {
     }
 
     // FULL SPREAD
-    // if there is an element in the fullSpreadEls Set, (goodbye arrays!)
-
     for (let img of this.fullSpreadEls) {
       if (page.element.classList.contains("pagedjs_right_page")) {
         let imgLeft;
         let imgRight;
 
         if (img.nodeName == "IMG") {
-          /* Add outside + inside container if the element is an img */
           let containerLeft = document.createElement("div");
-          containerLeft.classList.add("pagedjs_full-spread_container");
+          containerLeft.classList.add("pagedjs_full-content-spread_container");
           let containerLeftInside = document.createElement("div");
-          containerLeftInside.classList.add("pagedjs_full-spread_content");
+          containerLeftInside.classList.add("pagedjs_full-content-spread_content");
           containerLeft.appendChild(containerLeftInside).appendChild(img);
           imgLeft = containerLeft;
 
           let containerRight = document.createElement("div");
-          containerRight.classList.add("pagedjs_full-spread_container");
+          containerRight.classList.add("pagedjs_full-content-spread_container");
           let containerRightInside = document.createElement("div");
-          containerRightInside.classList.add("pagedjs_full-spread_content");
-          containerRight
-            .appendChild(containerRightInside)
-            .appendChild(img.cloneNode(true));
+          containerRightInside.classList.add("pagedjs_full-content-spread_content");
+          containerRight.appendChild(containerRightInside).appendChild(img.cloneNode(true));
           imgRight = containerRight;
         } else {
-          /* Add outside container if the element is an img */
           let containerLeft = document.createElement("div");
-          containerLeft.classList.add("pagedjs_full-spread_container");
-          img.classList.add("pagedjs_full-spread_content");
+          containerLeft.classList.add("pagedjs_full-content-spread_container");
+          img.classList.add("pagedjs_full-content-spread_content");
           containerLeft.appendChild(img);
           imgLeft = containerLeft;
+          
           let containerRight = document.createElement("div");
-          containerRight.classList.add("pagedjs_full-spread_container");
-          img.classList.add("pagedjs_full-spread_content");
+          containerRight.classList.add("pagedjs_full-content-spread_container");
+          img.classList.add("pagedjs_full-content-spread_content");
           containerRight.appendChild(img.cloneNode(true));
           imgRight = containerRight;
         }
 
-        // put the first element on the page
-        let fullContent = chunker.addPage();
-        fullContent.element
-          .querySelector(".pagedjs_page_content")
-          .insertAdjacentElement("afterbegin", imgLeft);
-        fullContent.element.classList.add("pagedjs_page_fullLeft");
+        let fullPage = chunker.addPage();
+        fullPage.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", imgLeft);
+        fullPage.element.classList.add("pagedjs_page_fullContentLeft");
 
-        // page right
-        let fullContentRight = chunker.addPage();
-        fullContentRight.element
-          .querySelector(".pagedjs_page_content")
-          .insertAdjacentElement("afterbegin", imgRight);
-        fullContentRight.element.classList.add("pagedjs_page_fullRight");
-        if (img && img.style) {
-          img.style.removeProperty("display");
-        }
-
+        let fullPageRight = chunker.addPage();
+        fullPageRight.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", imgRight);
+        fullPageRight.element.classList.add("pagedjs_page_fullContentRight");
+        
+        img.style.removeProperty("display");
         this.fullSpreadEls.delete(img);
       }
     }
 
     // FULL PAGE
-    // if there is an element in the fullContentEls Set
-    for (let img of this.fullContentEls) {
+    for (let img of this.fullPageEls) {
       let container = document.createElement("div");
-      container.classList.add("pagedjs_full-page_content");
+      container.classList.add("pagedjs_full-content_content");
       container.appendChild(img);
-      let fullContent = chunker.addPage();
+      let fullPage = chunker.addPage();
 
-      fullContent.element
-        .querySelector(".pagedjs_page_content")
-        .insertAdjacentElement("afterbegin", container);
-      fullContent.element.classList.add("pagedjs_page_fullContent");
-      if (img && img.style) {
-        img.style.removeProperty("display");
-      }
-
-      this.fullContentEls.delete(img);
+      fullPage.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", container);
+      fullPage.element.classList.add("pagedjs_page_fullContent");
+      
+      img.style.removeProperty("display");
+      this.fullPageEls.delete(img);
     }
 
-    // FULL Left PAGE
-    // if there is an element in the fullLeftEls Set
+    // FULL LEFT PAGE
     for (let img of this.fullLeftEls) {
       if (page.element.classList.contains("pagedjs_right_page")) {
         let container = document.createElement("div");
-        container.classList.add("pagedjs_full-page_content");
+        container.classList.add("pagedjs_full-content_content");
         container.appendChild(img);
-        let fullContent = chunker.addPage();
+        let fullPage = chunker.addPage();
 
-        fullContent.element
-          .querySelector(".pagedjs_page_content")
-          .insertAdjacentElement("afterbegin", container);
-        fullContent.element.classList.add("pagedjs_page_fullContent");
-        if (img && img.style) {
-          img.style.removeProperty("display");
-        }
-
+        fullPage.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", container);
+        fullPage.element.classList.add("pagedjs_page_fullContent");
+        
+        img.style.removeProperty("display");
         this.fullLeftEls.delete(img);
       }
     }
 
     // FULL RIGHT PAGE
-    // if there is an element in the fullRightEls Set
     for (let img of this.fullRightEls) {
       if (page.element.classList.contains("pagedjs_left_page")) {
         let container = document.createElement("div");
-        container.classList.add("pagedjs_full-page_content");
+        container.classList.add("pagedjs_full-content_content");
         container.appendChild(img);
-        let fullContent = chunker.addPage();
+        let fullPage = chunker.addPage();
 
-        fullContent.element
-          .querySelector(".pagedjs_page_content")
-          .insertAdjacentElement("afterbegin", container);
-        fullContent.element.classList.add("pagedjs_page_fullContent");
-        if (img && img.style) {
-          img.style.removeProperty("display");
-        }
-
+        fullPage.element.querySelector(".pagedjs_page_content").insertAdjacentElement("afterbegin", container);
+        fullPage.element.classList.add("pagedjs_page_fullContent");
+        
+        img.style.removeProperty("display");
         this.fullRightEls.delete(img);
       }
     }
 
-    // SPECIFIC PAGE ------------------------------------
+    // SPECIFIC PAGE
     let pageNum = pageElement.id.split("page-")[1];
     pageNum = parseInt(pageNum);
 
@@ -293,31 +225,27 @@ export default class fullContent extends Handler {
       const obj = JSON.parse(entry);
       let targetedPage = obj.page;
       let prevPage = parseInt(targetedPage) - 1;
-
       let elem = obj.elemClone;
 
       if (targetedPage == 1 && pageNum == 1) {
         let container = document.createElement("div");
-        container.classList.add("pagedjs_full-page_content");
-        container.classList.add("cover");
+        container.classList.add("pagedjs_full-content_content");
         container.innerHTML = elem;
 
-        // Utiliser la page actuelle (page 1) au lieu de créer une nouvelle page
         pageElement
-          .querySelector("section")
+          .querySelector(".pagedjs_page_content")
           .insertAdjacentElement("afterbegin", container);
         pageElement.classList.add("pagedjs_page_fullContent");
       } else if (prevPage == pageNum) {
-        // Garder la logique originale pour les autres pages
         let container = document.createElement("div");
-        container.classList.add("pagedjs_full-page_content");
+        container.classList.add("pagedjs_full-content_content");
         container.innerHTML = elem;
-        let fullContent = chunker.addPage();
+        let fullPage = chunker.addPage();
 
-        fullContent.element
+        fullPage.element
           .querySelector(".pagedjs_page_content")
           .insertAdjacentElement("afterbegin", container);
-        fullContent.element.classList.add("pagedjs_page_fullContent");
+        fullPage.element.classList.add("pagedjs_page_fullContent");
       }
     });
   }

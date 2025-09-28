@@ -49,7 +49,8 @@ main {
 
 p {
   margin-top: calc(1ch / 1);
-  margin-bottom: calc(1ch / 1);
+  /* margin-bottom: calc(1ch / 1); */
+  margin-bottom: 0;
 }
 
 p:first-child {
@@ -138,7 +139,7 @@ blockquote {
 }
 
 section[data-split-from] > blockquote {
-  margin-block-start: unset !important;
+  /* margin-block-start: unset !important; ???? */
 }
 
 /* ────────────────────────────────────────
@@ -206,3 +207,59 @@ sup {
 .footnotes {
   display: none;
 }
+
+
+/* ========================================
+ * CLASS GENERIQUE
+ * ======================================== */
+
+.fullcontent-page {
+  --pagedjs-full-content: page;
+}
+
+
+.fullcontent-left {
+  --pagedjs-full-content: left;
+}
+
+.fullcontent-right {
+  --pagedjs-full-content: right;
+}
+
+
+.fullcontent-spread {
+  --pagedjs-full-content: spread;
+}
+
+
+.fullpage-page {
+  --pagedjs-full-page: page;
+}
+
+
+.fullpage-left {
+  --pagedjs-full-page: left;
+}
+
+.fullpage-right {
+  --pagedjs-full-page: right;
+}
+
+
+.fullpage-spread {
+  --pagedjs-full-page: spread;
+}
+
+.floatpage-next{
+	--pagedjs-float-page: next-page;
+}
+
+.floatpage-top{
+	--pagedjs-float-page: top;
+}
+
+.floatpage-bottom{
+	--pagedjs-float-page: bottom;
+  margin-bottom: 0 !important;
+}
+
