@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "d88ade9af6a8a292",
+        "id": "c3896d48c651a047",
         "type": "tabs",
         "children": [
           {
-            "id": "8d3083b4ce111541",
+            "id": "19bc2748a018f2f5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "valentine/fullcontent.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "fullcontent"
+              "title": "Nouvel onglet"
             }
           }
         ]
@@ -202,13 +198,23 @@
               "icon": "code-glyph",
               "title": "Shell commands: Custom variables"
             }
+          },
+          {
+            "id": "60360b26a3f761f8",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 9
       }
     ],
     "direction": "horizontal",
-    "width": 292.5
+    "width": 812.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -221,7 +227,6 @@
       "command-palette:Ouvrir la palette de commandes": false,
       "obsidian-shellcommands:Shell commands: Custom variables": false,
       "obsidian42-brat:BRAT": false,
-      "obsidian-git:Open Git source control": false,
       "vscode-editor:Create Code File": false,
       "cmdr:Installer le projet": false,
       "cmdr:Lancer le server (rechargement automatique)": false,
@@ -230,16 +235,18 @@
       "cmdr:Efface le site généré (clean)": false,
       "cmdr:Stop": false,
       "cmdr:Microtypographie: Corriger la sélection": false,
-      "cmdr:Microtypographie: Corriger toute la note": false
+      "cmdr:Microtypographie: Corriger toute la note": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8d3083b4ce111541",
+  "active": "19bc2748a018f2f5",
   "lastOpenFiles": [
+    "_11ty/_layouts/screen.njk",
+    "valentine/fullcontent.md",
     "_site/csspageweaver/plugins/editor/actions/reset.js",
     "_site/csspageweaver/plugins/editor/actions/exportMd.js",
     "valentine/columnGrid.md",
     "valentine/80.bijoux.md",
-    "valentine/fullcontent.md",
     "valentine/page-de-test.md",
     "_site/images/Excerpt from Mother of All Demos (1968).ogg",
     "_site/images/domestique.png",
@@ -260,7 +267,6 @@
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
