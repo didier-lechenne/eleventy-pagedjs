@@ -1,56 +1,106 @@
 /**
  * @name Hide Folios
- * @file Script pour gérer le toggle et les paramètres
+ * @file Script pour masquer les folios
  */
 
-export default function hideFolios() {
-  const body = cssPageWeaver.ui.body;
-  const fileTitle = cssPageWeaver.docTitle;
-  const parameters = cssPageWeaver.features.hideFolios?.parameters || {};
-  
-  // Vérifier que l'UI est bien initialisée
-  if (!cssPageWeaver.ui.hideFolios) {
-    console.warn('UI hideFolios non initialisée');
-    return;
-  }
-  
+import hideFoliosData from './hideFolios-data.js';
+
+export default function hidefolios() {
   const toggleInput = cssPageWeaver.ui.hideFolios.toggleInput;
+  const formContent = document.querySelector('.ui-hidefolios');
   const pagesInput = document.querySelector('#hidefolios-pages');
+  const applyButton = document.querySelector('#hidefolios-apply');
   
-  // Restaurer l'état du toggle depuis localStorage
-  const isActive = localStorage.getItem('hideFolios_' + fileTitle) === 'true';
-  toggleInput.checked = isActive;
+  // Restaurer l'état d'affichage du formulaire
+  const isFormVisible = localStorage.getItem('hideFoliosFormVisible') === 'true';
+  toggleInput.checked = isFormVisible;
   
-  // Restaurer la valeur des pages
-  const savedPages = localStorage.getItem('hideFoliosPages_' + fileTitle) || parameters.pages || '';
-  if (pagesInput) {
-    pagesInput.value = savedPages;
+  if (formContent) {
+    formContent.style.display = isFormVisible ? 'block' : 'none';
   }
   
-  // Fonction toggle
-  function toggleHideFolios() {
-    const newState = toggleInput.checked;
-    localStorage.setItem('hideFolios_' + fileTitle, newState);
+  // Toggle pour afficher/masquer le formulaire
+  function toggleFormVisibility() {
+    const isVisible = toggleInput.checked;
+    localStorage.setItem('hideFoliosFormVisible', isVisible);
     
-    // Recharger pour appliquer
-    location.reload();
+    if (formContent) {
+      formContent.style.display = isVisible ? 'block' : 'none';
+    }
   }
   
-  // Sauvegarder les pages à chaque modification
+  toggleInput.addEventListener("input", toggleFormVisibility);
+  
+  // Charger les pages depuis hideFolios-data.js
   if (pagesInput) {
-    let timeout;
-    pagesInput.addEventListener("input", (e) => {
-      const value = e.target.value;
-      localStorage.setItem('hideFoliosPages_' + fileTitle, value);
+    pagesInput.value = hideFoliosData.pages || '';
+  }
+  
+  // Créer ou mettre à jour le lien de téléchargement
+  function createDownloadLink(dataBlob) {
+    const existingLink = document.getElementById('hidefolios-download');
+    
+    if (existingLink) {
+      existingLink.href = URL.createObjectURL(dataBlob);
+    } else {
+      let link = document.createElement('a');
+      link.id = 'hidefolios-download';
+      link.classList = 'download-link';
+      link.href = URL.createObjectURL(dataBlob);
+      link.download = 'hideFolios-data.js';
+      link.textContent = '📥 Télécharger hideFolios-data.js';
       
-      // Recharger après 1 seconde d'inactivité
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        location.reload();
-      }, 1000);
+      let div = document.createElement('div');
+      div.classList = 'download-group';
+      div.append(link);
+      
+      document.querySelector('.ui-hidefolios').appendChild(div);
+    }
+  }
+  
+  // Sauvegarder dans hideFolios-data.js
+  function save() {
+    const config = {
+      version: "1.0",
+      pages: pagesInput.value
+    };
+    
+    // Créer le contenu du fichier
+    const fileContent = `/**
+ * @name Hide Folios Data
+ * @file Configuration pour le masquage des folios
+ */
+
+export default ${JSON.stringify(config, null, 2)};
+`;
+    
+    // Créer un Blob
+    const dataBlob = new Blob([fileContent], { type: 'text/javascript' });
+    
+    // Créer/mettre à jour le lien de téléchargement
+    createDownloadLink(dataBlob);
+  }
+  
+  // Appliquer : sauvegarder
+  function applyPages() {
+    save();
+    
+    // Message d'information
+    alert('📥 Fichier prêt au téléchargement !\n\n1. Cliquez sur le lien "Télécharger hideFolios-data.js"\n2. Copiez le fichier dans :\n   _11ty/csspageweaver/plugins/hideFolios/\n3. Écrasez l\'ancien fichier\n4. Rechargez la page');
+  }
+  
+  // Validation sur Enter
+  if (pagesInput) {
+    pagesInput.addEventListener("keydown", (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        applyPages();
+      }
     });
   }
   
-  // Event listener pour le toggle
-  toggleInput.addEventListener("input", toggleHideFolios);
+  // Validation sur clic bouton
+  if (applyButton) {
+    applyButton.addEventListener("click", applyPages);
+  }
 }

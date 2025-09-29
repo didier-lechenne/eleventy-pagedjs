@@ -4,35 +4,25 @@
  */
 
 import { Handler } from "../../../lib/paged.esm.js";
+import hideFoliosData from './hideFolios-data.js';
 
 export default class HideFolios extends Handler {
   constructor(chunker, polisher, caller) {
     super(chunker, polisher, caller);
     this.selectedPages = new Set();
-    this.isActive = false;
   }
 
   beforeParsed(content) {
-    const fileTitle = cssPageWeaver.docTitle;
-    
-    // Vérifier si activé
-    this.isActive = localStorage.getItem('hideFolios_' + fileTitle) === 'true';
-    
-    if (!this.isActive) return;
-    
-    // Récupérer les pages depuis localStorage OU paramètres
-    const savedPages = localStorage.getItem('hideFoliosPages_' + fileTitle);
-    const parameters = cssPageWeaver.features.hideFolios?.parameters || {};
-    const pages = savedPages || parameters.pages || '';
+    // Lire depuis hideFolios-data.js
+    const pages = hideFoliosData.pages || '';
     
     if (pages) {
       this.selectedPages = this.parsePages(pages);
+      console.log('Hide Folios: Pages masquées -', Array.from(this.selectedPages).join(', '));
     }
   }
 
   afterPageLayout(pageElement, page, breakToken) {
-    if (!this.isActive) return;
-    
     const pageNumber = page.position + 1;
     
     if (this.selectedPages.has(pageNumber)) {
@@ -46,13 +36,19 @@ export default class HideFolios extends Handler {
     
     parts.forEach(part => {
       if (part.includes('-')) {
+        // Plage : "1-5"
         const [start, end] = part.split('-').map(n => parseInt(n.trim()));
-        for (let i = start; i <= end; i++) {
-          pages.add(i);
+        if (!isNaN(start) && !isNaN(end) && start <= end) {
+          for (let i = start; i <= end; i++) {
+            pages.add(i);
+          }
         }
       } else {
+        // Page unique
         const num = parseInt(part);
-        if (!isNaN(num)) pages.add(num);
+        if (!isNaN(num) && num > 0) {
+          pages.add(num);
+        }
       }
     });
     
