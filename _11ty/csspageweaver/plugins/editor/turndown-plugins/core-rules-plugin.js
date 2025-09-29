@@ -9,14 +9,14 @@ export function coreRulesPlugin(turndownService) {
 
 
 
-  // Sauvegarde la fonction escape originale
+ 
   var originalEscape = turndownService.escape;
 
   turndownService.escape = function (string) {
-    // Applique d'abord l'échappement standard
+    
     string = originalEscape.call(this, string);
 
-    // Puis ajoute vos échappements personnalisés
+   
     var customEscapes = [
       [/\[\[/g, "\\[\\["],
       [/\]\]/g, "\\]\\]"],
