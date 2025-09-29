@@ -53,45 +53,45 @@ module.exports = function (eleventyConfig) {
   // remettra le rendu de ces notes markdown, en notes compatibles pour pagedjs
   // ouf !!!!
 
-  eleventyConfig.addTransform(
-    "uniqueFootnotes",
-    function (content, outputPath) {
-      if (outputPath && outputPath.endsWith(".html")) {
-        let compteur = 0;
+eleventyConfig.addTransform(
+  "uniqueFootnotes",
+  function (content, outputPath) {
+    if (outputPath && outputPath.endsWith(".html")) {
+      let compteur = 0;
 
-        const patterns = [
-          [
-            /<a href="#fn\d+" id="fnref\d+">\[(\d+)\]<\/a>/g,
-            () => {
-              compteur++;
-              return `<a data-ref="${compteur}" href="#fn${compteur}" id="fnref${compteur}">${compteur}</a>`;
-            },
-          ],
-          [
-            /<li id="fn\d+" class="footnote-item">/g,
-            () => {
-              compteur++;
-              return `<li data-ref="${compteur}"  id="fn${compteur}" class="footnote-item">`;
-            },
-          ],
-          [
-            /<a href="#fnref\d+" class="footnote-backref">/g,
-            () => {
-              compteur++;
-              return `<a data-ref="${compteur}" href="#fnref${compteur}" class="footnote-backref">`;
-            },
-          ],
-        ];
+      const patterns = [
+        [
+          /<a href="#fn\d+" id="fnref\d+">\[(\d+)\]<\/a>/g,
+          () => {
+            compteur++;
+            return `<a data-ref="${compteur}" data-nbr="${compteur}" href="#fn${compteur}" id="fnref${compteur}">${compteur}</a>`;
+          },
+        ],
+        [
+          /<li id="fn\d+" class="footnote-item">/g,
+          () => {
+            compteur++;
+            return `<li data-ref="${compteur}" data-nbr="${compteur}" id="fn${compteur}" class="footnote-item">`;
+          },
+        ],
+        [
+          /<a href="#fnref\d+" class="footnote-backref">/g,
+          () => {
+            compteur++;
+            return `<a data-ref="${compteur}" data-nbr="${compteur}" href="#fnref${compteur}" class="footnote-backref">`;
+          },
+        ],
+      ];
 
-        patterns.forEach(([regex, replacer]) => {
-          compteur = 0;
-          content = content.replace(regex, replacer);
-        });
-      }
-
-      return content;
+      patterns.forEach(([regex, replacer]) => {
+        compteur = 0;
+        content = content.replace(regex, replacer);
+      });
     }
-  );
+
+    return content;
+  }
+);
 
 
 

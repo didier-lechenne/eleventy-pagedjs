@@ -42,42 +42,39 @@ export default class footnotes extends Handler {
   }
 
 
-  afterPageLayout(pageElement, page, breakToken){
+afterPageLayout(pageElement, page, breakToken){
 
-    if(this.reset){
-
-      // reset on pages
-      if(this.reset === "page"){
-          this.counter = 0;  
-      }
-
-      // reset on specific element
-      let newchapter = pageElement.querySelector('.reset-fix-footnote');
-      if(newchapter){
-          this.counter = 0;        
-      }
-
-      let footnotes = pageElement.querySelectorAll(".pagedjs_footnote_content [data-note]");
-    
-      let callnotes = pageElement.querySelectorAll('a.pagedjs_footnote');
-      callnotes.forEach((call, index) => {
-
-          this.counter = this.counter + 1; // increment
-          let num = this.counter - 1;
-
-          // update data-counter for call
-          call.setAttribute('data-counter-footnote-increment', num);
-          call.style.counterReset = "footnote " + num;
-
-          // update data-counter for marker
-          let footnote = footnotes[index];
-          let dataCounter = num + 1;
-          footnote.setAttribute('data-counter-note', dataCounter);
-          footnote.style.counterReset = "footnote-marker " + num;
-
-      });
+  // Toujours numéroter, même sans reset
+  let footnotes = pageElement.querySelectorAll(".pagedjs_footnote_content [data-note]");
+  let callnotes = pageElement.querySelectorAll('a.pagedjs_footnote');
+  
+  // Reset si configuré
+  if(this.reset){
+    if(this.reset === "page"){
+      this.counter = 0;  
+    }
+    let newchapter = pageElement.querySelector('.reset-fix-footnote');
+    if(newchapter){
+      this.counter = 0;        
     }
   }
+
+  callnotes.forEach((call, index) => {
+    this.counter = this.counter + 1;
+    let num = this.counter - 1;
+
+    // Ajouter data-counter-note sur l'appel
+    call.setAttribute('data-counter-note', this.counter);
+
+
+    // Marker
+    let footnote = footnotes[index];
+    if(footnote) {
+      footnote.setAttribute('data-counter-note', this.counter);
+      footnote.style.counterReset = "footnote-marker " + num;
+    }
+  });
+}
 
 
 
