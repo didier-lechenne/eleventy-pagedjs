@@ -1,0 +1,4 @@
+/* Style pour masquer les folios */
+.pagedjs_page[style*="--folio: none"] {
+  --folio: none !important;
+}

@@ -1,0 +1,21 @@
+{
+	"name": "Hide Folios",
+	"description": "Masquer les numéros de page (folios) sur des pages sélectionnées",
+	"author": ["Votre Nom"],
+	"version": "1.0",
+	
+	"ui": {
+		"title": "Masquer Folios",
+		"description": "Sélectionnez les pages où masquer les numéros",
+		"template": "template.html",
+		"toggle": false
+	},
+	
+	"parameters": {
+		"pages": ""
+	},
+	
+	"script": "hidefolios.js",
+	"hook": "hook.js",
+	"stylesheet": "hidefolios.css"
+}
