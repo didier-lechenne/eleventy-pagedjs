@@ -13,10 +13,10 @@
             "state": {
               "type": "vscode-editor",
               "state": {
-                "file": "_11ty/assets/themes/valentine/css/print/variables.css"
+                "file": "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css"
               },
               "icon": "lucide-file",
-              "title": "variables"
+              "title": "index"
             }
           },
           {
@@ -256,8 +256,8 @@
   },
   "active": "19bc2748a018f2f5",
   "lastOpenFiles": [
-    "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css",
     "_11ty/assets/themes/valentine/css/print/variables.css",
+    "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css",
     "valentine/columnGrid.md",
     "_site/index.html",
     "_site/print.html",

@@ -12,14 +12,14 @@
 @font-face {
   font-family: 'PostGrotesk';
   font-style:  normal;
-  font-weight: 300; 
+  font-weight: 300; /*light*/
   font-display: swap;
   src: url("PostGrotesk-Light.otf") format("opentype");
 }
 @font-face {
   font-family: 'PostGrotesk';
   font-style:  italic;
-  font-weight: 300; 
+  font-weight: 300; /*light italic*/
   font-display: swap;
   src: url("PostGrotesk-LightItalic.otf") format("opentype");
 }
@@ -34,7 +34,7 @@
 @font-face {
   font-family: 'PostGrotesk';
   font-style:  italic;
-  font-weight: 400; /*italic*/
+  font-weight: 400; /*normal italic*/
   font-display: swap;
   src: url("PostGrotesk-BookItalic.otf") format("opentype");
 }
