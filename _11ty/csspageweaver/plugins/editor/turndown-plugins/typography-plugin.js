@@ -20,6 +20,35 @@ export function typographyPlugin(turndownService) {
     },
   });
 
+  // Superscript
+  turndownService.addRule("superscript", {
+    filter: "sup",
+    replacement: function (content) {
+      return `<sup>${content}</sup>`;
+    },
+  });
 
+
+    // Subscript
+  turndownService.addRule("subscript", {
+    filter: "sub",
+    replacement: function (content) {
+      return `<sub>${content}</sub>`;
+    },
+  });
+
+
+  // Préserver les tirets typographiques dans les spans editor-add
+  turndownService.addRule("preserveDashes", {
+    filter: function (node) {
+      if (node.nodeName !== "SPAN") return false;
+      const text = node.textContent;
+      // Détecter les tirets demi-cadratin (–) et cadratin (—)
+      return text === "\u2013" || text === "\u2014";
+    },
+    replacement: function (content) {
+      return content; // Préserver tel quel
+    },
+  });
 
 }

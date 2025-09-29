@@ -14,7 +14,7 @@ export function footnotesPlugin(turndownService) {
       if (footnoteContent) {
         const noteMarkdown = window.mainTurndownService
           .turndown(footnoteContent.innerHTML)
-          .replace(/\s+/g, " ")
+          .replace(/[ \t\r\n]+/g, " ")
           .trim();
         return `^[${noteMarkdown}]`;
       }

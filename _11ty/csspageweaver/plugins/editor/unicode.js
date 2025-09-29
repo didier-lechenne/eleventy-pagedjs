@@ -47,5 +47,11 @@ export const UNICODE_CHARS = {
   U_CIRC: "\u00DB",  // Û
   U_UML: "\u00DC",   // Ü
 
+  // ========================
+  // TIRETS
+  // ========================
+
+  EN_DASH: "\u2013", /** Tiret demi-cadratin (U+2013) – Pour les plages (ex: 87–90) */
+  EM_DASH: "\u2014", /** Tiret cadratin (U+2014) — Pour les incises */
 
 };
