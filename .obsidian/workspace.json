@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "valentine/150.reparer.md",
+                "file": "valentine/171.skate_img.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "150.reparer"
+              "title": "171.skate_img"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "valentine/inclure/legende_recupero.md",
+                "file": "valentine/inclure/legende_recupero-e-reinvenzione.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "legende_recupero"
+              "title": "legende_recupero-e-reinvenzione"
             }
           },
           {
@@ -53,12 +53,14 @@
             "id": "0f5d3afb736005a6",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
+              "type": "markdown",
               "state": {
-                "file": "_11ty/assets/themes/valentine/css/print/custom.css"
+                "file": "valentine/inclure/legende_recupero-e-reinvenzione.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "custom"
+              "title": "legende_recupero-e-reinvenzione"
             }
           },
           {
@@ -73,8 +75,7 @@
               "title": "base"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -296,53 +297,53 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0f5d3afb736005a6",
+  "active": "19bc2748a018f2f5",
   "lastOpenFiles": [
-    "_site/images/Excerpt from Mother of All Demos (1968).ogg",
-    "_site/images/domestique.png",
-    "_site/images/carte_skate-02.jpg",
-    "_site/images/carte_skate-03.jpg",
-    "_site/images/carte_skate-01.jpg",
-    "_site/images/alternative_crasset.png",
-    "_site/images/alternative2.jpg",
-    "_site/images/Aaron_Swartz_profile.jpg",
-    "_site/images/1430077789-398f32bbf5de586eb7325d2e44215f75aad64154121b379aaf2d4e06a8c90b46-d.avif",
-    "_site/images/cover.jpg",
-    "_site/images/fullHorizontal-2.jpg",
     "_site/index.html",
     "_site/print.html",
-    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-mediumitalic.woff2",
-    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-medium.woff2",
-    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-lightitalic.woff2",
-    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-light.woff2",
-    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-bookitalic.woff2",
-    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-book.woff2",
-    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-bolditalic.woff2",
-    "_site/assets/css/print/fonts/PostGrotesk/postgrotesk-bold.woff2",
+    "_site/images/velo.jpg",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff2",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-ExtraLight.woff2",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff2",
+    "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
+    "_site/csspageweaver/plugins/pageMove/README.md",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/marker/README.md",
-    "_site/csspageweaver/plugins/pageMove/README.md",
     "_site/csspageweaver/plugins/layout/README.md",
     "_site/csspageweaver/plugins/inlineNotes/README.md",
+    "_site/csspageweaver/plugins/editor/README.md",
+    "_site/csspageweaver/plugins/editor/README-DEV-TURNDOWN.md",
+    "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
     "_site/csspageweaver/plugins/fullPage/README.md",
     "_site/csspageweaver/plugins/fullContent/README.md",
     "_site/csspageweaver/plugins/floatPage/README.md",
     "_site/csspageweaver/plugins/footnotesFix/README.md",
-    "_site/csspageweaver/plugins/editor/README.md",
-    "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
-    "_site/csspageweaver/plugins/editor/README-DEV-TURNDOWN.md",
     "_site/csspageweaver/plugins/baseline/README.md",
     "_site/csspageweaver/README.md",
-    "valentine/150.reparer.md",
-    "valentine/inclure/legende_recupero.md",
-    "valentine/fullcontent.md",
-    "valentine/110.domotique.md",
-    "valentine/131.low_tech_img.md",
+    "_site/images/velo4.jpg",
+    "_site/images/tomeIII-candle_dithered.png",
+    "_site/images/mongolian-child-archer-Nasanbat_Nasaa_dithered.png",
+    "_site/images/nobody-at-table-edited_dithered.png",
+    "_site/images/rebar-foundation-wind-turbine_dithered.png",
+    "_site/images/reparer1.png",
+    "_site/images/lowtech2.png",
+    "_site/images/intro0.png",
+    "_site/images/lowtech_distilateur.png",
     "valentine/111.domotique-image.md",
-    "valentine/130.low_tech.md",
-    "_11ty/csspageweaver/plugins/floatPage/README.md",
-    "valentine/100.domestique.md",
-    "valentine/test-v2.md"
+    "valentine/110.domotique.md",
+    "valentine/170.skate.md",
+    "valentine/171.skate_img.md",
+    "valentine/161.siege_img.md",
+    "valentine/150.reparer.md",
+    "valentine/inclure/legende_recupero-e-reinvenzione.md",
+    "valentine/fullcontent.md",
+    "valentine/131.low_tech_img.md",
+    "valentine/130.low_tech.md"
   ]
 }
