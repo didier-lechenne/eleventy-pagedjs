@@ -10,9 +10,9 @@ main .introduction p {
   orphans: 2;
   widows: 2;
 
-  hyphens: none !important;
-  /* word-break: break-word;
-hyphenate-limit-chars: 6 3 3; */
+  /* hyphens: none !important; */
+  word-break: break-word;
+  hyphenate-limit-chars: 6 3 3;
 
 }
 
