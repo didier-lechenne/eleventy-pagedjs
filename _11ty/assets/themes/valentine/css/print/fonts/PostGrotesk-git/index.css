@@ -1,0 +1,82 @@
+/* font-weight: 100; Thin (Hairline) */
+/* font-weight: 200; Extra Light (Ultra Light) */
+/* font-weight: 300; Light */
+/* font-weight: 400; normal */
+/* font-weight: 500; Medium */
+/* font-weight: 600; Semi Bold (Demi Bold) */
+/* font-weight: 700; gras / bold */
+/* font-weight: 800; Extra Bold (Ultra Bold) */
+/* font-weight: 900; Black (Heavy) */
+/* font-weight: 950; Extra Black (Ultra Black) */
+
+@font-face {
+    font-family: 'PostGrotesk';
+    src: url('PostGrotesk-Bold.eot') format('eot')
+		,url('PostGrotesk-Bold.woff') format('woff')
+		,url('PostGrotesk-Bold.svg') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PostGrotesk';
+    src: url('PostGrotesk-BoldItalic.eot') format('eot')
+		,url('PostGrotesk-BoldItalic.woff') format('woff')
+		,url('PostGrotesk-BoldItalic.svg') format('svg');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'PostGrotesk';
+    src: url('PostGrotesk-Medium.eot') format('eot')
+		,url('PostGrotesk-Medium.woff') format('woff')
+		,url('PostGrotesk-Medium.svg') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PostGrotesk';
+    src: url('PostGrotesk-MediumItalic.eot') format('eot')
+		,url('PostGrotesk-MediumItalic.woff') format('woff')
+		,url('PostGrotesk-MediumItalic.svg') format('svg');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'PostGrotesk';
+    src: url('PostGrotesk-Book.eot') format('eot')
+		,url('PostGrotesk-Book.woff') format('woff')
+		,url('PostGrotesk-Book.svg') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PostGrotesk';
+    src: url('PostGrotesk-BookItalic.eot') format('eot')
+		,url('PostGrotesk-BookItalic.woff') format('woff')
+		,url('PostGrotesk-BookItalic.svg') format('svg');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'PostGrotesk';
+    src: url('PostGrotesk-Light.eot') format('eot')
+		,url('PostGrotesk-Light.woff') format('woff')
+		,url('PostGrotesk-Light.svg') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PostGrotesk';
+    src: url('PostGrotesk-LightItalic.eot') format('eot')
+		,url('PostGrotesk-LightItalic.woff') format('woff')
+		,url('PostGrotesk-LightItalic.svg') format('svg');
+    font-weight: 100;
+    font-style: italic;
+}
