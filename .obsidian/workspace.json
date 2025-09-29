@@ -11,14 +11,12 @@
             "id": "19bc2748a018f2f5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "vscode-editor",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": true
+                "file": "_11ty/assets/themes/valentine/css/print/break.css"
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "break"
             }
           },
           {
@@ -258,6 +256,7 @@
   },
   "active": "19bc2748a018f2f5",
   "lastOpenFiles": [
+    "_11ty/assets/themes/valentine/css/print/base.css",
     "README.md",
     "_site/print.html",
     "_site/assets/css/print/fonts/Hershey-Futural-30/index.css",
@@ -302,7 +301,6 @@
     "valentine/190.bibliographie.md",
     "valentine/180.velo.md",
     "valentine/170.skate.md",
-    "valentine/160.siege.md",
-    "valentine/inclure/legende_recupero-e-reinvenzione.md"
+    "valentine/160.siege.md"
   ]
 }
