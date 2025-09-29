@@ -6,7 +6,10 @@
   min-height: 0;
 }
 
+
+
 body {
+  --paged-layout : booklet;
   font-family: var(--labeur);
   font-size: var(--labeur-size);
   line-height: var(--labeur-line-height);
