@@ -26,7 +26,7 @@
     {
       "id": "9way2ugn3g",
       "platform_specific_commands": {
-        "default": "npm run install"
+        "default": "npm install"
       },
       "shells": {},
       "alias": "",
