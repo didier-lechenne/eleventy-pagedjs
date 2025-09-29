@@ -258,6 +258,8 @@
   },
   "active": "19bc2748a018f2f5",
   "lastOpenFiles": [
+    "_site/assets/css/print/fonts/PostGrotesk-git.zip",
+    "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk-git.zip",
     "_site/images/carte_skate-02.jpg",
     "_site/images/alternative_crasset.png",
     "_site/images/1430077789-398f32bbf5de586eb7325d2e44215f75aad64154121b379aaf2d4e06a8c90b46-d.avif",
@@ -279,7 +281,6 @@
     "_site/assets/js/_print/pagedjs.css",
     "_site/assets/js/_layout/turndown.js",
     "_site/assets/js/_layout/layout.js",
-    "_site/assets/js/sideNotes.js",
     "valentine/120.heritage.md",
     "_site/images/alternative1.jpg",
     "_site/images/alternative2.jpg",

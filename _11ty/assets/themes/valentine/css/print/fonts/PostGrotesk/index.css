@@ -14,14 +14,14 @@
   font-style:  normal;
   font-weight: 300; 
   font-display: swap;
-  src: url("postgrotesk-light.woff2") format("woff2");
+  src: url("postgrotesk-light.otf") format("opentype");
 }
 @font-face {
   font-family: 'PostGrotesk';
   font-style:  italic;
   font-weight: 300; 
   font-display: swap;
-  src: url("postgrotesk-lightitalic.woff2") format("woff2");
+  src: url("postgrotesk-lightitalic.otf") format("opentype");
 }
 
 @font-face {
@@ -29,14 +29,14 @@
   font-style:  normal;
   font-weight: 400; /*normal*/
   font-display: swap;
-  src: url("postgrotesk-book.woff2") format("woff2");
+  src: url("postgrotesk-book.otf") format("opentype");
 }
 @font-face {
   font-family: 'PostGrotesk';
   font-style:  italic;
   font-weight: 400; /*italic*/
   font-display: swap;
-  src: url("postgrotesk-bookitalic.woff2") format("woff2");
+  src: url("postgrotesk-bookitalic.otf") format("opentype");
 }
 
 @font-face {
@@ -44,14 +44,14 @@
     font-style:  normal;
     font-weight: 500; /*Medium*/
     font-display: swap;
-    src: url("postgrotesk-medium.woff2") format("woff2");
+    src: url("postgrotesk-medium.otf") format("opentype");
   }
   @font-face {
     font-family: 'PostGrotesk';
     font-style:  italic;
     font-weight: 500; /*Medium*/
     font-display: swap;
-    src: url("postgrotesk-mediumitalic.woff2") format("woff2");
+    src: url("postgrotesk-mediumitalic.otf") format("opentype");
   }
   
 @font-face {
@@ -59,12 +59,12 @@
   font-style:  normal;
   font-weight: 700; /*gras*/
   font-display: swap;
-  src: url("postgrotesk-bold.woff2") format("woff2");
+  src: url("postgrotesk-bold.otf") format("opentype");
 }
 @font-face {
   font-family: 'PostGrotesk';
   font-style:  italic;
   font-weight: 700; /*gras italic*/
   font-display: swap;
-  src: url("postgrotesk-bolditalic.woff2") format("woff2");
+  src: url("postgrotesk-bolditalic.otf") format("opentype");
 }
