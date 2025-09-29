@@ -1,36 +1,30 @@
-/* Masquer les folios */
-.pagedjs_page[style*="--folio: none"],
-.pagedjs_page.no-folio {
-  --folio: none !important;
-}
+
 
 /* Interface */
 .ui-hidefolios {
   padding: 12px 0;
 }
 
-.panel-group-values {
+.panel-group-values-hidefolios {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin:0 !important;
 }
 
-.panel-group-values label {
-  font-weight: 500;
-  font-size: 14px;
-}
 
-.panel-group-values input[type="text"] {
+
+.panel-group-values-hidefolios input[type="text"] {
   width: 100%;
-  padding: 8px 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 12px;
   font-family: monospace;
   transition: border-color 0.2s ease;
+  padding: 8px 10px;
 }
 
-.panel-group-values input[type="text"]:focus {
+.panel-group-values-hidefolios input[type="text"]:focus {
   outline: none;
   border-color: #4CAF50;
   box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);

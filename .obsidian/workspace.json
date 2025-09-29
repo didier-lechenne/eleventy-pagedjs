@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "valentine/70.alternative.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "70.alternative"
+              "title": "README"
             }
           },
           {
@@ -256,8 +256,9 @@
       "cmdr:Recharger l'application sans enregistrer": false
     }
   },
-  "active": "60360b26a3f761f8",
+  "active": "19bc2748a018f2f5",
   "lastOpenFiles": [
+    "valentine/70.alternative.md",
     "_site/index.html",
     "_site/print.html",
     "_site/csspageweaver/lib/paged.esm.js",
@@ -279,7 +280,6 @@
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",

@@ -5,5 +5,5 @@
 
 export default {
   "version": "1.0",
-  "pages": "90,91"
+  "pages": "81-83"
 };
