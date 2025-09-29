@@ -5,7 +5,6 @@
 }
 
 
-
 .breakcolumn {
     display: block;
     -webkit-column-break-after: always;
@@ -16,8 +15,6 @@
     padding: 0;
     border: none;
 }
-
-
 
 
 .breakprint {
