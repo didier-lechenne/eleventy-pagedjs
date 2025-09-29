@@ -13,10 +13,10 @@
             "state": {
               "type": "vscode-editor",
               "state": {
-                "file": "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css"
+                "file": "_11ty/_data/token.yml"
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "token"
             }
           },
           {
@@ -256,8 +256,11 @@
   },
   "active": "19bc2748a018f2f5",
   "lastOpenFiles": [
-    "_11ty/assets/themes/valentine/css/print/variables.css",
+    "_11ty/csspageweaver/plugins/hideFolios/hideFolios-data.js",
+    "_11ty/csspageweaver/plugins/hideFolios/hidefolios.js",
+    "_11ty/csspageweaver/plugins/hideFolios/config.json",
     "_11ty/assets/themes/valentine/css/print/fonts/PostGrotesk/index.css",
+    "_11ty/assets/themes/valentine/css/print/variables.css",
     "valentine/columnGrid.md",
     "_site/index.html",
     "_site/print.html",
@@ -265,9 +268,6 @@
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff2",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
     "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff2",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/marker/README.md",

@@ -32,6 +32,30 @@
     {
       "path": "_11ty/assets/themes/valentine",
       "color": "QJKA9nifhH0vQN0_VizXk"
+    },
+    {
+      "path": "_11ty/csspageweaver",
+      "color": "QJKA9nifhH0vQN0_VizXk"
+    },
+    {
+      "path": "_11ty/csspageweaver/plugins/hideFolios/hideFolios-data.js",
+      "color": "QJKA9nifhH0vQN0_VizXk"
+    },
+    {
+      "path": "_11ty/csspageweaver/plugins/hideFolios",
+      "color": "QJKA9nifhH0vQN0_VizXk"
+    },
+    {
+      "path": "_11ty/csspageweaver/plugins",
+      "color": "QJKA9nifhH0vQN0_VizXk"
+    },
+    {
+      "path": "_11ty/_data/token.yml",
+      "color": "QJKA9nifhH0vQN0_VizXk"
+    },
+    {
+      "path": "_11ty/assets/themes/valentine/css",
+      "color": "QJKA9nifhH0vQN0_VizXk"
     }
   ]
 }
