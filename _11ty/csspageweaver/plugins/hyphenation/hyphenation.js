@@ -7,15 +7,9 @@ export default class Hyphenation extends Handler {
   }
 
   beforeParsed(content) {
-    // Attendre que l'UI soit chargée
-    window.addEventListener("beforeprint", () => {
-      this.applyHyphenation();
-    });
-  }
-
-  applyHyphenation() {
-    const mainParagraphs = document.querySelector('#hyphen-main')?.checked || false;
-    const footnotes = document.querySelector('#hyphen-footnotes')?.checked || false;
+    // Charger Hyphenopoly AVANT pagination
+    const mainParagraphs = document.querySelector('#hyphen-main')?.checked ?? true;
+    const footnotes = document.querySelector('#hyphen-footnotes')?.checked ?? true;
     
     if (!mainParagraphs && !footnotes) {
       console.log('Hyphenation: désactivée');
@@ -29,6 +23,7 @@ export default class Hyphenation extends Handler {
     }
     if (footnotes) {
       selectors[".pagedjs_footnote_content"] = {};
+      selectors[".pagedjs_footnote_content p"] = {};
     }
 
     window.Hyphenopoly = {
