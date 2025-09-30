@@ -4,7 +4,7 @@
     --space-opacity: 0.8;
     --color-no-break-space: rgba(248, 116, 215, 0.5);
     --color-no-break-narrow-space: rgba(0, 255, 255, 0.5);
-    --color-regular-space: rgba(198, 236, 166, 0.9);
+    --color-regular-space: #c5eca6ad;
   }
 
   .interface-preview .i_space {

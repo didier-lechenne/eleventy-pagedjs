@@ -13,10 +13,10 @@
             "state": {
               "type": "vscode-editor",
               "state": {
-                "file": "_11ty/assets/themes/valentine/css/print/base.css"
+                "file": "_11ty/csspageweaver/plugins/invisibleSpaces/invisibleSpaces.css"
               },
               "icon": "lucide-file",
-              "title": "base"
+              "title": "invisibleSpaces"
             }
           }
         ]
@@ -244,6 +244,7 @@
   },
   "active": "cc532047f34752de",
   "lastOpenFiles": [
+    "_11ty/assets/themes/valentine/css/print/base.css",
     "_11ty/csspageweaver/plugins/ragadjust/ragadjust-hook.js",
     "_site/csspageweaver/plugins/floatElements/.gitignore",
     "_site/csspageweaver/plugins/tableOfContent/.gitignore",
@@ -254,7 +255,6 @@
     "_site/csspageweaver/plugins/previewPage/.gitignore",
     "_site/csspageweaver/plugins/inlineNotes/.gitignore",
     "_site/csspageweaver/plugins/fullPage/.gitignore",
-    "_site/csspageweaver/plugins/footnotesFix/.gitignore",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/ragadjust/ReadMe.md",
