@@ -11,14 +11,12 @@
             "id": "cc532047f34752de",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "vscode-editor",
               "state": {
-                "file": "valentine/70.alternative.md",
-                "mode": "source",
-                "source": false
+                "file": "_11ty/csspageweaver/plugins/csspageweaver/manifest.json"
               },
               "icon": "lucide-file",
-              "title": "70.alternative"
+              "title": "manifest"
             }
           }
         ]
@@ -246,6 +244,7 @@
   },
   "active": "cc532047f34752de",
   "lastOpenFiles": [
+    "valentine/70.alternative.md",
     "_11ty/csspageweaver/plugins/csspageweaver/interface/fonts/IBM_Plex_Mono/stylesheet.css",
     "_11ty/csspageweaver/plugins/csspageweaver/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.woff2",
     "_11ty/csspageweaver/plugins/csspageweaver/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.woff",
@@ -256,7 +255,6 @@
     "_11ty/csspageweaver/plugins/csspageweaver/interface/fonts/IBM_Plex_Mono/IBMPlexMono-MediumItalic.woff2",
     "_11ty/csspageweaver/plugins/csspageweaver/interface/fonts/IBM_Plex_Mono/IBMPlexMono-MediumItalic.woff",
     "_11ty/csspageweaver/plugins/csspageweaver/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.woff2",
-    "_11ty/csspageweaver/plugins/csspageweaver/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.woff",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/ragadjust/ReadMe.md",
