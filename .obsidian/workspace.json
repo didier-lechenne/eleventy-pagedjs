@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "19bc2748a018f2f5",
-            "type": "leaf",
-            "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "_11ty/csspageweaver/plugins/ragadjust/ragadjust-hook.js"
-              },
-              "icon": "lucide-file",
-              "title": "ragadjust-hook"
-            }
-          },
-          {
             "id": "cc532047f34752de",
             "type": "leaf",
             "state": {
@@ -254,8 +242,9 @@
       "cmdr:Recharger l'application sans enregistrer": false
     }
   },
-  "active": "19bc2748a018f2f5",
+  "active": "cc532047f34752de",
   "lastOpenFiles": [
+    "_11ty/csspageweaver/plugins/ragadjust/ragadjust-hook.js",
     "_site/csspageweaver/plugins/floatElements/.gitignore",
     "_site/csspageweaver/plugins/tableOfContent/.gitignore",
     "_site/csspageweaver/plugins/imposition/.gitignore",
@@ -266,7 +255,6 @@
     "_site/csspageweaver/plugins/inlineNotes/.gitignore",
     "_site/csspageweaver/plugins/fullPage/.gitignore",
     "_site/csspageweaver/plugins/footnotesFix/.gitignore",
-    "_site/csspageweaver/plugins/floatPage/.gitignore",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/ragadjust/ReadMe.md",

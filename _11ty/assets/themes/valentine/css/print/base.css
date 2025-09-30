@@ -6,8 +6,6 @@
   min-height: 0;
 }
 
-
-
 body {
   --paged-layout : booklet;
   font-family: var(--labeur);
