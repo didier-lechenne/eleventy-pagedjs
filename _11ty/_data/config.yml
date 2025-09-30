@@ -51,3 +51,7 @@ marks: true
 
 # === NOTES OPTIONS ===
 printNotes: "bottom"
+
+# === CESURES OPTIONS ===
+cesures-footnotes: "true"
+cesures-p: "false"

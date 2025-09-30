@@ -1,7 +1,13 @@
+const config = require("./siteData.js");
 const Hypher = require('hypher');
 const french = require('hyphenation.fr');
 const { JSDOM } = require('jsdom');
-const h = new Hypher(french);
+
+const h = new Hypher(french, {
+  minWordLength: 6,
+  leftmin: 3,
+  rightmin: 2
+});
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addTransform("softHyphens", function(content, outputPath) {
@@ -9,11 +15,22 @@ module.exports = function(eleventyConfig) {
       const dom = new JSDOM(content);
       const doc = dom.window.document;
       
-      // Parcourir tous les nœuds texte dans <p>
-      const paragraphs = doc.querySelectorAll('.footnotes p');
-      paragraphs.forEach(p => {
-        walkTextNodes(p, (textNode) => {
-          textNode.textContent = h.hyphenateText(textNode.textContent);
+      // Construire selectors selon config
+      const selectors = [];
+      
+      if (config['cesures-p'] === 'true') {
+        selectors.push('section[data-template] p', 'blockquote');
+      }
+      
+      if (config['cesures-footnotes'] === 'true') {
+        selectors.push('section.footnotes p');
+      }
+      
+      selectors.forEach(selector => {
+        doc.querySelectorAll(selector).forEach(el => {
+          walkTextNodes(el, (textNode) => {
+            textNode.textContent = h.hyphenateText(textNode.textContent);
+          });
         });
       });
       
@@ -24,11 +41,7 @@ module.exports = function(eleventyConfig) {
 };
 
 function walkTextNodes(node, callback) {
-  
-
-
   if (node.nodeType === 3) {
-    // Vérifier ICI avant d'appeler callback
     if (!node.parentElement?.classList?.contains('i_space')) {
       callback(node);
     }
