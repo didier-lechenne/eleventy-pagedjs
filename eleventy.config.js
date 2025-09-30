@@ -8,6 +8,8 @@ const preprocessorConfig = require("./_11ty/config/preprocessor.js");
 const shortcodesConfig = require("./_11ty/config/mediaShortcodes.js");
 const markdownPlugin = require("./_11ty/config/markdown.js");
 
+const softHyphens = require('./_11ty/config/softHyphens.js');
+
 // === COLLECTIONS ET FILTRES ===
 const collectionsConfig = require("./_11ty/config/collections.js");
 const filtersConfig = require("./_11ty/config/filters.js");
@@ -46,6 +48,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(globalDataPlugin);
   eleventyConfig.addPlugin(passthroughCopy);
   preprocessorConfig(eleventyConfig);
+  softHyphens(eleventyConfig);
   shortcodesConfig(eleventyConfig);
   eleventyConfig.addPlugin(markdownPlugin);
   collectionsConfig(eleventyConfig);
