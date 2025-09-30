@@ -93,7 +93,41 @@ eleventyConfig.addTransform(
   }
 );
 
+// Dans _11ty/config/transforms.js
 
+eleventyConfig.addTransform("consolidateFootnotes", function(content, outputPath) {
+  if (outputPath && outputPath.endsWith(".html")) {
+    const allFootnoteItems = [];
+    
+    // Extraire tous les <li> des sections footnotes
+    content = content.replace(
+      /<section class="footnotes">[\s\S]*?<ol class="footnotes-list">([\s\S]*?)<\/ol>[\s\S]*?<\/section>/g,
+      (match, listContent) => {
+        // Récupérer chaque <li>
+        const items = listContent.match(/<li[\s\S]*?<\/li>/g);
+        if (items) {
+          allFootnoteItems.push(...items);
+        }
+        return ''; // Supprimer la section
+      }
+    );
+    
+    // Créer une seule section avec toutes les notes
+    if (allFootnoteItems.length > 0) {
+      const consolidatedFootnotes = `
+    <section class="footnotes">
+      <ol class="footnotes-list">
+        ${allFootnoteItems.join('\n        ')}
+      </ol>
+    </section>`;
+      
+      content = content.replace('</main>', `${consolidatedFootnotes}\n</main>`);
+    }
+    
+    return content;
+  }
+  return content;
+});
 
 
 };
