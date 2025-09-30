@@ -1,16 +1,16 @@
 {
   "pluginList": [
-    "polyipseity/obsidian-show-hidden-files",
-    "didier-lechenne/microtypographie-v2"
+    "didier-lechenne/microtypographie-v2",
+    "polyipseity/obsidian-show-hidden-files"
   ],
   "pluginSubListFrozenVersion": [
     {
-      "repo": "polyipseity/obsidian-show-hidden-files",
-      "version": "2.5.0"
-    },
-    {
       "repo": "didier-lechenne/microtypographie-v2",
       "version": "latest"
+    },
+    {
+      "repo": "polyipseity/obsidian-show-hidden-files",
+      "version": "2.5.0"
     }
   ],
   "themesList": [],
