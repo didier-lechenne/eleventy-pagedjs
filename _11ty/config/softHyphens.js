@@ -18,11 +18,11 @@ module.exports = function(eleventyConfig) {
       // Construire selectors selon config
       const selectors = [];
       
-      if (config['cesures-p'] === 'true') {
+      if (config['cesures_paragraphe'] === 'true') {
         selectors.push('section[data-template] p', 'blockquote');
       }
       
-      if (config['cesures-footnotes'] === 'true') {
+      if (config['cesures_footnotes'] === 'true') {
         selectors.push('section.footnotes p');
       }
       

@@ -53,5 +53,5 @@ marks: true
 printNotes: "bottom"
 
 # === CESURES OPTIONS ===
-cesures-footnotes: "true"
-cesures-p: "true"
+cesures_footnotes: "true"
+cesures_paragraphe: "false"

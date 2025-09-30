@@ -56,6 +56,10 @@
     {
       "path": "_11ty/assets/themes/valentine/css",
       "color": "QJKA9nifhH0vQN0_VizXk"
+    },
+    {
+      "path": "_11ty/csspageweaver/manifest.json",
+      "color": "QJKA9nifhH0vQN0_VizXk"
     }
   ]
 }

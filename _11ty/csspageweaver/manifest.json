@@ -1,5 +1,5 @@
 {
-    "plugins": [  "inlineNotes",  "footnotesFix",  "pageMove", "fullPage", "fullContent",  "floatPage",  "spread", "previewPage", "imposition", "layout", "editor", "marker",   "bgColor", "invisibleSpaces",   "tableOfContent",   "marginBox",   "hideFolios", "reloadInPlace"],
+    "plugins": [  "inlineNotes",  "footnotesFix",  "ragadjust", "pageMove", "fullPage", "fullContent",  "floatPage",  "spread", "previewPage", "imposition", "layout", "editor", "marker",   "bgColor", "invisibleSpaces",   "tableOfContent",   "marginBox",   "hideFolios", "reloadInPlace"],
 
     "pluginsParameters":{
 
@@ -11,6 +11,11 @@
         "tableOfContent": {
             "tocContainer": "#nav-toc",
             "tocTitles": [ "h2"]
+        },
+
+        "ragadjust": {
+            "selectors": "section[data-template]:not(.footnotes) p",
+            "exeptions": ["short_prepositions", "articles", "conjunctions"]
         }
 
     },
