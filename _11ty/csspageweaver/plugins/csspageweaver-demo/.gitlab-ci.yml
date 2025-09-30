@@ -1,0 +1,104 @@
+stages:
+  - prepare
+  - release
+
+# This job compile CSS Page Weaver and few plugins
+prepare_job:
+  stage: prepare
+  image: ubuntu:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  before_script:
+    - apt-get update && apt-get install -y git curl jq zip bash
+    - git config --global user.email "csspageweaver@csspageweaver.org"
+    - git config --global user.name "Automated Releaser"
+  script:
+
+    - |
+      # Store Job ID since next stage (release_job) link to current job artifacts
+      echo "ARTIFACTS_JOB=$CI_JOB_ID" >> build.env
+
+    - |
+      # create plugins folder if needed 
+      mkdir -p plugins
+
+    - |
+      # Set plugins list
+      REPO_LIST=(
+        "baseline"
+        "grid"
+        "imposition"
+        "marginBox"
+        "spread"
+        "previewPage"
+        "reloadInPlace"
+      )
+
+    - |
+      # Add listed plugins as git subtree. Need deployment tokens if repos are private
+      for REPO in "${REPO_LIST[@]}"; do
+          SUBTREE_URL="https://gitlab.com/csspageweaver/plugins/${REPO}.git"
+          git subtree add --prefix="plugins/$REPO" "$SUBTREE_URL" main --squash
+      done
+
+    - |
+      # Define the pluginsParameters object
+      PLUGINS_PARAMETERS='{
+        "baseline": {
+          "size": 16,
+          "position": 0
+        },
+        "reloadInPlace": {
+          "blur": false,
+          "behavior": "instant"
+        }
+      }'
+
+    - |
+      # Add plugin list to manifest
+      MANIFEST_PATH="manifest.json"
+      PLUGINS_ENTRY=$(jq --arg repos "${REPO_LIST[*]}" '.plugins = ($repos | split(" "))' "$MANIFEST_PATH")
+      echo "$PLUGINS_ENTRY" > "$MANIFEST_PATH"
+
+    - |
+      # Add plugin parameters to manifest
+      PARAMETERS_PLUGINS_ENTRY=$(jq --argjson pluginsParameters "$PLUGINS_PARAMETERS" '.pluginsParameters = $pluginsParameters' "$MANIFEST_PATH")
+      echo "$PARAMETERS_PLUGINS_ENTRY" > "$MANIFEST_PATH"
+
+    - |
+      # create folder 
+      mkdir -p csspageweaver
+      
+      # Copy releveant folder and file to a csspageweaver folder
+      cp -r interface/ lib/ modules/ plugins/ csspageweaver/
+      cp main.js manifest.json README.md .gitignore csspageweaver/
+
+
+  artifacts:
+    name: csspageweaver-core-$CI_COMMIT_TAG
+    paths:
+      - csspageweaver/
+    reports:
+      dotenv: build.env
+    expire_in: never 
+
+# This job create a release based on previous artifact
+release_job:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  needs:
+    - job: prepare_job
+      artifacts: true
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - echo "running release_job for $CI_COMMIT_TAG "
+  release:
+    name: 'Release $CI_COMMIT_TAG'
+    tag_name: '$CI_COMMIT_TAG'
+    ref: '$CI_COMMIT_SHA'
+    description: 'Auto release'
+    assets:
+      links:
+        - name: '👉 CSS Page Weaver with plugins embed'
+          url: 'https://gitlab.com/csspageweaver/csspageweaver/-/jobs/$ARTIFACTS_JOB/artifacts/download'

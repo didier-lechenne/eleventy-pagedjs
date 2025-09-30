@@ -11,12 +11,14 @@
             "id": "cc532047f34752de",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
+              "type": "markdown",
               "state": {
-                "file": "_11ty/csspageweaver/plugins/csspageweaver/manifest.json"
+                "file": "valentine/70.alternative.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "manifest"
+              "title": "70.alternative"
             }
           }
         ]
@@ -242,19 +244,21 @@
       "cmdr:Recharger l'application sans enregistrer": false
     }
   },
-  "active": "60360b26a3f761f8",
+  "active": "cc532047f34752de",
   "lastOpenFiles": [
+    "_11ty/csspageweaver/plugins/csspageweaver/manifest.json",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/stylesheet.css",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.woff2",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.woff",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.woff2",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.woff",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Regular.woff2",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-MediumItalic.woff2",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Regular.woff",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-MediumItalic.woff",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.woff2",
+    "_11ty/csspageweaver/plugins/csspageweaver-demo/README.md",
     "_11ty/csspageweaver/plugins/csspageweaver/README.md",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Regular.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-LightItalic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Light.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-Italic.woff",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-ExtraLightItalic.woff2",
-    "_site/assets/css/print/fonts/WorkSans/WorkSans-ExtraLightItalic.woff",
     "_site/images/siege.jpg",
     "_site/images/velo4.jpg",
     "_site/images/velo3.jpg",
@@ -287,8 +291,6 @@
     "valentine/200.conclusion.md",
     "valentine/190.bibliographie.md",
     "valentine/180.velo.md",
-    "valentine/170.skate.md",
-    "valentine/160.siege.md",
-    "valentine/150.reparer.md"
+    "valentine/170.skate.md"
   ]
 }
