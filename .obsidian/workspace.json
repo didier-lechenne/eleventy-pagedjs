@@ -230,8 +230,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 838.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -259,6 +258,7 @@
   },
   "active": "19bc2748a018f2f5",
   "lastOpenFiles": [
+    ".obsidian/plugins/microtypographie-v2/data.json",
     ".obsidian/plugins/microtypographie-v2/styles.css",
     ".obsidian/plugins/microtypographie-v2/manifest.json",
     ".obsidian/plugins/microtypographie-v2/main.js",
@@ -271,7 +271,6 @@
     "_site/csspageweaver/plugins/spread/spread-ui.js",
     "_site/csspageweaver/plugins/tableOfContent/.gitignore",
     "_site/csspageweaver/plugins/spread/spread.html",
-    "_site/csspageweaver/plugins/spread/.gitignore",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/ragadjust/ReadMe.md",
     "_site/images/alternative2.jpg",
