@@ -10,7 +10,7 @@ module.exports = function(eleventyConfig) {
       const doc = dom.window.document;
       
       // Parcourir tous les nœuds texte dans <p>
-      const paragraphs = doc.querySelectorAll('main p');
+      const paragraphs = doc.querySelectorAll('.footnotes p');
       paragraphs.forEach(p => {
         walkTextNodes(p, (textNode) => {
           textNode.textContent = h.hyphenateText(textNode.textContent);

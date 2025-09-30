@@ -16,7 +16,7 @@ const filtersConfig = require("./_11ty/config/filters.js");
 
 // === POST-TRAITEMENT ===
 const transformsConfig = require("./_11ty/config/transforms.js");
-
+const softHyphens = require('./_11ty/config/softHyphens.js');
 const beautifyConfig = require("./_11ty/config/beautify.js");
 const afterBuild = require("./_11ty/config/afterBuild.js");
 
@@ -55,7 +55,7 @@ module.exports = function (eleventyConfig) {
   collectionsConfig(eleventyConfig);
   filtersConfig(eleventyConfig);
   transformsConfig(eleventyConfig);
-  
+  softHyphens(eleventyConfig);
   beautifyConfig(eleventyConfig);
   eleventyConfig.addPlugin(afterBuild);
 
