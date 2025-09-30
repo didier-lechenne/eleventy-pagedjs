@@ -54,4 +54,4 @@ printNotes: "bottom"
 
 # === CESURES OPTIONS ===
 cesures-footnotes: "true"
-cesures-p: "false"
+cesures-p: "true"

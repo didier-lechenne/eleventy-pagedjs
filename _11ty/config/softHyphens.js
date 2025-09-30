@@ -23,7 +23,7 @@ module.exports = function(eleventyConfig) {
       }
       
       if (config['cesures-footnotes'] === 'true') {
-        selectors.push('section.footnotes li');
+        selectors.push('section.footnotes p');
       }
       
       selectors.forEach(selector => {

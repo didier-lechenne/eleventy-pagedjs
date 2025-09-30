@@ -55,9 +55,11 @@ module.exports = function (eleventyConfig) {
   collectionsConfig(eleventyConfig);
   filtersConfig(eleventyConfig);
   transformsConfig(eleventyConfig);
-  softHyphens(eleventyConfig);
+  
   beautifyConfig(eleventyConfig);
+  softHyphens(eleventyConfig);
   eleventyConfig.addPlugin(afterBuild);
+  
 
   // === CONFIGURATION SERVEUR DE DEV ===
   const serverOptions = {
