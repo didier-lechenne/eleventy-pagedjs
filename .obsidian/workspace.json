@@ -11,14 +11,14 @@
             "id": "19bc2748a018f2f5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "valentine/200.conclusion.md",
-                "mode": "source",
-                "source": true
+                "aFile": "_11ty/csspageweaver/plugins/ragadjust",
+                "bFile": "_11ty/csspageweaver/plugins/ragadjust",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "200.conclusion"
+              "icon": "diff",
+              "title": "Diff: ragadjust"
             }
           },
           {
@@ -258,6 +258,7 @@
   },
   "active": "19bc2748a018f2f5",
   "lastOpenFiles": [
+    "valentine/200.conclusion.md",
     "_site/images/cover.jpg",
     "_site/images/fullHorizontal-2.jpg",
     "_site/index.html",
@@ -270,7 +271,6 @@
     "_site/images/img_test.jpg",
     "_site/images/fr-livres-en-francais-low-tech-magazine_dithered.png",
     "_site/images/french-book-TomeIII_dithered.png",
-    "_site/images/collection-of-solar-panels_dithered.png",
     "_site/csspageweaver/plugins/pageMove/pageMove.js",
     "_site/csspageweaver/plugins/previewPage/config.json",
     "_site/csspageweaver/plugins/previewPage/stylesheet.css",
