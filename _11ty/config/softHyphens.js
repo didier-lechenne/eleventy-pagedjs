@@ -24,9 +24,12 @@ module.exports = function(eleventyConfig) {
 };
 
 function walkTextNodes(node, callback) {
+  
+
+
   if (node.nodeType === 3) {
-    // Ignorer si parent a classe i_space
-    if (!node.parentElement?.classList.contains('i_space')) {
+    // Vérifier ICI avant d'appeler callback
+    if (!node.parentElement?.classList?.contains('i_space')) {
       callback(node);
     }
   } else {
