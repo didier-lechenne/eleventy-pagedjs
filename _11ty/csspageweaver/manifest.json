@@ -15,7 +15,7 @@
 
         "ragadjust": {
             "selectors": "section[data-template]:not(.footnotes) p",
-            "exeptions": ["short_prepositions", "articles", "conjunctions"]
+            "exeptions": [  "articles", "conjunctions", "short_prepositions"]
         }
 
     },
