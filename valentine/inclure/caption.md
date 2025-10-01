@@ -1,3 +1,3 @@
 ↑ <sup>Aménagement</sup> domestique de la cuisine moderne proposé par Catharine Beecher, privilégiant les systèmes de rangement et les <smallcaps>plans</smallcaps> de travail, _The American Woman’s Home : or Principles of Domestic Science_, Ford and Company, 1869, p34.
 
-→ Legende 2 - La table chauffante « électrique » est équipée d’une couverture en laine des Abbruzzes de 240×240 cm. Photo : Marina Kálcheva. Source :  <br /> https ://solar.lowtechmagazine.com
+→ Legende 2 - La table chauffante « électrique » est équipée d’une couverture en laine des Abbruzzes de 240×240 cm. Photo : Marina Kálcheva. Source :  <br /> https ://solar.lowtechmagazine.com

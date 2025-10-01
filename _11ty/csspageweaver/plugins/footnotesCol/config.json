@@ -1,0 +1,12 @@
+{
+  "name": "footnotesCol",
+  "description": "Ajuste le colonnage des notes de bas de page.",
+  "licence": "MIT",
+  "author": ["Didier Lechenne"],
+
+  "version": "1.0",
+  "parameters": {
+    "pages": []
+  },
+  "hook": "footnotescol.js"
+}

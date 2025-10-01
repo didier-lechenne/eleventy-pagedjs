@@ -1,1 +1,1 @@
-→   Legende 2 - La table chauffante « électrique » est équipée d’une couverture en laine des Abbruzzes de 240×240 cm. Photo : Marina Kálcheva. Source : <br> https ://solar.lowtechmagazine.com 
+→   Legende 2 - La table chauffante « électrique » est équipée d’une couverture en laine des Abbruzzes de 240×240 cm. Photo : Marina Kálcheva. Source : <br> https ://solar.lowtechmagazine.com 
