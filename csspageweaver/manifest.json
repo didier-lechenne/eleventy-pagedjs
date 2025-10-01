@@ -19,8 +19,8 @@
         },
 
         "hideFolios": {
-            "note": "Pages avec folios masqués (ex: 80, 81)",
-            "pages": [70, 71]
+            "note": "Pages avec folios masqués (ex: 69, 70, 71)",
+            "pages": [69, 70, 71]
         },
 
         "footnotesCol": {
