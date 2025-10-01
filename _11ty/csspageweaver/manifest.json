@@ -19,12 +19,12 @@
         },
 
         "hideFolios": {
-            "note": "Pages avec folios masqués (ex: 80, 81)",
-            "pages": [69, 70, 71]
+            "help": "Unnumbered pages (e.g., 80, 81)",
+            "pages": [59, 69, 70, 71]
         },
 
         "footnotesCol": {
-            "note": "Pages avec notes sur une colonne (ex: 80, 81)",
+            "help": "Pages with one-column notes (e.g., 80, 81)",
             "pages": [68]
         }
 
