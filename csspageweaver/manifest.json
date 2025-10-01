@@ -1,0 +1,40 @@
+{
+    "plugins": [  "inlineNotes",  "footnotesFix",  "ragadjust", "pageMove", "fullPage", "fullContent",  "floatPage",  "footnotesCol", "spread", "previewPage", "imposition", "layout", "editor", "marker",   "bgColor", "invisibleSpaces",   "tableOfContent",   "marginBox",   "hideFolios", "reloadInPlace"],
+
+    "pluginsParameters":{
+
+        "reloadInPlace": {
+            "blur": false,
+            "behavior": "instant"
+        },
+
+        "tableOfContent": {
+            "tocContainer": "#nav-toc",
+            "tocTitles": [ "h2"]
+        },
+
+        "ragadjust": {
+            "selectors": "section[data-template]:not(.footnotes) p",
+            "exeptions": [  "articles", "conjunctions", "short_prepositions"]
+        },
+
+        "hideFolios": {
+            "note": "Pages avec folios masqués (ex: 80, 81)",
+            "pages": [70, 71]
+        },
+
+        "footnotesCol": {
+            "note": "Pages avec notes en une colonne (ex: 80, 81)",
+            "pages": [68]
+        }
+
+    },
+    
+    "css": [
+        "./assets/css/print.css"
+    ],
+    
+    "hook": [
+    ]
+}
+

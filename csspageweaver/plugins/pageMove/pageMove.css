@@ -1,0 +1,19 @@
+.pagedjs_left_page .pagedjs_moved-content{
+    margin: 0;
+    position: absolute;
+    left: calc(-1 * var(--pagedjs-margin-left) + var(--fullcontent-margin-left));
+    width: calc( var(--pagedjs-pagebox-width) - var(--fullcontent-margin-left) - var(--fullcontent-margin-right)  );
+    page: clean;
+}
+
+
+.pagedjs_right_page .pagedjs_moved-content{
+    margin: 0;
+    position: absolute;
+    right: calc(-1 * var(--pagedjs-margin-right) + var(--fullcontent-margin-right));
+    width: calc( var(--pagedjs-pagebox-width) - var(--fullcontent-margin-left) - var(--fullcontent-margin-right)  );
+    page: clean;
+}
+
+
+

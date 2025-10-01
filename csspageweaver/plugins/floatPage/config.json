@@ -1,0 +1,8 @@
+{
+	"name": "Float Page",
+	"description": "",
+	"author": ["Julie Blanc"],
+	"license": "MIT License",
+	"version": "1.0",
+	"hook": "floatPage.js"
+}

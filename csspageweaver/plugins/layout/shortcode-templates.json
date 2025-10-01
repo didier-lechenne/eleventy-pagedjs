@@ -1,0 +1,23 @@
+{
+  "defaultFormat": "11ty",
+  "formats": {
+    "11ty": {
+      "image": "{% grid \"{url}\", {\n{inlineProperties}\n} %}",
+      "markdown": "{% markdown \"{path}\", {\n{inlineProperties}\n} %}"
+    },
+    "wikilink": {
+      "image": "![[{url} | grid | caption: {caption} | {inlineProperties}]]",
+      "markdown": "[[{path} | {inlineProperties}]]"
+    }
+  },
+  "propertyMappings": {
+    "11ty": {
+      "separator": ",\n",
+      "format": "  {key}: {value}"
+    },
+    "wikilink": {
+      "separator": " | ",
+      "format": "{key}: {value}"
+    }
+  }
+}

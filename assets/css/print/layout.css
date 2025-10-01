@@ -1,0 +1,114 @@
+
+/* ===== BASE PAGE LAYOUT ===== */
+@page {
+    /* Grid Variables */
+    --g-column-count: 1;
+    --g-column-offset: 0;
+    --g-column-gutter: 3mm;
+    --g-row-count: 1;
+    --g-row-offset: 0;
+    --g-row-gutter: 3mm;
+
+    /* Page Configuration */
+    size: 165mm 240mm;
+    
+    /* Margins */
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+    margin-left: 10mm;
+    margin-right: 10mm;
+
+    /* Print Options */
+    bleed: 6mm;
+    marks: crop;
+
+    /* Footnotes */
+    @footnote {
+        float: bottom;
+    }
+}
+
+/* ===== LEFT/RIGHT PAGE MARGINS ===== */
+@page:left {
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+    margin-left: 25mm;
+    margin-right: 10mm;
+}
+
+@page:right {
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+    margin-left: 10mm;
+    margin-right: 25mm;
+}
+
+/* ===== PAGE NUMBERS (FOLIOS) ===== */
+@page:left {
+    @left-top {
+        content: counter(page);
+        text-align: left;
+        margin-left: 10mm;
+        font-family: var(--note);
+        font-size: var(--labeur-size);
+        display: var(--folio, block);
+    }
+}
+
+@page:right {
+    @right-top {
+        content: counter(page);
+        text-align: right;
+        margin-right: 10mm;
+        font-family: var(--note);
+        font-size: var(--labeur-size);
+        display: var(--folio, block);
+    }
+}
+
+/* ===== SPECIALIZED PAGE LAYOUTS ===== */
+
+/* Clean Layout - No Page Numbers */
+@page clean {
+    @left-top {
+        display: none;
+    }
+    
+    @right-top {
+        display: none;
+    }
+}
+
+
+.nofolio{
+    page: clean;
+}
+
+
+/* Table of Contents Layout */
+@page sommaire {
+    margin: 10mm !important;
+
+    @left-top {
+        display: none;
+    }
+    
+    @right-top {
+        display: none;
+    }
+}
+
+/* Modular Grid Layout */
+@page modularGrid {
+    margin: 10mm !important;
+
+    @left-top {
+        display: none;
+    }
+    
+    @right-top {
+        display: none;
+    }
+
+}
+

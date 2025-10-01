@@ -1,0 +1,93 @@
+/*! grid */
+/*!
+* Pure CSS Responsive Grid Overlay
+* README: https://github.com/larsenwork/Pure-CSS-Responsive-Grid-Overlay
+*/
+
+:root {
+  /* Variables couleurs complètes directement dans :root */
+  --g-color-line: hsla(16, 100%, 50%, 0.3);
+  --g-color-column: hsla(16, 100%, 50%, 0);
+  --g-color-gutter: hsla(16, 100%, 50%, 0.02);
+  --g-color-baseline: hsla(16, 100%, 50%, 0.1);
+  --g-color-row: hsla(16, 100%, 50%, 0);
+
+  --color-marginBox: #0000ff;
+}
+
+@media screen, pagedjs-ignore {
+  .no-marker .marker,
+  .no-marker .modularGrid,
+  .no-marker .pagedjs_area,
+  .no-marker .pagedjs_footnote_inner_content,
+  .interface-preview .marker,
+  .interface-preview .pagedjs_area,
+  .interface-preview .pagedjs_footnote_inner_content {
+    background-image: none !important;
+  }
+
+  .marker,
+  .modularGrid,
+  .pagedjs_area,
+  .pagedjs_footnote_inner_content {
+    background-image: var(--g-gradient-row), var(--g-gradient-column);
+    background-size:
+      100% calc(100% + var(--g-row-gutter)),
+      calc(100% + var(--g-column-gutter)) 100%;
+
+    /* Baseline */
+    --g-baseline-height: 8px;
+    --g-baseline-start: 0px;
+
+    /* Media Query String */
+    --g-media_query: "Base";
+
+    /* Gradient Helpers */
+    --line-thickness: 1px;
+
+    --column-start: 0;
+    --column-start-line: var(--line-thickness);
+    --column-end: calc(
+      (100% / var(--g-column-count)) - var(--g-column-gutter) -
+        var(--line-thickness)
+    );
+    --column-end-line: calc(
+      (100% / var(--g-column-count)) - var(--g-column-gutter)
+    );
+    --column-gutter-end: calc(100% / var(--g-column-count));
+
+    --row-start: 0;
+    --row-start-line: var(--line-thickness);
+    --row-end: calc(
+      (100% / var(--g-row-count, 1)) - var(--g-row-gutter) -
+        var(--line-thickness)
+    );
+    --row-end-line: calc((100% / var(--g-row-count, 1)) - var(--g-row-gutter));
+    --row-gutter-end: calc(100% / var(--g-row-count, 1));
+
+    /* Gradients */
+    --g-gradient-column: repeating-linear-gradient(
+      to right,
+      var(--g-color-line) var(--column-start),
+      var(--g-color-line) var(--column-start-line),
+      var(--g-color-column) var(--column-start-line),
+      var(--g-color-column) var(--column-end),
+      var(--g-color-line) var(--column-end),
+      var(--g-color-line) var(--column-end-line),
+      var(--g-color-gutter) var(--column-end-line),
+      var(--g-color-gutter) var(--column-gutter-end)
+    );
+
+    --g-gradient-row: repeating-linear-gradient(
+      to bottom,
+      var(--g-color-line) var(--row-start),
+      var(--g-color-line) var(--row-start-line),
+      var(--g-color-row) var(--row-start-line),
+      var(--g-color-row) var(--row-end),
+      var(--g-color-line) var(--row-end),
+      var(--g-color-line) var(--row-end-line),
+      var(--g-color-gutter) var(--row-end-line),
+      var(--g-color-gutter) var(--row-gutter-end)
+    );
+  }
+}

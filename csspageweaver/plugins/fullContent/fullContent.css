@@ -1,0 +1,145 @@
+:root {
+  --fullcontent-margin-top: 10mm;
+  --fullcontent-margin-bottom: 10mm;
+  --fullcontent-margin-left: 10mm;
+  --fullcontent-margin-right: 10mm;
+}
+
+/* Containers pour les spreads */
+.pagedjs_page_fullContentLeft .pagedjs_full-content-spread_container {
+  margin: 0;
+  width: calc(var(--pagedjs-pagebox-width) - var(--fullcontent-margin-left));
+  height: calc(
+    var(--pagedjs-pagebox-height) - var(--fullcontent-margin-top) -
+      var(--fullcontent-margin-bottom)
+  ) !important;
+  top: calc(var(--fullcontent-margin-top) - var(--pagedjs-margin-top));
+  left: calc(-1 * var(--pagedjs-margin-left) + var(--fullcontent-margin-left));
+  /* overflow: hidden; */
+  overflow: visible;
+  position: absolute;
+}
+
+.pagedjs_page_fullContentRight .pagedjs_full-content-spread_container {
+  margin: 0;
+  width: calc(var(--pagedjs-pagebox-width) - var(--fullcontent-margin-right));
+  height: calc(
+    var(--pagedjs-pagebox-height) - var(--fullcontent-margin-top) -
+      var(--fullcontent-margin-bottom)
+  ) !important;
+  right: calc(
+    -1 * var(--pagedjs-margin-right) + var(--fullcontent-margin-right)
+  );
+  top: calc(var(--fullcontent-margin-top) - var(--pagedjs-margin-top));
+  position: absolute;
+  /* overflow: hidden; */
+  overflow: visible;
+}
+
+/* Positionnement du contenu spread */
+.pagedjs_page_fullContentLeft .pagedjs_full-content-spread_content {
+  left: 0mm;
+  position: absolute;
+}
+
+.pagedjs_page_fullContentRight .pagedjs_full-content-spread_content {
+  left: calc(
+    -1 * var(--pagedjs-pagebox-width) + var(--fullcontent-margin-right)
+  );
+  position: absolute;
+}
+
+/* Contenu des pages complètes */
+.pagedjs_full-content_content {
+  margin: 0;
+  position: absolute;
+  top: calc(var(--fullcontent-margin-top) - var(--pagedjs-margin-top));
+}
+
+/* Page gauche */
+.pagedjs_left_page .pagedjs_full-content_content {
+  width: calc(
+    var(--pagedjs-pagebox-width) - var(--fullcontent-margin-left) -
+      var(--fullcontent-margin-right)
+  );
+  height: calc(
+    var(--pagedjs-pagebox-height) - var(--fullcontent-margin-top) -
+      var(--fullcontent-margin-bottom)
+  ) !important;
+  left: calc(-1 * var(--pagedjs-margin-left) + var(--fullcontent-margin-left));
+  top: calc(var(--fullcontent-margin-top) - var(--pagedjs-margin-top));
+}
+
+/* Page droite */
+.pagedjs_right_page .pagedjs_full-content_content {
+  width: calc(
+    var(--pagedjs-pagebox-width) - var(--fullcontent-margin-left) -
+      var(--fullcontent-margin-right)
+  );
+  height: calc(
+    var(--pagedjs-pagebox-height) - var(--fullcontent-margin-top) -
+      var(--fullcontent-margin-bottom)
+  ) !important;
+  right: calc(
+    -1 * var(--pagedjs-margin-right) + var(--fullcontent-margin-right)
+  );
+  top: calc(var(--fullcontent-margin-top) - var(--pagedjs-margin-top));
+}
+
+/* Hack pour image de couverture */
+.pagedjs_right_page .pagedjs_full-content_content.cover {
+  width: calc(
+    var(--pagedjs-pagebox-width) + 2 * var(--bleed-images)
+  ) !important;
+  height: calc(
+    var(--pagedjs-pagebox-height) + 2 * var(--bleed-images)
+  ) !important;
+  left: calc(
+    var(--pagedjs-margin-left) - var(--pagedjs-margin-right) -
+      var(--bleed-images)
+  ) !important;
+  top: calc(-1 * var(--bleed-images)) !important;
+}
+
+/* Styles pour figures et images */
+.pagedjs_full-content_content figure {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pagedjs_full-content_content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% center;
+  /* object-position: left; */
+  /* object-position: right; */
+}
+
+/* Styles spécifiques pour les containers spread */
+.pagedjs_full-content-spread_container img {
+  width: 200%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.pagedjs_full-content-spread_container figure {
+  margin: 0;
+  padding: 0;
+  width: 200%;
+  height: 100%;
+}
+/* 
+.pagedjs_full-content-spread_container figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255,1);
+  color: black;
+  padding: calc(1ch / 2) 0 0;
+  margin: 0;
+} */

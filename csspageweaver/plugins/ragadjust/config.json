@@ -1,0 +1,10 @@
+{
+	"name": "Ragadjust",
+	"id": "ragadjust",
+	"description": "A bit of JavaScript to automatically fix the rag of any body of text.",
+	"license": "AGPL",
+	"version": "1.0",
+	"author": ["Yann Trividic", "Nicolas Taffin"],
+	"repository": "https://gitlab.com/yanntrividic/ragadjustfr",
+	"hook": "ragadjust-hook.js"
+}

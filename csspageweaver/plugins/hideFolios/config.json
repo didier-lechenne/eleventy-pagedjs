@@ -1,0 +1,11 @@
+{
+  "name": "hideFolios",
+  "description": "Masquer les numéros de page (folios) sur des pages sélectionnées",
+  "author": ["didier@lechenne.fr"],
+  "version": "1.0",
+
+  "parameters": {
+    "pages": []
+  },
+  "hook": "hidefolios.js"
+}

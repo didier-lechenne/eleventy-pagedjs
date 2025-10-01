@@ -1,0 +1,29 @@
+
+
+/* mettre les notes sur une colonn sur certaines page */
+/*  ,  */
+[data-page-number="11"] .pagedjs_footnote_inner_content,
+[data-page-number="14"] .pagedjs_footnote_inner_content,
+[data-page-number="17"] .pagedjs_footnote_inner_content
+ {
+	--g-column-count: 1 !important;
+}
+
+
+
+
+
+
+.fullpage-cover {
+  --pagedjs-full-page: 1;
+}
+
+
+[data-type="markdown"] {
+    width: 100%;
+}
+
+
+#legende-recupero {
+    padding-top: 3ch !important;
+}

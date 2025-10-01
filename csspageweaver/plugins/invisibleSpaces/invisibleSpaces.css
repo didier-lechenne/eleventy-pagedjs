@@ -1,0 +1,43 @@
+@media screen {
+  :root {
+    --space-size: 1em;
+    --space-opacity: 0.8;
+    --color-no-break-space: rgba(248, 116, 215, 0.5);
+    --color-no-break-narrow-space: rgba(0, 255, 255, 0.5);
+    --color-regular-space: #c5eca6ad;
+  }
+
+  .interface-preview .i_space {
+    background-color: unset !important;
+  }
+
+  .no-spaces .i_space {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: unset !important;
+    line-height: var(--labeur-size);
+    /* display: inline-block; */
+    vertical-align: middle;
+  }
+
+
+  .no-break-space {
+    background-color: var(--color-no-break-space);
+    line-height: var(--labeur-size);
+    /* display: inline-block; */
+    vertical-align: middle;
+  }
+
+  .no-break-space.ragadjust {
+    background-color: var(--color-regular-space);
+    line-height: var(--labeur-size);
+    /* display: inline-block; */
+    vertical-align: middle;
+  }
+  .no-break-narrow-space {
+    background-color: var(--color-no-break-narrow-space);
+    line-height: var(--labeur-size);
+    /* display: inline-block; */
+    vertical-align: middle;
+  }
+}

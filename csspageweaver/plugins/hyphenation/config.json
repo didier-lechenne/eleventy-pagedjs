@@ -1,0 +1,18 @@
+{
+  "name": "Hyphenation",
+  "description": "Ajoute des césures automatiques aux paragraphes",
+  "author": ["Valentine Saint-Martin"],
+  "licence": "MIT",
+  "version": "1.0",
+  "ui": {
+    "title": "Césures",
+    "description": "Choisir où appliquer les césures automatiques",
+    "toggle": true,
+    "template": "template.html"
+  },
+  
+ 
+  "script": "hyphenationUI.js",
+  "hook": "hyphenation.js",
+  "stylesheet": "hyphenation.css"
+}

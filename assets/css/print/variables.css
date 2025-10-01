@@ -1,0 +1,43 @@
+:root {
+  --heading: "Hershey-Futural-15", serif;
+  --labeur: "PostGrotesk", sans-serif;
+  --sommaire: "Hershey-Futural-15", serif;
+
+  --text-color: rgba(0, 0, 0, 1);
+
+  --heading-size: 28pt;
+  --heading-line-height: 28pt;
+  --heading-weight: normal;
+
+  --labeur-size: 12pt;
+  --labeur-line-height: 16pt;
+  --labeur-weight: 300; /* light */
+  --labeur-bold-weight: 400;
+
+  --footnote: var(--labeur), sans-serif;
+  --footnote-size: 8.9pt;
+  --footnote-line-height: 11pt;
+  --footnote-weight: 300;
+  --footnote-bold-weight: 400;
+
+  --caption: var(--labeur), sans-serif;
+  --caption-size: 9pt;
+  --caption-line-height: 12pt;
+  --caption-weight: 300;
+  --caption-bold-weight: 400;
+
+  --baseline: 1ch;
+  --gutter: 3mm;
+}
+
+
+/* font-weight: 100; Thin (Hairline) */
+/* font-weight: 200; Extra Light (Ultra Light) */
+/* font-weight: 300; Light */
+/* font-weight: 400; normal */
+/* font-weight: 500; Medium */
+/* font-weight: 600; Semi Bold (Demi Bold) */
+/* font-weight: 700; gras / bold */
+/* font-weight: 800; Extra Bold (Ultra Bold) */
+/* font-weight: 900; Black (Heavy) */
+/* font-weight: 950; Extra Black (Ultra Black) */
