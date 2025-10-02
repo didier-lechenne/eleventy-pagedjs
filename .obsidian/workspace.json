@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "valentine/131.low_tech_img.md",
+                "file": "valentine/100.domestique.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "131.low_tech_img"
+              "title": "100.domestique"
             }
           }
         ]
@@ -246,6 +246,11 @@
   },
   "active": "cc532047f34752de",
   "lastOpenFiles": [
+    "_11ty/_data/token.yml",
+    "_11ty/assets/themes/valentine/css/print/figures.css",
+    "valentine/40.introduction.md",
+    "valentine/30.sommaire.md",
+    "valentine/131.low_tech_img.md",
     "_11ty/csspageweaver/manifest.json",
     "_site/images/fr-livres-en-francais-low-tech-magazine_dithered.png",
     "_site/images/1430077789-398f32bbf5de586eb7325d2e44215f75aad64154121b379aaf2d4e06a8c90b46-d.avif",
@@ -254,7 +259,6 @@
     "_site/images/img_test_2.jpg",
     "_site/images/fullHorizontal-2.jpg",
     "_site/images/alternative_crasset.png",
-    "valentine/131.low_tech_img.md",
     "_site/index.html",
     "_site/print.html",
     "_site/assets/css/print/layout.css",
@@ -263,7 +267,6 @@
     "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.woff",
     "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.woff2",
     "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.woff",
-    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.woff2",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
@@ -288,8 +291,6 @@
     "valentine/10.cover.md",
     "valentine/100.domestique.md",
     "old-valentine/100.domestique.md",
-    "valentine/110.domotique.md",
-    "old-valentine/110.domotique.md",
-    "valentine/160.siege.md"
+    "valentine/110.domotique.md"
   ]
 }
