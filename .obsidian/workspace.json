@@ -20,21 +20,8 @@
               "icon": "lucide-file",
               "title": "131.low_tech_img"
             }
-          },
-          {
-            "id": "cc59c384c76041eb",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.9.14"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.9.14"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -231,7 +218,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -257,7 +244,7 @@
       "cmdr:Recharger l'application sans enregistrer": false
     }
   },
-  "active": "cc59c384c76041eb",
+  "active": "cc532047f34752de",
   "lastOpenFiles": [
     "_11ty/csspageweaver/manifest.json",
     "_site/images/fr-livres-en-francais-low-tech-magazine_dithered.png",
