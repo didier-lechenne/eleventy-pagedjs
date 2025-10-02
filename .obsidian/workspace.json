@@ -11,15 +11,30 @@
             "id": "cc532047f34752de",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
+              "type": "markdown",
               "state": {
-                "file": "_11ty/csspageweaver/manifest.json"
+                "file": "valentine/131.low_tech_img.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "manifest"
+              "title": "131.low_tech_img"
+            }
+          },
+          {
+            "id": "cc59c384c76041eb",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.14"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.9.14"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -242,47 +257,46 @@
       "cmdr:Recharger l'application sans enregistrer": false
     }
   },
-  "active": "cc532047f34752de",
+  "active": "cc59c384c76041eb",
   "lastOpenFiles": [
-    "_site/images/carte_skate-01.jpg",
-    "_site/images/alternative_crasset.png",
-    "_site/images/alternative1.jpg",
+    "_11ty/csspageweaver/manifest.json",
+    "_site/images/fr-livres-en-francais-low-tech-magazine_dithered.png",
     "_site/images/1430077789-398f32bbf5de586eb7325d2e44215f75aad64154121b379aaf2d4e06a8c90b46-d.avif",
-    "_site/images/Aaron_Swartz_profile.jpg",
+    "_site/images/img_test.jpg",
+    "_site/images/home-made-solar-system_dithered.png",
+    "_site/images/img_test_2.jpg",
+    "_site/images/fullHorizontal-2.jpg",
+    "_site/images/alternative_crasset.png",
+    "valentine/131.low_tech_img.md",
     "_site/index.html",
     "_site/print.html",
     "_site/assets/css/print/layout.css",
     "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/stylesheet.css",
-    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.woff2",
-    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-MediumItalic.woff",
     "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.woff2",
     "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.woff",
-    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.woff",
-    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Regular.woff",
-    "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
+    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.woff2",
+    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.woff",
+    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.woff2",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
-    "_site/csspageweaver/plugins/ragadjust/ReadMe.md",
     "_site/csspageweaver/plugins/pageMove/README.md",
+    "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
+    "_site/csspageweaver/plugins/ragadjust/ReadMe.md",
     "_site/csspageweaver/plugins/marker/README.md",
     "_site/csspageweaver/plugins/layout/README.md",
     "_site/csspageweaver/plugins/inlineNotes/README.md",
+    "_site/csspageweaver/plugins/footnotesFix/README.md",
     "_site/csspageweaver/plugins/fullContent/README.md",
+    "_site/csspageweaver/plugins/fullPage/README.md",
+    "_site/csspageweaver/plugins/floatPage/README.md",
+    "_site/csspageweaver/plugins/baseline/README.md",
     "_site/csspageweaver/plugins/editor/README.md",
     "_site/csspageweaver/plugins/editor/README-DEV-TURNDOWN.md",
     "_site/csspageweaver/plugins/editor/README-DEV-TOOLBAR.md",
-    "_site/csspageweaver/plugins/fullPage/README.md",
-    "_site/csspageweaver/plugins/footnotesFix/README.md",
-    "_site/csspageweaver/plugins/floatPage/README.md",
-    "_site/csspageweaver/plugins/baseline/README.md",
     "_site/csspageweaver/plugins/csspageweaver-demo/README.md",
     "_site/csspageweaver/README.md",
+    "_site/images/velo.jpg",
     "_site/images/velo4.jpg",
     "_site/images/velo3.jpg",
-    "_site/images/velo2.jpg",
-    "_site/images/velo.jpg",
-    "_site/images/reparer1.png",
-    "_site/images/tomeIII-candle_dithered.png",
-    "valentine/131.low_tech_img.md",
     "valentine/130.low_tech.md",
     "valentine/10.cover.md",
     "valentine/100.domestique.md",

@@ -1,5 +1,5 @@
 {
-    "plugins": [  "inlineNotes",  "footnotesFix",  "ragadjust", "pageMove", "fullPage", "fullContent",  "floatPage",  "footnotesCol", "spread", "previewPage", "imposition", "layout", "editor", "marker",   "bgColor", "invisibleSpaces",   "tableOfContent",   "marginBox",   "hideFolios", "reloadInPlace"],
+    "plugins": [  "inlineNotes",  "footnotesFix",  "ragadjust",  "pageMove", "hideFolios", "fullPage", "fullContent",  "floatPage",  "footnotesCol", "spread", "previewPage", "imposition", "layout", "editor", "marker",   "bgColor", "invisibleSpaces",   "tableOfContent",   "marginBox",    "reloadInPlace"],
 
     "pluginsParameters":{
 
