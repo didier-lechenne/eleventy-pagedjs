@@ -11,12 +11,14 @@
             "id": "cc532047f34752de",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
+              "type": "markdown",
               "state": {
-                "file": "_11ty/_data/token.yml"
+                "file": "valentine/160.siege.md",
+                "mode": "source",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "token"
+              "title": "160.siege"
             }
           }
         ]
@@ -244,6 +246,10 @@
   },
   "active": "cc532047f34752de",
   "lastOpenFiles": [
+    "valentine/150.reparer.md",
+    "valentine/140.minimal.md",
+    "valentine/100.domestique.md",
+    "_11ty/_data/token.yml",
     "_site/assets/css/print/layout.css",
     "_11ty/_data/config.yml",
     "_site/index.html",
@@ -253,8 +259,6 @@
     "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.woff2",
     "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.woff2",
     "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.woff",
-    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Regular.woff2",
-    "_site/csspageweaver/plugins/csspageweaver-demo/interface/fonts/IBM_Plex_Mono/IBMPlexMono-Regular.woff",
     "_site/csspageweaver/plugins/tableOfContent/README.md",
     "_site/csspageweaver/plugins/reloadInPlace/Readme.md",
     "_site/csspageweaver/plugins/ragadjust/ReadMe.md",
@@ -282,13 +286,11 @@
     "_site/images/nobody-at-table-edited_dithered.png",
     "_site/images/rebar-foundation-wind-turbine_dithered.png",
     "_site/images/mongolian-child-archer-Nasanbat_Nasaa_dithered.png",
-    "valentine/100.domestique.md",
     "valentine/40.introduction.md",
     "valentine/30.sommaire.md",
     "valentine/131.low_tech_img.md",
     "valentine/130.low_tech.md",
     "valentine/10.cover.md",
-    "old-valentine/100.domestique.md",
-    "valentine/110.domotique.md"
+    "old-valentine/100.domestique.md"
   ]
 }
