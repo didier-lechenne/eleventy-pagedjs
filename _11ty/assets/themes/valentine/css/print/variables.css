@@ -10,9 +10,10 @@
   --heading-weight: normal;
 
   --labeur-size: 12pt;
-  --labeur-line-height: 16pt;
+  --labeur-line-height: 15.75pt;
   --labeur-weight: 300; /* light */
   --labeur-bold-weight: 400;
+  --baseline: calc(var(--labeur-line-height) / 2) ;
 
   --footnote: var(--labeur), sans-serif;
   --footnote-size: 8.9pt;
@@ -26,8 +27,8 @@
   --caption-weight: 300;
   --caption-bold-weight: 400;
 
-  --baseline: 1ch;
-  --gutter: 3mm;
+  /* --baseline: 1ch; */
+  --gutter: var(--baseline);
 }
 
 

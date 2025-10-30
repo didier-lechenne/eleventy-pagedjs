@@ -5,38 +5,79 @@ module.exports = function (eleventyConfig) {
     globalImageCounter = 0;
   });
 
-  eleventyConfig.addTransform(
-    "invisibleSpaces",
-    function (content, outputPath) {
-      if (!outputPath || !outputPath.endsWith(".html")) {
-        return content;
-      }
+
+
+// eleventyConfig.addTransform("invisibleSpaces", function(content, outputPath) {
+//   if (!outputPath || !outputPath.endsWith(".html")) {
+//     return content;
+//   }
+  
+//   return content.replace(
+//     /(<p[^>]*data-editable[^>]*>)([\s\S]*?)(<\/p>)/g,
+//     (match, open, inner, close) => {
+//       const wrapped = inner
+//         .replace(/(<[^>]+>)/g, '\uE000$1\uE000')
+//         .replace(/ /g, '<span data-character=" "> </span>')
+//         .replace(/&nbsp;/g, '<span data-character="&nbsp;">&nbsp;</span>')
+//         .replace(/\u00AD/g, '<shy>\u00AD</shy>')
+//         .replace(/\uE000(<[^>]+>)\uE000/g, '$1');
+      
+//       return open + wrapped + close;
+//     }
+//   );
+// });
+
+  // eleventyConfig.addTransform(
+  //   "invisibleSpaces",
+  //   function (content, outputPath) {
+  //     if (!outputPath || !outputPath.endsWith(".html")) {
+  //       return content;
+  //     }
 
       
-      content = content.replace(
-        /\u00A0/g,
-        '<span class="i_space no-break-space">&nbsp;</span>'
-      );
+  //     content = content.replace(
+  //       /\u00A0/g,
+  //       '<span  class="i_space no-break-space">&nbsp;</span>'
+  //     );
 
-      content = content.replace(
-        /\u202F/g,
-        '<span class="i_space no-break-narrow-space">\u202F</span>'
-      );
+  //     content = content.replace(
+  //       /\u202F/g,
+  //       '<span class="i_space no-break-narrow-space">\u202F</span>'
+  //     );
 
-      content = content.replace(
-        /\u2009/g,
-        '<span class="i_space thin-space">&thinsp;</span>'
-      );
+  //     content = content.replace(
+  //       /\u2009/g,
+  //       '<span class="i_space thin-space">&thinsp;</span>'
+  //     );
 
-      content = content.replace(
-        /\u200A/g,
-        '<span class="i_space hair-space">&hairsp;</span>'
-      );
+  //     content = content.replace(
+  //       /\u200A/g,
+  //       '<span class="i_space hair-space">&hairsp;</span>'
+  //     );
 
-      return content;
-    }
-  );
+  //     return content;
+  //   }
+  // );
 
+
+// eleventyConfig.addTransform(
+//   "invisibleSpaces",
+//   function (content, outputPath) {
+//     if (!outputPath || !outputPath.endsWith(".html")) {
+//       return content;
+//     }
+
+//     content = content.replace(/ /g, '<space data-character=" "> </space>');
+//     content = content.replace(/\u00A0/g, '<space data-character="&nbsp;">&nbsp;</space>');
+//     content = content.replace(/&nbsp;/g, '<space data-character="&nbsp;">&nbsp;</space>');
+//     content = content.replace(/\u00AD/g, '<shy>\u00AD</shy>');
+//     content = content.replace(/\u202F/g, '<space data-character="\u202F">\u202F</space>');
+//     content = content.replace(/\u2009/g, '<space data-character="\u2009">\u2009</space>');
+//     content = content.replace(/\u200A/g, '<space data-character="\u200A">\u200A</space>');
+
+//     return content;
+//   }
+// );
 
 
   // transformation APRES le rendu markdown cela concerne donc

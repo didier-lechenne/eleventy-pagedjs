@@ -1,43 +1,88 @@
-@media screen {
-  :root {
-    --space-size: 1em;
-    --space-opacity: 0.8;
-    --color-no-break-space: rgba(248, 116, 215, 0.5);
-    --color-no-break-narrow-space: rgba(0, 255, 255, 0.5);
-    --color-regular-space: #c5eca6ad;
-  }
-
-  .interface-preview .i_space {
-    background-color: unset !important;
-  }
-
-  .no-spaces .i_space {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: unset !important;
-    line-height: var(--labeur-size);
-    /* display: inline-block; */
-    vertical-align: middle;
-  }
-
-
-  .no-break-space {
-    background-color: var(--color-no-break-space);
-    line-height: var(--labeur-size);
-    /* display: inline-block; */
-    vertical-align: middle;
-  }
-
-  .no-break-space.ragadjust {
-    background-color: var(--color-regular-space);
-    line-height: var(--labeur-size);
-    /* display: inline-block; */
-    vertical-align: middle;
-  }
-  .no-break-narrow-space {
-    background-color: var(--color-no-break-narrow-space);
-    line-height: var(--labeur-size);
-    /* display: inline-block; */
-    vertical-align: middle;
-  }
+@media screen{
+  
+  @font-face {
+  font-display: swap;
+  font-family: hidden-characters;
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/hidden-characters.woff2) format("woff2");
+  unicode-range: U+0020, U+00A0, U+2000-200A, U+202F, U+205F, U+E000, U+E001, U+E002, U+E003;
 }
+
+body[data-invisible-spaces="true"] .invisible-nbsp,
+body[data-invisible-spaces="true"] .invisible-narrow-nbsp,
+body[data-invisible-spaces="true"] .invisible-thin,
+body[data-invisible-spaces="true"] .invisible-hair {
+  position: relative;
+}
+
+body[data-invisible-spaces="true"] .invisible-nbsp::before,
+body[data-invisible-spaces="true"] .invisible-narrow-nbsp::before,
+body[data-invisible-spaces="true"] .invisible-thin::before,
+body[data-invisible-spaces="true"] .invisible-hair::before {
+  content: attr(data-char);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "hidden-characters";
+  color: rgba(255, 0, 0, 0.4);
+  pointer-events: none;
+  line-height: 0 !important;
+}
+
+body[data-invisible-spaces="true"] .invisible-break {
+  /* position: relative; */
+  /* width: 2ch;
+  margin-right: -2ch; */
+  display: inline-block;
+  line-height: 0 !important;
+}
+
+body[data-invisible-spaces="true"] .invisible-break::after {
+  content: "\e002";
+  font-family: "hidden-characters";
+  color: rgba(255, 0, 0, 0.4);
+  line-height: 0 !important;
+  width: 2ch;
+  margin-right: -2ch;
+  display: inline-block;
+  line-height: 0 !important;
+}
+
+body[data-invisible-spaces="true"] .has-paragraph-end::after {
+  content: "\e000" !important;
+  font-family: "hidden-characters";
+  color: rgba(255, 0, 0, 0.4);
+  line-height: 0 !important;
+}
+
+.interface-preview .invisible-nbsp::before,
+.interface-preview .invisible-narrow-nbsp::before,
+.interface-preview .invisible-thin::before,
+.interface-preview .invisible-hair::before,
+.interface-preview .invisible-break::before {
+    font-family: inherit !important;
+    color: inherit !important;
+  }
+
+
+
+}
+
+/* Masquer à l'impression */
+/* @media print {
+  .invisible-nbsp,
+  .invisible-narrow-nbsp,
+  .invisible-thin,
+  .invisible-hair,
+  .invisible-break {
+    font-family: inherit !important;
+    color: inherit !important;
+  }
+  
+  .invisible-break::before,
+  .has-paragraph-end::after {
+    content: none !important;
+  }
+} */

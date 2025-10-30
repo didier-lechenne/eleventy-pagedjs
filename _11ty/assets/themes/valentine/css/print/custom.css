@@ -1,19 +1,4 @@
 
-
-/* mettre les notes sur une colonn sur certaines page */
-/*  ,  */
-[data-page-number="11"] .pagedjs_footnote_inner_content,
-[data-page-number="14"] .pagedjs_footnote_inner_content,
-[data-page-number="17"] .pagedjs_footnote_inner_content
- {
-	--g-column-count: 1 !important;
-}
-
-
-
-
-
-
 .fullpage-cover {
   --pagedjs-full-page: 1;
 }
@@ -26,4 +11,21 @@
 
 #legende-recupero {
     padding-top: 3ch !important;
+}
+
+
+#intro-domestique {
+  padding-top: 10mm !important;
+}
+
+.figcaption-alternative2{
+  text-align:right;
+}
+
+
+.bibliographie h2,
+.default h2,
+.remerciements h2,
+.conclusion h2{
+ page: sommaire !important;
 }

@@ -23,8 +23,8 @@ eleventyExcludeFromCollections: true
     margin-right: {{ config.margin_right }}mm;
 
     /* Print Options */
-    {% if config.bleed %}bleed: 6mm;{% endif %}
-    {% if config.marks %}marks: crop;{% endif %}
+    bleed: 6mm;
+    marks: crop;
 
     /* Footnotes */
     @footnote {
@@ -104,7 +104,7 @@ eleventyExcludeFromCollections: true
 
 /* Modular Grid Layout */
 @page modularGrid {
-    margin: 10mm !important;
+    margin: 11.1mm !important;
 
     @left-top {
         display: none;

@@ -102,7 +102,7 @@ body.interface-preview .paged-editor-toolbar {
   box-shadow: none !important;
   border-radius: 0 !important;
   transition: none !important;
-  visibility: hidden !important;
+  /* visibility: hidden !important; */
 }
 
 /* Masquer spécifiquement la toolbar et les focus en mode preview */

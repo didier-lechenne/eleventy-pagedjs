@@ -1,18 +1,16 @@
 main .introduction p {
   font-family: "Hershey-Futural-30" !important;
-  font-size: 19pt;
-  line-height: 22pt;
+  font-size: 17pt;
+  line-height: 21pt;
   font-weight: 300 !important; /* light */
-
 
   text-rendering: optimizeLegibility;
 
   orphans: 2;
   widows: 2;
 
-  /* hyphens: none !important; */
-  word-break: break-word;
-  hyphenate-limit-chars: 6 3 3;
+ hyphens: auto !important;
+ 
 
 }
 
@@ -64,3 +62,24 @@ section.introduction h2 {
   padding-left: 0.2ch;
   font-weight: var(--foot-note-weight);
 }
+
+
+ main .content-wrapper p{
+  font-family: var(--labeur) !important;
+  font-size: var(--caption-size);
+  line-height: var(--caption-line-height);
+  font-weight: var(--caption-weight);
+  padding: calc(1ch / 2) 0 0;
+}
+
+
+.figcaption strong em,
+.figcaption em strong {
+  font-weight: var(--caption-bold-weight);
+}
+
+ .figcaption strong em,
+ .figcaption em strong {
+  font-weight: var(--caption-bold-weight);
+}
+

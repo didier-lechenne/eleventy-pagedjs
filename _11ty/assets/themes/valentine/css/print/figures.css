@@ -21,7 +21,7 @@ figure.image {
   font-size: var(--caption-size);
   line-height: var(--caption-line-height);
   font-weight: var(--caption-weight);
-  padding: calc(1ch / 2) 0 0;
+  padding: calc(2mm) 0 0;
 }
 
 

@@ -15,22 +15,14 @@
   columns: var(--g-column-count);
   column-gap: var(--g-column-gutter);
   column-fill: auto;
-  /*columnn-fill: balance; */
+  /* columnn-fill: balance; */
 
   font-family: var(--labeur);
   font-size: 9pt;
   line-height: 12pt;
 }
 
-.textCol {
-  --g-column-count: var(--grid-col, 0);
-  --g-column-gutter: var(--grid-col-gutter, var(--gutter));
-  columns: var(--g-column-count);
-  column-gap: var(--g-column-gutter);
-  column-fill: balance;
-  /* display: inline-block; */
-  /*columnn-fill: balance; */
-}
+
 
 
 [data-template="textCol"] h2,
@@ -53,22 +45,27 @@
   font-weight: normal;
   text-align: center;
 
- 	margin: 0;
+  margin: 0;
   padding: 0;
 
-  /* supprime le folio et ajoute un saut de page*/
-  /* page: clean; */
+
   
 }
 
 [data-template="textCol"] h3,
 [data-template="bibliographie"] h3,
 .bibliographie h3 {
+  font-family: var(--heading);
+  font-size: ;
+  font-weight: bold;
     /* column-span: all;
     max-width: 100% !important; */
 }
 
 
+.textCol h3:first-of-type { 
+  column-span: all;
+}
 
 [data-template="textCol"] p,
 [data-template="bibliographie"] p,
@@ -77,4 +74,8 @@
   /* hyphens: none!important; */
   margin-top: 1ch;
   margin-bottom: 1ch;
+}
+
+.bibliographie p:first-of-type {
+  margin-top: 0 !important;
 }

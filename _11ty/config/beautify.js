@@ -21,7 +21,7 @@ module.exports = function(eleventyConfig) {
         max_preserve_newlines: 1,
         wrap_attributes: 'auto',
         wrap_attributes_indent_size: 2,
-        wrap_line_length: 100,
+        wrap_line_length: 0,
         end_with_newline: true,
         extra_liners: ['head', 'body', '/html'],
         unformatted: ['pre', 'code'],

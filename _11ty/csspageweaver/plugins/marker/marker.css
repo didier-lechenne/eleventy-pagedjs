@@ -5,7 +5,7 @@
 */
 
 :root {
-  /* Variables couleurs complètes directement dans :root */
+  /* Variables couleurs complÃ¨tes directement dans :root */
   --g-color-line: hsla(16, 100%, 50%, 0.3);
   --g-color-column: hsla(16, 100%, 50%, 0);
   --g-color-gutter: hsla(16, 100%, 50%, 0.02);
